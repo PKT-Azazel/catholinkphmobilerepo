@@ -1,0 +1,585 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header-other" no-margin>
+        <div class="centered-contents details-side-centered-contents">
+            <div class="details-side">
+                <h1 class="details-side-name">
+                    <span *ngIf = "diocese">
+                        {{diocese.dioceseName}}
+                    </span>
+                    <span *ngIf = "!diocese">
+                        Loading Diocese Name
+                    </span>
+                </h1>
+                <ul class="details-side-link">
+                    <li (click)="UpdateTab('about')">About the Diocese</li>
+                    <li (click)="UpdateTab('diocese-in-action')">Diocese in Action</li>
+                    <!--li (click)="UpdateTab('schedule')">Schedule</li-->
+                    <li (click)="UpdateTab('contact-us')">Contact Us</li>
+                    <li (click)="UpdateTab('events')">Events</li>
+                </ul>
+                <div *ngIf="isUserAdminOrUploader" class="edit-del-btn-container" >
+                    <span class="editBtn" (click)="ShowEditModal()">
+                        Edit Diocese
+                    </span>
+                    <span class="delBtn" (click)="OnDeleteItem()">
+                        Delete Diocese
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div class="main-contents">
+        <div *ngIf="diocese" class="details-main-content">
+            <div *ngIf="selectedTab ==='about'">
+                <h1>About the Diocese </h1>
+                <div class="about-left">
+                    <img class="about-image" src="{{apiDomain + img.path}}" *ngFor="let img of diocese.aboutImages">
+                </div>
+                <div class="about-right">
+                    <h2>Our Diocese</h2>
+                    <div class="info">
+                        <span class="title">Bishop: </span>
+                        <span class="value">{{diocese.presentBishopName}}</span>
+                    </div>
+                    <div class="info"> 
+                        <span class="title">Bishop Emeritus </span>
+                        <span class="value">{{diocese.auxiliaryBishopsName}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Vicar General </span>
+                        <span class="value">{{diocese.vicarGeneralName}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Provinces Covered: </span>
+                        <span class="value">{{diocese.provincesCovered}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Cities / Municipalities Covered: </span>
+                        <span class="value">{{diocese.citiesMunicipalitiesCovered}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Other Informations: </span>
+                        <p>{{diocese.about}}</p>
+                    </div>
+                    <!--div class="info">
+                        <span class="title">List of Vicariates: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.listOfVicariates">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div-->
+                    <!--div class="info">
+                        <span class="title">List of Schools: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.listOfSchools">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <span class="title">Counseling Centers: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.counselingCenters">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <span class="title">Retread Houses / Pastoral Formation Houses: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.retreatHousesPastoralFormationHouses">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <span class="title">Chaplaincies / Hospitals with Chaplains: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.chaplaincesHospitalWithChaplains">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div-->
+
+                    <!--div class="info">
+                        <span class="title">Associations and Religious Congregations Present</span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.associationsReligiousCongregations">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div-->
+                    <div class="info">
+                        <span class="title">List of Commisions and Names of Commissioners with their Contact Numbers: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.listOfCommissionsNamesOfCommisionersContactNumberAddress">
+                                Commission : {{item.commission}} <br> 
+                                Commissioner :{{item.commissioner}} <br> 
+                                Address : {{item.address}} <br> 
+                                Contact : {{item.contact}}</li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <span class="title">Groups and other Institutions: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.charitableInstitutionsAndTheirCategories">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <span class="title">List of Parishes: </span>
+                        <ul>
+                            <li class="value" *ngFor="let item of diocese.listOfParishes">
+                                <a href="{{item.link}}"  target="_blank">{{item.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--div class="info">
+                        <span class="title">Population</span>
+                        <span class="value">{{diocese.population}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">No. of Priests</span>
+                        <span class="value">{{diocese.numberOfPriests}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">No. of Religious</span>
+                        <span class="value">{{diocese.numberOfReligious}}</span>
+                    </div-->
+                    <div class="info">
+                        <span class="title">Announcements: </span>
+                        <span class="value">{{diocese.announcementsCirculars}}</span>
+                    </div>
+                    
+                </div>
+                <div style="clear:both;"></div>
+                <div>
+                    <h2>Key Officials</h2>
+                    
+                    <div class="priests-container">
+                        <div class="priest" *ngFor="let priest of diocese.priests">
+                            <img class="priest-image" src="{{apiDomain + priest.path}}">
+                            <span class="priest-name">{{priest.name}}</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div *ngIf="selectedTab ==='diocese-in-action'">
+                <h1>Diocese in Action</h1>
+                <div class="dia-filter-container in-action-filter-container">
+                    <ul>
+                        <li (click)="diaSelectedCategory = 'all'">All</li>
+                        <li (click)="diaSelectedCategory = 'socialAction'">Social Action</li>
+                        <li (click)="diaSelectedCategory = 'activities'">Activities</li>
+                        <li (click)="diaSelectedCategory = 'fiesta'">Fiesta</li>
+                    </ul>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="diocese-in-action-container">
+                    <div *ngFor="let dioceseInAction of diocese.dioceseInAction">
+                        <div class="diocese-in-action" *ngIf="((dioceseInAction.category === diaSelectedCategory) || (diaSelectedCategory === 'all'))">
+                            <div class="dia-image-container">
+                                <img class="dia-image in-action-image" src="{{apiDomain + dioceseInAction.path}}" >
+                            </div>
+                            <div class="dia-title-container in-action-title-container">
+                                <span class="dia-title in-action-title" > {{dioceseInAction.title}} </span>
+                            </div>
+                            <div class="dia-date-location-container in-action-date-location-container">
+                                <span class="dia-date-location in-action-date-location" > {{dioceseInAction.dateLocation}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+
+            <div *ngIf="selectedTab ==='schedule'">
+                <h1>Schedule</h1>
+                <div class="select-events-category">
+                    <select #evtSelect (change)="selectedEventCategory = evtSelect.value">
+                        <option value="all">All Events</option>
+                        <option value="massess">Masses</option>
+                        <option value="confessions">Confessions</option>
+                        <option value="baptism">Baptism</option>
+                        <option value="weddings">Weddings</option>
+                    </select>
+                </div>
+                <div class="schedule-main-container">
+                    <div class="schedule-row">
+                        <div class="schedule-monday schedule-day">
+                            <div>
+                                <span class="day">Monday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.monday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-tuesday schedule-day">
+                            <div>
+                                <span class="day">Tuesday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.tuesday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-wednesday schedule-day">
+                            <div>
+                                <span class="day">Wednesday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.wednesday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-thursday schedule-day">
+                            <div>
+                                <span class="day">Thursday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.thursday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-friday schedule-day">
+                            <div>
+                                <span class="day">Friday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.friday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-saturday schedule-day">
+                            <div>
+                                <span class="day">Saturday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.saturday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-sunday schedule-day">
+                            <div>
+                                <span class="day">Sunday</span>
+                            </div>
+                            <div *ngFor="let event of dioceseSchedules.sunday">
+                                <div *ngIf="(selectedEventCategory === 'all') || (selectedEventCategory ===  event.category) "  class="schedule-event">
+                                    <div class="event">
+                                        <span>{{event.eventTitle}}</span>
+                                        <span>{{Convert24hrs12hrs(event.startTime)}}</span>
+                                        <span>To</span>
+                                        <span>{{Convert24hrs12hrs(event.endTime)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="selectedTab ==='contact-us'" class="contact-us">
+                <h1>Contact Us</h1>
+                <div class="contact-us-header">
+                    <span>Feel free to</span>
+                    <span>Call us</span>
+                </div>
+
+                <div class="contact-details-main-container">
+                    <div class="contact-details-container">
+                        <div class="contact-details-logo"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                        <div class="contact-details address">
+                            <span class="contact-details-header">Address</span>
+                            <span class="contact-details-value">{{diocese.address}}</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-details-container">
+                        <div class="contact-details-logo"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                        <div class="contact-details phone">
+                            <span class="contact-details-header">Phone</span>
+                            <span class="contact-details-value">{{diocese.contactNo}}</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-details-container">
+                        <div class="contact-details-logo"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
+                        <div class="contact-details mail">
+                            <span class="contact-details-header">Mail</span>
+                            <span class="contact-details-value">{{diocese.emailAndWebsite}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="clear:both;"></div>
+                <agm-map [latitude]="gmapLatitude" [longitude]="gmapLongitude" [zoom]="15">
+                    <agm-marker [latitude]="gmapLatitude" [longitude]="gmapLongitude"></agm-marker>
+                </agm-map>
+            </div>
+
+            <div *ngIf="selectedTab ==='events'">
+                <h1>Events</h1>
+                <div class="events-calendar-selector">
+                    <span (click)="OnEventsNavLeft()" class="events-calendar-nav-icon left"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                    <div class="events-calendar-nav-items-container">
+                        <span (click)="UpdateSelectedNav(monthsList[eventsCalendarFirstNavMonth],eventsCalendarFirstNavYear)" class="events-calendar-nav-item">
+                            {{monthsList[eventsCalendarFirstNavMonth]}} {{eventsCalendarFirstNavYear}}
+                        </span>
+                        <span (click)="UpdateSelectedNav(monthsList[eventsCalendarSecondNavMonth],eventsCalendarSecondNavYear)" class="events-calendar-nav-item">
+                            {{monthsList[eventsCalendarSecondNavMonth]}} {{eventsCalendarSecondNavYear}}
+                        </span>
+                        <span (click)="UpdateSelectedNav(monthsList[eventsCalendarThirdNavMonth],eventsCalendarThirdNavYear)" class="events-calendar-nav-item">
+                            {{monthsList[eventsCalendarThirdNavMonth]}} {{eventsCalendarThirdNavYear}}
+                        </span>
+                    </div>
+                    <span (click)="OnEventsNavRight()" class="events-calendar-nav-icon right"><i class="fa fa-angle-right" aria-hidden="true"></i></span>   
+                </div>
+                <div class="events-calendar-main-container">                    
+                    <div *ngFor="let event of eventsSelectedItem" class="events-calendar-item-container">
+                        <div  class="events-calendar-item">
+                            <div class="events-calendar-header">
+                                <span>{{event.title}}</span>
+                            </div>
+                            <div class="events-calendar-content">
+                                <span class="timeline-circle">{{event.day}}</span>
+                                <div class="events-calendar-content-image-frame">
+                                    <img class="events-calendar-content-image" src="{{apiDomain + event.path}}">
+                                </div>
+                                <div class="events-calendar-content-description">
+                                    <span>{{event.description}}</span>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+   </div> <!--main contents  -->
+</ion-content>
+    
+<div *ngIf="showEditModal && diocese" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Diocese</h1>
+        <div class="modal-close" (click)="CloseEditModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditItem(f)">
+                <table>
+                    <tr><td><label for="dioceseName">Diocese Name</label></td></tr>
+                    <tr><td><input type="text" name="dioceseName" id="dioceseName" [ngModel]="diocese.dioceseName"></td></tr>
+
+                    <tr><td><label for="about">Other Informations</label></td></tr>
+                    <tr><td><textarea name="about" id="about" [ngModel]="diocese.about"></textarea></td></tr>
+        
+                    <tr><td>Bishop</td></tr>
+                    <tr><td><input type="text" name="presentBishopName" id="presentBishopName" [ngModel]="diocese.presentBishopName"></td></tr>
+
+                    <tr><td>Bishop Emeritus</td></tr>
+                    <tr><td><input type="text" name="auxiliaryBishopsName" id="auxiliaryBishopsName" [ngModel]="diocese.auxiliaryBishopsName"></td></tr>
+
+                    <tr><td>Vicar General</td></tr>
+                    <tr><td><input type="text" name="vicarGeneralName" id="vicarGeneralName" [ngModel]="diocese.vicarGeneralName"></td></tr>
+
+                    <!-- <tr><td>Office Address and Contact</td></tr>
+                    <tr><td><input type="text" name="officeAddressContact" id="officeAddressContact" ngModel></td></tr>
+
+                    <tr><td>Bishop's Residence Address and Contact</td></tr>
+                    <tr><td><input type="text" name="bishopOfficeAddressContract" id="bishopOfficeAddressContract" ngModel></td></tr> -->
+
+                    <tr><td>Provinces Covered</td></tr>
+                    <tr><td><input type="text" name="provincesCovered" id="provincesCovered" [ngModel]="diocese.provincesCovered"></td></tr>
+
+                    <tr><td>Cities / Municipalities Covered</td></tr>
+                    <tr><td><input type="text" name="citiesMunicipalitiesCovered" id="citiesMunicipalitiesCovered" [ngModel]="diocese.citiesMunicipalitiesCovered"></td></tr>
+
+                    <tr><td>Population</td></tr>
+                    <tr><td><input type="text" name="population" id="population" [ngModel]="diocese.population"></td></tr>
+
+                    <tr><td>No. of Priests (Diocesan, Religious, Guests, On leave)</td></tr>
+                    <tr><td><input type="text" name="numberOfPriests" id="numberOfPriests" [ngModel]="diocese.numberOfPriests"></td></tr>
+
+                    <tr><td>No. of Religious</td></tr>
+                    <tr><td><input type="text" name="numberOfReligious" id="numberOfReligious" [ngModel]="diocese.numberOfReligious"></td></tr>
+
+                    <!-- <tr><td>Activities and Upcoming Events</td></tr>
+                    <tr><td><input type="text" name="activitiesAndUpcomingEvents" id="activitiesAndUpcomingEvents" ngModel></td></tr> -->
+
+                    <tr><td>Announcements / Circulars</td></tr>
+                    <tr><td><input type="text" name="announcementsCirculars" id="announcementsCirculars" [ngModel]="diocese.announcementsCirculars"></td></tr>
+                
+                    <tr><td><label for="address">Address</label></td></tr>
+                    <tr><td><input type="text" name="address" id="address" [ngModel]="diocese.address"></td></tr>
+                
+                    <tr><td><label for="contactNo">Contact No.</label></td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" [ngModel]="diocese.contactNo"></td></tr>
+                
+                    <tr><td><label for="emailAndWebsite">Email and Website</label></td></tr>
+                    <tr><td><input type="text" name="emailAndWebsite" id="emailAndWebsite" [ngModel]="diocese.emailAndWebsite"></td></tr>
+
+                    <tr><td><label for="googleMapLongitude">Google Map Longitude</label></td></tr>
+                    <tr><td><input type="text" name="googleMapLongitude" id="googleMapLongitude" [ngModel]="diocese.googleMapLongitude"></td></tr>
+
+                    <tr><td><label for="googleMapLatitude">Google Map Latitude</label></td></tr>
+                    <tr><td><input type="text" name="googleMapLatitude" id="googleMapLatitude" [ngModel]="diocese.googleMapLatitude"></td></tr>
+                </table>
+
+                <label>List of Vicariates</label>
+                <div id="diocese-vicariates-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-vicariates-container','diocese-vicariates-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Vicariate</span>
+                </div>
+
+                <label>List of Parishes</label>
+                <div id="diocese-parishes-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-parishes-container','diocese-parishes-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Parish</span>
+                </div>
+
+                <label>List of Schools</label>
+                <div id="diocese-schools-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-schools-container','diocese-schools-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add School</span>
+                </div>
+
+                <label>Church People</label>
+                <div id="diocese-counseling-centers-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-counseling-centers-container','diocese-counseling-centers-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Church Person</span>
+                </div>
+
+                <label>Retreat Houses / Pastoral Formation Houses</label>
+                <div id="diocese-retreat-houses-pastoral-formation-houses-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-retreat-houses-pastoral-formation-houses-container','diocese-retreat-houses-pastoral-formation-houses-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Retreat House / Pastoral Formation House</span>
+                </div>
+
+                <label>Chaplaincies / Hospitals with Chaplains</label>
+                <div id="diocese-chaplaincies-hospitals-with-chaplains-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-chaplaincies-hospitals-with-chaplains-container','diocese-chaplaincies-hospitals-with-chaplains-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Chaplaincies / Hospitals with Chaplains</span>
+                </div>
+
+                <label>Charitable Institutions</label>
+                <div id="diocese-charitable-institutions-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-charitable-institutions-container','diocese-charitable-institutions-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Charitable Institution</span>
+                </div>
+
+                <label>Associations and Religious Congregations</label>
+                <div id="diocese-associations-religious-congregations-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-associations-religious-congregations-container','diocese-associations-religious-congregations-div',true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Association and Religious Congregation</span>
+                </div>
+
+
+                <label>List of Commissions and Commissioners</label>
+                <div id="diocese-commissions-and-commissioners-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddCommissionsCommissioners(true)" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Commission and Commissioner</span>
+                </div>
+
+                <label>Schedules</label>
+                <div id="diocese-schedule-container" class="form-dynamic-contents-container"></div>
+                <div class="add-schedule-btn-container">
+                    <span (click)="AddSchedule(true)" class="add-schedule-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Schedule</span>
+                </div>
+
+                <label>Events</label>
+                <div id="diocese-events-container" class="form-dynamic-contents-container"></div>
+                <div class="add-event-btn-container">
+                    <span (click)="AddEvent(true)" class="add-event-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Event</span>
+                </div>
+
+                <label>About Images</label>
+                <div id="diocese-about-images-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddAboutImage(true)" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Image</span>
+                </div>
+
+                <label>Priests</label>
+                <div id="diocese-priest-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddPriest(true)" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Priest</span>
+                </div>
+
+                <label>Diocese in Action</label>
+                <div id="diocese-dia-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddDia(true)" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Diocese in Action</span>
+                </div>
+
+                
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

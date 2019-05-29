@@ -1,0 +1,25 @@
+main-menu {
+    .navbar {
+        height: 50px;
+        min-height: 50px;
+        border-bottom-style: solid;
+        border-bottom-color: #efefef;
+        // border-bottom-color: #a40e00;
+        background-color: #efefef;
+    }
+
+    .navbar .back-button {
+        color: #a40e00;
+        font-size: 15px;
+    }
+
+    .navbar .main-menu-btn {
+        color: #a40e00;
+        font-size: 15px;
+    }
+
+    .navbar .main-menu-btn i {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+}

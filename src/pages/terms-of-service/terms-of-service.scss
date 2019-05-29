@@ -1,0 +1,191 @@
+page-terms-of-service {
+        ion-card.header {
+            width: 100%;
+            margin-top: 50px;
+            padding: 25px;
+            border-radius: 0px;
+            overflow: hidden;
+            background-color: black;
+        }
+    
+        ion-card.header{
+            img {
+                margin-left: 10px;
+                width: 100%;
+                height: auto;
+                max-width: 250px;
+                display: inline-block;
+            }
+            p {
+                font-size: 15px;
+                font-weight: 500;
+                color: #484848;
+            }
+        }
+    
+        ion-card.main-content {
+            background-color: white;
+            width: 100%;
+            padding: 25px;
+            border-radius: 0px;
+            box-shadow: none;
+        }
+    
+        ion-card.main-content{
+            h1{
+                // font-family: 'Oswald';
+                font-size: 30px;
+                text-transform: uppercase;
+                font-weight: 900;
+                // letter-spacing: -1px;
+                margin-top: 30px;
+            }
+    
+            .section-hr {
+                display: inline-block;
+                margin-top: 17px;
+                margin-bottom: 10px;
+                height: 15px;
+                width: 80%;
+    
+            }
+    
+            .form-container .label{
+                display: block;
+                font-size: 20px;
+                text-transform: uppercase;
+                font-weight: 600;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            
+            .form-container input {
+                width: 100%;
+                font-size: 17px;
+                border-radius: 5px;
+                height: 35px;
+            }
+    
+            
+            
+            .signUpBtn {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+            
+            .signUpBtn >input {
+                width: 200px !important;
+                color: #fff;
+                background-color: rgb(255,31, 65);
+                border-color: rgb(255,31, 65);
+                cursor: pointer;
+            
+                display: inline-block;
+                font-weight: 400;
+                line-height: 1.25;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+            
+                border: 1px solid transparent;
+                padding: 8px;
+                font-size: 15px;
+                border-radius: .25rem;
+            
+            }
+    
+    
+            //checkbox for sign up
+            .TOSCheckbox{
+                margin-top: 30px;
+                margin-bottom: 30px;
+                position: relative;
+            }
+            
+            
+            .TOSCheckbox span {
+                margin-left: 20px;
+                font-size: 15px;
+                font-weight: 500;
+            }
+            
+            .TOSCheckbox > label {
+                cursor: pointer;
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                top: 0;
+                  left: 0;
+                background: #eee;
+                border:1px solid #ddd;
+            }
+            
+            .TOSCheckbox > label:after {
+                opacity: 0.2;
+                content: '';
+                position: absolute;
+                width: 9px;
+                height: 5px;
+                background: transparent;
+                top: 7px;
+                left: 7px;
+                border: 3px solid #333;
+                border-top: none;
+                border-right: none;
+            
+                transform: rotate(-45deg);
+            }
+            
+            .TOSCheckbox input[type=checkbox]:checked + label:after {
+                opacity: 1;
+            }
+            
+            .TOSCheckbox #TOS{
+                width: auto;
+            }
+            // end of checkbox
+    
+            .errorsContainer {
+                margin-top: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+    
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+            }
+    
+            .successContainer {
+                margin-top: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+    
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d6e9c6;
+            }
+    
+            .loadingContainer {
+                margin-top: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+    
+                color: #31708f;
+                background-color: #d9edf7;
+                border-color: #bce8f1;
+            }
+    
+            .loadingContainer i {
+                font-size: 25px;
+            }
+    
+        }
+     
+}

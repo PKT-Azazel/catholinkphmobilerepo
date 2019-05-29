@@ -1,0 +1,182 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Information Directories</h1>
+        <p>Search information about churches, groups, institutions, ministries and services of the Philippine Catholic Church.</p>
+    </ion-card>
+
+    <ion-card class="search" no-padding text-center>
+        <div class="search-bar-container">
+            <div class="search-label">
+                <span>Please find here:</span>
+            </div>
+            <div class="search-input-container">
+                <div class="search-input-contents">
+                    <input type="text" placeholder="" #searchInput/>
+                </div>
+                <div class="search-btn-container" (click)='OnSearchClick(searchInput.value)'>
+                    <span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div>
+        <p class="desc">Look for nearby Parishes.</p>
+    </div>
+
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddModal()" class="addBtn">
+            Add Church
+        </span>
+    </div>
+
+    <div class="search-results-container" *ngIf="(isSearchTriggered)">
+        <p *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results-header" style="text-align: left;text-decoration : underline;">Churches List</p>
+        <p *ngIf="((searchResults.length <1) && (!isSearchLoading))" class="search-results-header" style="text-align: left;">No results found.</p>
+        <ul *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results">
+            <li *ngFor="let item of searchResults">
+                <div>
+                    <span (click)="RouteFromSearch(detailPage,item._id)" class="result-title">{{item.parishName}}</span>
+                </div>
+                <div>
+                    <span class="result-info">Address: {{item.address}}, Vicariate: {{item.vicariate}}, Diocese: {{item.diocese}}</span>
+                </div>
+            </li>
+        </ul> 
+    </div>
+</ion-content>
+
+<div *ngIf="showAddModal" class="add-modal-container">
+    <div class="add-modal">
+        <h1 class='modal-title'>Add new Church</h1>
+        <div class="modal-close" (click)="CloseAddModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <!-- Church Add Form -->
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewChurch(f)">
+                <table>
+                    <tr><td><label for="parishName">Parish Name</label></td></tr>
+                    <tr><td><input type="text" name="parishName" id="parishName" ngModel></td></tr>
+
+                    <tr><td><label for="about">Other Informations</label></td></tr>
+                    <tr><td><textarea name="about" id="about" ngModel></textarea></td></tr>
+        
+                    <tr><td><label for="vicariate">Vicariate</label></td></tr>
+                    <tr><td><input type="text" name="vicariate" id="vicariate" ngModel></td></tr>
+                
+                    <tr><td><label for="diocese">Diocese</label></td></tr>
+                    <tr><td><input type="text" name="diocese" id="diocese" ngModel></td></tr>
+                
+                    <tr><td><label for="parishPriest">Parish Priest</label></td></tr>
+                    <tr><td><input type="text" name="parishPriest" id="parishPriest" ngModel></td></tr>
+                
+                    <tr><td><label for="dateEstablished">Date Established</label></td></tr>
+                    <tr><td><input type="text" name="dateEstablished" id="dateEstablished" ngModel></td></tr>
+                
+                    <tr><td><label for="patronSaint">Patron Saint</label></td></tr>
+                    <tr><td><input type="text" name="patronSaint" id="patronSaint" ngModel></td></tr>
+
+                    <tr><td><label for="feastDay">Feast Day</label></td></tr>
+                    <tr><td><input type="text" name="feastDay" id="feastDay" ngModel></td></tr>
+                
+                    <tr><td><label for="address">Address</label></td></tr>
+                    <tr><td><input type="text" name="address" id="address" ngModel></td></tr>
+                
+                    <tr><td><label for="contactNo">Contact No.</label></td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" ngModel></td></tr>
+                
+                    <tr><td><label for="emailAndWebsite">Email and Website</label></td></tr>
+                    <tr><td><input type="text" name="emailAndWebsite" id="emailAndWebsite" ngModel></td></tr>
+
+                    <tr><td><label for="googleMapLongitude">Google Map Longitude</label></td></tr>
+                    <tr><td><input type="text" name="googleMapLongitude" id="googleMapLongitude" ngModel></td></tr>
+
+                    <tr><td><label for="googleMapLatitude">Google Map Latitude</label></td></tr>
+                    <tr><td><input type="text" name="googleMapLatitude" id="googleMapLatitude" ngModel></td></tr>
+
+                    <!-- <tr><td><label for="scheduleOfMasses">Schedules of Masses</label></td></tr>
+                    <tr><td><input type="text" name="scheduleOfMasses" id="scheduleOfMasses" ngModel></td></tr>
+                
+                    <tr><td><label for="scheduleOfConfessions">Schedules of Confessions</label></td></tr>
+                    <tr><td><input type="text" name="scheduleOfConfessions" id="scheduleOfConfessions" ngModel></td></tr>
+                
+                    <tr><td><label for="scheduleOfBaptism">Schedules of Baptism</label></td></tr>
+                    <tr><td><input type="text" name="scheduleOfBaptism" id="scheduleOfBaptism" ngModel></td></tr>
+                
+                    <tr><td><label for="scheduleOfWeddings">Schedules of Weddings</label></td></tr>
+                    <tr><td><input type="text" name="scheduleOfWeddings" id="scheduleOfWeddings" ngModel></td></tr> -->
+                
+                    <tr><td><label for="upcomingEventsAnnouncements">Upcoming Events Announcements</label></td></tr>
+                    <tr><td><input type="text" name="upcomingEventsAnnouncements" id="upcomingEventsAnnouncements" ngModel></td></tr>
+
+                    
+                    
+            
+                </table>
+
+
+
+                <label>Schedules</label>
+                <div id="church-schedule-container"></div>
+                <div class="add-schedule-btn-container">
+                    <span (click)="AddSchedule()" class="add-schedule-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Schedule</span>
+                </div>
+
+                <label>Events</label>
+                <div id="church-events-container"></div>
+                <div class="add-event-btn-container">
+                    <span (click)="AddEvent()" class="add-event-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Event</span>
+                </div>
+
+                <label>About Images</label>
+                <div id="church-about-images-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddAboutImage()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Image</span>
+                </div>
+
+                <label>Priests</label>
+                <div id="church-priest-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddPriest()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Priest</span>
+                </div>
+
+
+                <label>Church in Action</label>
+                <div id="church-cia-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddCia()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Church in Action</span>
+                </div>
+                
+                
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

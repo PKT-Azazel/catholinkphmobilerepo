@@ -1,0 +1,53 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/login/login1290.png');">
+    <ion-card class="main-content" no-margin text-center>
+        <h1>User Login</h1>
+        <div class="form-container">
+            <form #f="ngForm" (ngSubmit)="LogIn(f)" text-left>
+                <span class="label">Email</span>
+                <div>
+                    <input type="text" name="email" id="email" ngModel>
+                </div>
+    
+                <span class="label">Password</span>
+                <div>
+                    <input type="password" name="password" id="password" ngModel>
+                </div>
+                <div class="rememberMeCheckbox">
+                    <input type="checkbox" value="true" name="rememberMe" id="rememberMe" #c (change)="ToggleRememberMe(c)">
+                    <label for="rememberMe"></label>
+                    <span>Remember me</span>
+                </div>
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>logging in, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div class="error">
+                        <span>{{errorMessage}}</span>
+                    </div>
+                </div>
+                <div class="loginBtn">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+
+        <div class="signup-section">
+            <span class="title">Not a member?</span>
+            <br>
+            <input type="button" (click)="RouteTo(signupPage)" value="Sign Up!">
+        </div>    
+        <!-- <div class="signup-section">
+            <br>
+            <input type="button" (click)="RouteTo(resetPasswordPage)" value="Reset Password">
+        </div> -->
+    </ion-card>
+</ion-content>

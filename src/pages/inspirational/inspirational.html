@@ -1,0 +1,232 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/update/update1290.png');">
+    <ion-card class="header">
+        <div class="quote">
+            <span>Information saves minds.<br>Inspiration moves hearts.</span>
+        </div>
+    </ion-card>
+
+    <div class="main-contents-bottom">
+        <div class="filter-menu-container">
+            <ul>
+                <li class="filter active" #all (click)="FilterBy('all',all)">all</li>
+                <li class="filter" #family (click)="FilterBy('family',family)">family</li>
+                <li class="filter" #society (click)="FilterBy('society',society)">society</li>
+                <li class="filter" #environment (click)="FilterBy('environment',environment)">environment</li>
+                <li class="filter" #relationship (click)="FilterBy('relationship',relationship)">relationship</li>
+                <li class="filter" #health (click)="FilterBy('health',health)">health</li>
+                <li class="filter" #church (click)="FilterBy('church',church)">church</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <ng-container *ngFor="let inspirational of inspirationals.slice().reverse()" > <!-- .slice().reverse() will reverse shown array data-->
+        <div *ngIf="((selectedFilter==='all') || (selectedFilter===inspirational.category))" class="grid-item">
+            <div class="img-frame" (click)="((inspirational.type === 'video') ? ShowVideoModal(inspirational) : ShowBlogModal(inspirational))" >
+            <div class="img-cover"></div>
+            <div class="grid-item-title">{{inspirational.title}}</div>
+            <img *ngIf="inspirational.image" src="{{inspirational.image}}"/>
+            <img *ngIf="!(inspirational.image)" src="//:0"/>
+            </div>
+            <div *ngIf="isUserAdmin" class="edit-del-btn-container">
+                <span (click)="ShowEditModal(inspirational)" class="edit-del-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                <span (click)="DeleteInspirational(inspirational)" class="edit-del-btn"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        </ng-container>
+    </div>
+    <div style="clear:both;"></div>
+    <div *ngIf="!(filteredItemsCount > 0)" class="no-items-to-display">
+        No items to display.
+    </div>
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddModal()" class="add-btn">Add Inspirational</span>
+    </div>
+</ion-content>
+
+<div *ngIf="showVideoModal" class="watch-video-modal-container">
+    <div class="video-container">
+        <div class="modal-close" (click)="showVideoModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <ng-container *ngIf="safeUrl">
+            <iframe id="videoIframe" height="100%" width="100%" [src]="safeUrl" frameborder="0" ></iframe>
+        </ng-container>
+    </div>
+  </div>
+  
+  <div *ngIf="showBlogModal" class="blog-modal-container">
+    <div class="blog-container">
+        <div class="modal-close" (click)="showBlogModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <ng-container *ngIf="blog">
+            <div class="blog-title">
+                <span>{{blog.title}}</span>
+            </div>
+            <div class="blog-image">
+                <img *ngIf="blog.image" src="{{blog.image}}"/>
+            </div>
+            <p *ngFor="let blogContent of blog.blog" class="blog-content">
+                {{blogContent}}
+            </p>
+        </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="showAddModal" class="modal-container">
+    <div class="my-modal">
+        <h1 class='modal-title'>Add Inspirational</h1>
+        <div class="modal-close" (click)="showAddModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddInspirational(f)">
+                <table>
+                    <tr><td><label for="title">Title</label></td></tr>
+                    <tr><td><input type="text" name="title" ngModel></td></tr>
+  
+                    <tr><td><label for="type">Type</label></td></tr>
+                    <tr><td>
+                        <select name="type" #type [ngModel]="'video'">
+                            <option value="video">Video</option>
+                            <option value="blog">Blog</option>
+                        </select>
+                    </td></tr>
+  
+                    <ng-container *ngIf="type.value==='video'" id="video-field">
+                        <tr><td><label for="videoUrl">Video URL</label></td></tr>
+                        <tr><td><input type="text" name="videoUrl" ngModel></td></tr>
+                    </ng-container>
+  
+                    <ng-container *ngIf="type.value==='blog'" id="blog-field">
+                        <tr><td><label for="blog">Blog</label></td></tr>
+                        <tr><td><textarea rows="5" name="blog" ngModel></textarea></td></tr>
+                    </ng-container>
+  
+                    <tr><td><label for="category">Category</label></td></tr>
+                    <tr><td>
+                        <select name="category" [ngModel]="'family'">
+                            <option value="family">Family</option>
+                            <option value="society">Society</option>
+                            <option value="environment">Environment</option>
+                            <option value="relationship">Relationship</option>
+                            <option value="health">Health</option>
+                            <option value="church">Church</option>
+                        </select>
+                    </td></tr>
+                </table>
+  
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+                <img id="add-form-image-preview" src="//:0" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="add-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+  
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+  
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="showEditModal" class="modal-container">
+    <div class="my-modal">
+        <h1 class='modal-title'>Edit Inspirational</h1>
+        <div class="modal-close" (click)="showEditModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+  
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditInspirational(f)">
+                <table>
+                    <tr><td><label for="title">Title</label></td></tr>
+                    <tr><td><input type="text" name="title" [ngModel]="inspirationalToUpdateOrDelete.title"></td></tr>
+  
+                    <tr><td><label for="type">Type</label></td></tr>
+                    <tr><td>
+                        <select name="type" #type [ngModel]="inspirationalToUpdateOrDelete.type">
+                            <option value="video">Video</option>
+                            <option value="blog">Blog</option>
+                        </select>
+                    </td></tr>
+  
+                    <ng-container *ngIf="type.value==='video'" id="video-field">
+                        <tr><td><label for="videoUrl">Video URL</label></td></tr>
+                        <tr><td><input type="text" name="videoUrl" [ngModel]="inspirationalToUpdateOrDelete.videoUrl"></td></tr>
+                    </ng-container>
+  
+                    <ng-container *ngIf="type.value==='blog'" id="blog-field">
+                        <tr><td><label for="blog">Blog</label></td></tr>
+                        <tr><td><textarea rows="5" name="blog" [ngModel]="inspirationalToUpdateOrDelete.blog"></textarea></td></tr>
+                    </ng-container>
+  
+                    <tr><td><label for="category">Category</label></td></tr>
+                    <tr><td>
+                        <select name="category" [ngModel]="inspirationalToUpdateOrDelete.category">
+                            <option value="family">Family</option>
+                            <option value="society">Society</option>
+                            <option value="environment">Environment</option>
+                            <option value="relationship">Relationship</option>
+                            <option value="health">Health</option>
+                            <option value="church">Church</option>
+                        </select>
+                    </td></tr>
+                </table>
+  
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+  
+                <img id="edit-form-image-preview" *ngIf="inspirationalToUpdateOrDelete.image" src="{{inspirationalToUpdateOrDelete.image}}"/>
+                <img id="edit-form-image-preview" *ngIf="!(inspirationalToUpdateOrDelete.image)" src="//:0" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="edit-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+  
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+  
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+  
+    </div>
+  </div>

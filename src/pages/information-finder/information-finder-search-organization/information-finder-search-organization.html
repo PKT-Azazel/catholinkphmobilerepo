@@ -1,0 +1,154 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Information Directories</h1>
+        <p>Search information about churches, groups, institutions, ministries and services of the Philippine Catholic Church.</p>
+    </ion-card>
+
+    <ion-card class="search" no-padding text-center>
+        <div class="search-bar-container">
+            <div class="search-label">
+                <span>Please find here:</span>
+            </div>
+            <div class="search-input-container">
+                <div class="search-input-contents">
+                    <input type="text" placeholder="" #searchInput/>
+                </div>
+                <div class="search-btn-container" (click)='OnSearchClick(searchInput.value)'>
+                    <span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div>
+        <p class="desc">Search a Lay Association, Groups and other Catholic Institutions/bodies.</p>
+    </div>
+
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddModal()" class="addBtn">
+            Add Organization
+        </span>
+    </div>
+
+    <div class="search-results-container" *ngIf="(isSearchTriggered)">
+        <p *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results-header" style="text-align: left;text-decoration : underline;">Organization List</p>
+        <p *ngIf="((searchResults.length <1) && (!isSearchLoading))" class="search-results-header" style="text-align: left;">No results found.</p>
+        <ul *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results">
+            <li *ngFor="let item of searchResults">
+                <div>
+                    <span (click)="RouteFromSearch(detailPage,item._id)" class="result-title">{{item.organizationName}}</span>
+                </div>
+                <div>
+                    <span class="result-info">Address: {{item.address}}, Nature of Organization: {{item.natureOfOrganization}}, Other Informations: {{item.about}}</span>
+                </div>
+            </li>
+        </ul> 
+    </div>
+</ion-content>
+
+<div *ngIf="showAddModal" class="add-modal-container">
+    <div class="add-modal">
+        <h1 class='modal-title'>Add new Organization</h1>
+        <div class="modal-close" (click)="CloseAddModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewOrganization(f)">
+                <table>
+                    <tr><td><label for="organizationName">Organization Name</label></td></tr>
+                    <tr><td><input type="text" name="organizationName" id="organizationName" ngModel></td></tr>
+
+                    <tr><td><label for="about">Other Informations</label></td></tr>
+                    <tr><td><textarea name="about" id="about" ngModel></textarea></td></tr>
+        
+                    <tr><td>Address</td></tr>
+                    <tr><td><input type="text" name="address" id="address" ngModel></td></tr>
+
+                    <tr><td>Diocese</td></tr>
+                    <tr><td><input type="text" name="diocese" id="diocese" ngModel></td></tr>
+
+                    <tr><td>Email / Website</td></tr>
+                    <tr><td><input type="text" name="emailAndWebsite" id="emailAndWebsite" ngModel></td></tr>
+                
+                    <tr><td>Contact No.</td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" ngModel></td></tr>
+
+                    <tr><td>Google Map Longitude</td></tr>
+                    <tr><td><input type="text" name="googleMapLongitude" id="googleMapLongitude" ngModel></td></tr>
+
+                    <tr><td>Google Map Latitude</td></tr>
+                    <tr><td><input type="text" name="googleMapLatitude" id="googleMapLatitude" ngModel></td></tr>
+                   
+                    <tr><td>Nature of Organization</td></tr>
+                    <tr><td><input type="text" name="natureOfOrganization" id="natureOfOrganization" ngModel></td></tr>
+
+                    <tr><td>Date Established</td></tr>
+                    <tr><td><input type="text" name="dateEstablished" id="dateEstablished" ngModel></td></tr>
+
+                    <tr><td>Founder</td></tr>
+                    <tr><td><input type="text" name="founder" id="founder" ngModel></td></tr>
+<!-- 
+                    <tr><td>Organization's Head</td></tr>
+                    <tr><td><input type="text" name="organizationHead" id="organizationHead" ngModel></td></tr> -->
+
+                    <tr><td>Services</td></tr>
+                    <tr><td><input type="text" name="services" id="services" ngModel></td></tr>
+
+                </table>
+
+                <label>Events</label>
+                <div id="organization-events-container" class="form-dynamic-contents-container"></div>
+                <div class="add-event-btn-container">
+                    <span (click)="AddEvent()" class="add-event-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Event</span>
+                </div>
+
+                <label>About Images</label>
+                <div id="organization-about-images-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddAboutImage()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Image</span>
+                </div>
+
+                <label>Organization's Head</label>
+                <div id="organization-heads-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddOrganizationHead()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Organization's Head</span>
+                </div>
+
+
+                <label>Galleries</label>
+                <div id="organization-gallery-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddGallery()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Gallery</span>
+                </div>
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

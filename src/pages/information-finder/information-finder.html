@@ -1,0 +1,120 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Information Directories</h1>
+        <p>Search information about churches, groups, institutions, ministries and services of the Philippine Catholic Church.</p>
+        <p>Need further assistance?
+            <br>
+            Dial 92-TRUTH (928-7884)
+            Monday to Friday
+            8:00am - 5:00pm</p>
+    </ion-card>
+
+    <ion-card class="search-other" no-padding text-center>
+        <div class="search-bar-container">
+            <div class="search-label">
+                <span>Please find here:</span>
+            </div>
+            <div class="search-input-container">
+                <div class="search-input-contents">
+                    <input type="text" placeholder="" #searchInput/>
+                </div>
+                <div class="search-btn-container" (click)='OnSearchClick(searchInput.value)'>
+                    <span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div class="section-header" text-center>
+        <h1>Click first a category below</h1>
+    </div>
+
+    <ion-grid class="nav-grid-items">
+        <ion-row >
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderSearchDiocesePage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            diocese
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderSearchChurchPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            churches
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderCatholicSchoolPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            catholic schools
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderSearchOrganizationPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            groups and other institutions
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderSocialServicesPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            socio-pastoral services
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderReligiousCongregationsPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            religious congregations
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderCounselingCentersPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            church people
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-5 col-md-3 no-padding>
+                <ion-card class="grid-links" (click)="RouteTo(informationFinderRetreatCentersPage)">
+                    <div class="title-container"> 
+                        <span class="title">
+                            retreat centers
+                        </span>
+                    </div>
+                </ion-card>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

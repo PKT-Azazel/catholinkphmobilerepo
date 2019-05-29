@@ -1,0 +1,242 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/send-help/help1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Send Help. Donate.</h1>
+        <p>Let our brothers and sisters know your needs for your ministry or program by adding your donation drive here. 
+        <br>“Bear ye one another’s burdens, and so fulfil the law of Christ” (Galatians 6:2)</p>
+    </ion-card>
+    
+    <div class="details-wrapper">
+        <div class="top-details">
+            <div class="left">
+                <img class="details-img" src="{{( donationDrive ) ? donationDrive.image : '//:0'}}">
+            </div>
+            <div class="right">
+                <span class="details-title details-info">{{(donationDrive) ? donationDrive.campaignTitle : ''}}</span>
+                <span class="details-target-date details-info">{{(donationDrive) ? donationDrive.targetDate : ''}}</span>
+                <span class="details-target-goal details-info">Php {{currentAmount}} of {{(donationDrive) ? donationDrive.targetGoal : '0'}}</span>
+                <div class="progress-bar-container">
+                    <div id="current-progress" [style.width]="currentProgress + '%'" class="current-progress"></div>
+                </div>
+                <div class="edit-donate-share-btn-container">
+                    <form action='https://www.paypal.com/cgi-bin/webscr' 
+                        method='post' 
+                        target='paypal' #f>
+                      
+                        <input type='hidden' name='cmd' value='_s-xclick'>
+                        <input type='hidden' name='hosted_button_id' value="{{(donationDrive) ? donationDrive.paypal : ''}}">
+                        <input type='submit' style='display: none;' />
+
+                        <span (click)="f.submit()" class="shareBtn">
+                            Donate Now
+                        </span>
+                    </form>
+                    <a href="http://www.facebook.com/sharer.php?u={{pageUrl}}" target="_blank">
+                        <span class="shareBtn">
+                            Share on Facebook
+                        </span>
+                    </a>
+                    <span *ngIf="isUserAdmin" class="editBtn" (click)="ShowEditModal()">
+                        Edit Campaign
+                    </span>
+                    <span *ngIf="isUserAdmin" class="editBtn" (click)="DeleteDonationDrive(donationDrive)">
+                        Delete Campaign
+                    </span>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="bottom-details">
+            <div class="left">
+                <span class="details-header">Story</span>
+                <span class="details-description details-info">{{(donationDrive) ? donationDrive.description : ''}}</span>
+            </div>
+            <div class="right">
+                <span class="details-header">Donors</span>
+                <div class="add-edit-donor-btn-container">
+                    <span *ngIf="isUserAdmin" class="addDonorBtn" (click)="ShowAddDonorModal()">
+                        Add Donor
+                    </span>
+                    <span *ngIf="isUserAdmin" class="editDonorBtn" (click)="ShowEditDonorModal()">
+                        Edit Donors
+                    </span>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="donors-container">
+                    <ul class="donors">
+                        <ng-container *ngIf="donationDrive">
+                            <ng-container *ngFor="let donor of donationDrive.donors" >
+                                <li class="item">
+                                    <div class="image-container">
+                                        <img *ngIf="donor.picture" src="{{ donor.picture }}"/>
+                                        <img *ngIf="!(donor.picture)" src="assets/imgs/bfast/avatar-default.png"/>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="name">{{donor.name}}</span>
+                                        <span class="other-info">Php {{donor.amount}}</span>
+                                    </div>
+                                    <div style="clear:both"></div>
+                                </li>
+                            </ng-container>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+
+</ion-content>
+
+<div *ngIf="showEditModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Campaign</h1>
+        <div class="modal-close" (click)="showEditModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditDonationDrive(f)">
+                <table>
+                    <tr><td><label for="campaignTitle">Campaign Title</label></td></tr>
+                    <tr><td><input type="text" name="campaignTitle" id="campaignTitle" [(ngModel)]='donationDrive.campaignTitle'></td></tr>
+
+                    <tr><td><label for="description">Description</label></td></tr>
+                    <tr><td><textarea rows="5" name="description" id="description" [(ngModel)]='donationDrive.description'></textarea></td></tr>
+
+                    <tr><td><label for="targetDate">Target Date</label></td></tr>
+                    <tr><td><input type="text" name="targetDate" id="targetDate" [(ngModel)]='donationDrive.targetDate'></td></tr>
+
+                    <tr><td><label for="targetGoal">Target Goal</label></td></tr>
+                    <tr><td><input type="number" name="targetGoal" id="targetGoal" [(ngModel)]='donationDrive.targetGoal'></td></tr>
+
+                    <tr><td><label for="paypal">Paypal ID</label></td></tr>
+                    <tr><td><input type="text" name="paypal" id="paypal" [(ngModel)]='donationDrive.paypal'></td></tr>
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+                <img id="edit-form-image-preview" *ngIf="donationDrive.image" src="{{ donationDrive.image }}" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <img id="edit-form-image-preview" *ngIf="!(donationDrive.image)" src="assets/imgs/bfast/avatar-default.png" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="edit-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="showAddDonorModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Add Donor</h1>
+        <div class="modal-close" (click)="showAddDonorModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddDonor(f)">
+                <table>
+                    <tr><td><label for="name">Name</label></td></tr>
+                    <tr><td><input type="text" name="name" id="name" ngModel></td></tr>
+
+                    <tr><td><label for="amount">Amount</label></td></tr>
+                    <tr><td><input type="number" name="amount" id="amount" ngModel></td></tr>
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+                <img id="add-form-image-preview" src="assets/imgs/bfast/avatar-default.png" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="add-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="showEditDonorModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Donors</h1>
+        <div class="modal-close" (click)="showEditDonorModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditDonors(f)">
+                <div id="donors-edit-container" class="form-dynamic-contents-container"></div>
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

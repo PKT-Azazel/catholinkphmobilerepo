@@ -1,0 +1,70 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/bfast/bfast1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>CHAT WITH US! JOIN OUR BFAST ONLINE COMMUNITY</h1>
+            <p>Inspired by “BFAST” (Bible for Faith and Action Sharing Team) initiated by Bishop Pablo Virgilio David, D.D., this section allows everyone to interact with our brothers and 
+            sisters online. For prayers, bible sharing, life coaching, chat now!</p>
+            <div *ngIf="isUserAdmin" class="edit-del-btn-container" >
+            <span class="editBtn" (click)="OnEditModalShow()">
+                Edit Bfast
+            </span>
+            </div>
+    </ion-card>
+
+    <div class="wrapper">
+        <div class="video">
+            <ng-container *ngIf="safeUrl">
+                <iframe id="videoIframe" height="100%" width="100%" [src]="safeUrl" frameborder="0" ></iframe>
+            </ng-container>
+        </div>
+        <p class="description">{{ description }}</p>
+        <div (click)="RouteTo(bfastChatPage)" class="chat-now-btn-container">
+            <div class="chat-now-btn-icon">
+                <img src="assets/imgs/texts/text-layout/chat-with-us.png" alt="chatwithus">
+            </div>
+        </div>
+    </div> <!-- wrapper -->
+</ion-content>
+<div *ngIf="showEditModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Bfast</h1>
+        <div class="modal-close" (click)="showEditModal=false">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+    <div>
+        <form #f="ngForm" (ngSubmit)="EditBfast(f)">
+            <table>
+                <tr><td><label for="videoUrl">Video Link</label></td></tr>
+                <tr><td><input type="text" name="videoUrl" id="videoUrl" [ngModel]="videoUrl"></td></tr>
+                <tr><td><label for="description">Description</label></td></tr>
+                <tr><td><textarea rows="5" name="description" id="description" [ngModel]="description"></textarea></td></tr>
+            </table>
+
+            <div  *ngIf="showLoading" class="loadingContainer">
+                <div class="loading">
+                    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                    <span>Saving data, please wait...</span>
+                </div>
+            </div>
+            <div *ngIf="showSuccess" class="successContainer">
+                <div class="success">
+                    <span>{{successMessage}}</span>
+                </div>
+            </div>
+            <div *ngIf="showError" class="errorsContainer">
+                <div *ngIf="!IsString(errorMessage)" class="error">
+                    <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                </div>
+                <div *ngIf="IsString(errorMessage)" class="error">
+                    <div>{{errorMessage}}</div>
+                </div>
+            </div>
+
+            <div class="submit-btn-container">
+                <input class="submit-btn" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+  </div>
+</div>

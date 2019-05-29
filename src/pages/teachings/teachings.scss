@@ -1,0 +1,123 @@
+app-doctrines,
+app-sacraments,
+app-commandments,
+app-prayers,
+app-saints,
+app-devotions,
+app-documents,
+app-teachings-faq {
+    h1{
+        color: white;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+    
+    h2 {
+        color: white;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    h3 {
+        color: white;
+        font-size: 18px;
+    }
+    
+    b {
+        color: white;
+        font-size: 15px;
+    }
+    
+    a,li {
+        color: white;
+        font-size: 15px;
+    }
+    
+    p {
+        margin-top: 20px;
+        color: white;
+        font-size: 15px;
+    }
+    
+    .source {
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+    
+    .select-topic-container {
+        padding: 5px;
+        background-color: rgb(112, 11, 2);
+        margin-bottom: 20px;
+    }
+    .select-topic-container select {
+        height: 40px;
+        width: 100%;
+    }
+    
+    .select-topic-container option[value=""][disabled] {
+      display: none;
+    }
+    
+    .select-topic-container select,
+    .select-topic-container select:required:invalid,
+    .select-topic-container option {
+      color: black;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+}
+
+page-teachings { 
+    ion-content { 
+        background-position: center;
+        background-size: cover;
+    }
+
+    ion-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: black;
+        opacity: .4; 
+    }
+
+    .main-contents-container {
+        margin-top: 100px;
+        padding: 10px;
+        padding-bottom: 50px;
+    }
+
+    .links-container {
+        display: none;
+    }
+
+    .slider-controllers {
+        display: block;
+        position: fixed;
+        z-index: 999;
+        bottom: 50px;
+        left: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .slider-controllers .right,
+    .slider-controllers .left{
+        display: inline-block;
+        top: 50%;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 20px;
+        background-color: rgba(0, 0, 0, 0.69);
+        border-radius: 20px;
+        height: 40px;
+        width: 40px;
+        padding-top: 8px;
+        margin: 5px;
+    }
+
+}

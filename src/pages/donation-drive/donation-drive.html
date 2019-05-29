@@ -1,0 +1,55 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/send-help/help1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Send Help. Donate.</h1>
+        <p>Let our brothers and sisters know your needs for your ministry or program by adding your donation drive here. 
+        <br>“Bear ye one another’s burdens, and so fulfil the law of Christ” (Galatians 6:2)</p>
+    </ion-card>
+
+    <div class="wrapper">
+        <div class="video">
+            <ng-container *ngIf="safeUrl">
+                <iframe id="videoIframe" height="100%" width="100%" [src]="safeUrl" frameborder="0" ></iframe>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="grid-links-container">
+        <div class="grid-links" (click)="RouteFromSearch(donationDriveListPage,'faith-formation')">
+            <div class="title-container"> 
+                <span class="title">
+                    Faith Formation
+                </span>
+            </div>
+        </div>
+        <div class="grid-links" (click)="RouteFromSearch(donationDriveListPage,'scholarship')">
+            <div class="title-container"> 
+                <span class="title">
+                    Scholarship
+                </span>
+            </div>
+        </div>
+        <div class="grid-links" (click)="RouteFromSearch(donationDriveListPage,'relief-calamities')">
+            <div class="title-container"> 
+                <span class="title">
+                    Relief Calamities
+                </span>
+            </div>
+        </div>
+        <div class="grid-links" (click)="RouteFromSearch(donationDriveListPage,'charitable-works')">
+            <div class="title-container"> 
+                <span class="title">
+                    Charitable Works
+                </span>
+            </div>
+        </div>
+        <div class="grid-links" (click)="RouteFromSearch(donationDriveListPage,'events-community')">
+            <div class="title-container"> 
+                <span class="title">
+                    Events/Community
+                </span>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</ion-content>

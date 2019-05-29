@@ -1,0 +1,135 @@
+<div class="contents">
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddModal()" class="add-btn">Add Quote</span>
+    </div>
+    <ng-container *ngIf="quotes">
+        <div *ngIf="(quotes.length > 0)" class="grid-container">
+            <ng-container *ngFor="let quote of quotes" >
+            
+                <div class="grid-item" [ngClass]="{'featured-item' : quote.featured}">
+                    
+                    <div class="item-info-container">
+                        <span *ngIf="quote.featured" class="quote-featured-tag featured-tag">Featured</span>
+                        <img *ngIf="!quote.featured" class="quote-icon" src="assets/imgs/pope-francis/pope-francis-quote-icon.png">
+                        <span [ngClass]="{'quote-featured-description' : quote.featured}" class="info-description">{{quote.quote}}</span>
+                    </div>
+                    <div *ngIf="isUserAdmin" class="edit-del-btn-container">
+                        <span (click)="ShowEditModal(quote)" class="edit-del-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                        <span (click)="DeleteQuote(quote)" class="edit-del-btn"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </ng-container>
+            <div style="clear:both;"></div>
+        </div>
+        <div *ngIf="!(quotes.length > 0)" class="no-items-to-display">
+            No Items to display.
+        </div>
+    </ng-container>
+</div>
+
+<div *ngIf="showAddModal" class="modal-container">
+    <div class="pp-modal">
+        <h1 class='modal-title'>Add Quote</h1>
+        <div class="modal-close" (click)="showAddModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewQuote(f)">
+                <table>
+                    <tr><td><label for="quote">Quote</label></td></tr>
+                    <tr><td><input type="text" name="quote" ngModel></td></tr>
+
+                    <tr><td><label for="featured">Featured?</label></td></tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="featured" [value]="true" [ngModel]="true"> Yes
+                            <input type="radio" name="featured" [value]="false" [ngModel]="true"> No
+                        </td>
+                    </tr>
+
+                </table>
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div *ngIf="showEditModal" class="modal-container">
+    <div class="pp-modal">
+        <h1 class='modal-title'>Edit Quote</h1>
+        <div class="modal-close" (click)="showEditModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditQuote(f)">
+                <table>
+                    <tr><td><label for="quote">Quote</label></td></tr>
+                    <tr><td><input type="text" name="quote" [ngModel]="quoteToUpdateOrDelete.quote"></td></tr>
+
+                    <tr><td><label for="featured">Featured?</label></td></tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="featured" [value]="true" [ngModel]=quoteToUpdateOrDelete.featured> Yes
+                            <input type="radio" name="featured" [value]="false" [ngModel]="quoteToUpdateOrDelete.featured"> No
+                        </td>
+                    </tr>
+
+                </table>
+
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

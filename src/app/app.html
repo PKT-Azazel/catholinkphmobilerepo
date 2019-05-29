@@ -1,1 +1,129 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu side="right" [content]="rootNavController">
+    <ion-content>
+        <ion-list class="main-menu-options">
+            <button ion-item (click)="RouteToHome()">HOME</button>
+            <button ion-item (click)="RouteTo(informationFinderPage)">CATHOLIC CONTACTS</button>
+            <button ion-item (click)="RouteTo(teachingsPage)">LEARN AND PRAYERS</button>
+            <button ion-item (click)="RouteTo(popeFrancisPage)">FRANCIS' CORNER</button>
+            <button ion-item (click)="RouteTo(inspirationalPage)">UPDATES</button>
+            <button ion-item (click)="RouteTo(donationDrivePage)">SEND HELP</button>
+            <button ion-item (click)="RouteTo(bfastPage)">CHAT WITH US</button>
+            <button *ngIf="((userIsLoggedIn) && (isUserAdmin))" ion-item (click)="showManageUsersForm = true; searchTriggered = false;">MANAGE USERS</button>
+            <button *ngIf="!userIsLoggedIn" ion-item (click)="RouteTo(loginPage)">LOG IN</button>
+            <button *ngIf="!userIsLoggedIn" ion-item (click)="RouteTo(signupPage)">SIGN UP</button>
+            <button *ngIf="userIsLoggedIn" ion-item (click)="LogOut()">SIGN OUT</button>
+        </ion-list>                
+    </ion-content>
+</ion-menu>
+<ion-nav #rootNavController  [root]="rootPage"></ion-nav>
+
+<div *ngIf="showManageUsersForm" class="manager-user-modal-container">
+    <div class="manager-user-modal">
+        <h1 class='modal-title'>Manage User Role</h1>
+        <div class="modal-close" (click)="showManageUsersForm = false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <!-- Manage User Form -->
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditUserRole(f)">
+                <table>
+                    <tr><td><label for="email">Email</label></td></tr>
+                    <tr>
+                        <td>
+                            <input #emailSearchInput class="email-search-input" type="text" name="email" id="email">
+                            <span (click)="SearchUser(emailSearchInput)" class="email-search-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <div style="clear:both;"></div>
+                        </td>
+                    </tr>
+                </table>
+                <!-- <div class="submit-btn-container">
+                    <input class="submit-btn" type="button" value="Search">
+                </div> -->
+
+                <div *ngIf="isSearchingUser">
+                    <span class="search-user-spinner"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" aria-hidden="true"></i></span>
+                    <span> Loading..</span>
+                </div>
+
+                <div class="user-details-container" *ngIf="(userToManage  && searchTriggered)">
+                    <div>
+                        <span class="user-detail-label">Name: </span>
+                        <span>{{userToManage.fname}} {{userToManage.lname}}</span>
+                    </div>
+                    <div>
+                        <span class="user-detail-label">Role: </span>
+                        <select [ngModel]="userToManage.role" name="role" #role>
+                            <option value="admin">Admin</option>
+                            <option value="uploader">Uploader</option>
+                            <option value="subscriber">Subscriber</option>
+                        </select>
+                        <!-- If Uploader Start-->
+                        <div *ngIf="role.value === 'uploader'">
+                            <span class="user-detail-label">for: </span>
+                            <select [ngModel]="(userToManage.assignedFor) ? userToManage.assignedFor : 'church'" name="assignedFor" #assignedFor>
+                                <option value="diocese">Diocese</option>
+                                <option value="church">Church</option>
+                                <option value="organization">Organizations</option>
+                            </select>
+                            <table>
+                                <tr><td><label for="assignedToSearch" style="text-transform:capitalize;">Search {{assignedFor.value}}</label></td></tr>
+                                <tr>
+                                    <td>
+                                        <input (keypress)="PreventSubmitOnEnterKey($event)" #assignedToSearchInput class="assigned-to-search-input" type="text" name="assignedToSearch" id="assignedToSearch">
+                                        <span (click)="SearchAssignedTo(assignedFor.value,assignedToSearchInput.value)" class="assigned-to-search-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+                                        <div style="clear:both;"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div *ngIf="assignedToSearchResults">
+                                <ul class="assigned-to-ul">
+                                    <li class="assigned-to-li" *ngFor="let searchResult of assignedToSearchResults | slice:0:15; let i=index">
+                                        <ng-container *ngIf="(userToManage.assignedTo === searchResult.id)">
+                                            <span (click)="userToManage.assignedTo = searchResult.id"  class="assigned-selected-to-btn">Assigned</span> {{searchResult.name}}
+                                        </ng-container>
+                                        <ng-container *ngIf="(userToManage.assignedTo !== searchResult.id)">
+                                            <span (click)="userToManage.assignedTo = searchResult.id"  class="assigned-to-btn">Assign</span> {{searchResult.name}}
+                                        </ng-container>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div *ngIf="isSearchingAssignedTo">
+                                <span class="assigned-to-search-spinner"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" aria-hidden="true"></i></span>
+                                <span> Loading..</span>
+                            </div>
+                        </div><!-- If Uploader End-->
+                    </div>
+                </div>
+
+                <div class="user-details-container" *ngIf="(!userToManage && searchTriggered)">
+                    <span class="user-not-found">User not found.</span>
+                </div>
+                
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container" *ngIf="(userToManage && searchTriggered)">
+                    <input class="submit-btn" type="submit" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

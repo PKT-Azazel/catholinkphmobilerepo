@@ -1,0 +1,1942 @@
+page-inspirational { 
+    ion-card.header {
+        width: 95%;
+        margin-top: 55px;
+        padding: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        height: 80px;
+    }
+
+    ion-card.header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4)
+    }
+
+    ion-card.header {
+        .quote {
+            text-align: center;
+            padding: 40px;
+            z-index: 2;
+            width: 100%;
+            line-height: 1;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 50%;
+            font-size: 25px;
+            color: white;
+        }
+    }
+
+    .filter-menu-container {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .filter-menu-container ul{
+        text-transform: uppercase;
+        list-style: none;
+        padding: 0;
+        font-weight: 700;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+    .filter-menu-container li{
+        float: left;
+        padding: 5px 5px;
+        cursor: pointer;
+    }
+
+    .filter-menu-container li.active {
+        border-bottom-color: #f31111;
+        border-bottom-style: solid;
+        border-bottom-width: 5px;
+    }
+
+    .grid-item {
+        float: left;
+        width: calc(50% - 20px);
+        height: 250px;
+        margin: 10px;
+        position: relative;
+    }
+
+    .img-frame {
+        height: 100%;
+        width: 100%;
+        background-color: rgb(156, 20, 17);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .grid-item-title {
+        z-index: 10;
+        position: absolute;
+        color: white;
+        bottom: 15px;
+        left: 5px;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        max-width: 250px;
+    }
+
+    .grid-item img {
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        transition: transform .3s;
+    } 
+
+    .img-cover {
+        z-index: 9;
+        position: absolute;
+        background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(10, 10, 10, 0.98));
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .grid-item-title:hover ~ img,
+    .img-cover:hover ~ img {
+        transform: scale(1.1);
+    }
+
+    .grid-item-title:hover,
+    .img-cover:hover ~ .grid-item-title {
+        text-decoration: underline;
+    }
+
+    .no-items-to-display {
+        padding-top: 10px;
+        color: black;
+        font-size: 15px;
+        font-weight: 600;
+        margin-left: 15px;
+    }
+
+    .edit-del-btn-container {
+        position: absolute;
+        color: white;
+        z-index: 9;
+        top: 5px;
+        right: 5px;
+    }
+
+    .edit-del-btn-container .edit-del-btn{
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        background-color: #b10201;
+        text-align: center;
+        padding-top: 6px;
+        cursor: pointer;
+
+    }
+
+    .edit-del-btn-container .edit-del-btn:hover{
+        background-color: #941104;
+    }
+
+    .add-btn-container {
+        margin: 10px;
+        margin-bottom: 20px;
+    }
+    .add-btn-container  .add-btn {
+        padding: 8px;
+        margin-right: 10px;
+        background-color: #b10201;
+        cursor: pointer;
+        color: white;
+        border: none;
+    }
+
+    .add-btn-container  .add-btn:hover {
+        background-color: #941104;
+    }
+
+    .modal-container {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.73);
+        padding: 10px;
+        overflow-y: scroll;
+    }
+
+    .modal-container img{
+        width: 100%;
+        height: auto;
+    }
+
+    .my-modal {
+        height: auto;
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        margin: 0 auto;
+        padding: 15px;
+        position: relative;
+    }
+
+    .my-modal table {
+        width: 100%;
+    }
+
+    .my-modal table select {
+        height: 36px;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .my-modal table input{
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .my-modal table input[type="radio"] {
+        width: auto;
+    }
+
+    .my-modal table input[type="radio"]:nth-child(2) {
+        margin-left: 10px;
+    }
+
+    .my-modal table textarea{
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .modal-container .modal-title{
+        text-transform: capitalize;
+        text-transform: uppercase;
+        color: rgb(164, 14, 0);
+        margin-bottom: 10px;
+    }
+
+    .modal-close {
+        display: inline-block;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        right: 10px;
+        top: 0;
+        cursor: pointer;
+    }
+
+    .modal-close:hover {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .submit-btn-container {
+        margin-top: 10px;
+    }
+
+    .errorsContainer {
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+    .successContainer {
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+
+    .loadingContainer {
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+    }
+
+    .loadingContainer i {
+        font-size: 25px;
+    }
+
+    .blog-modal-container,
+    .watch-video-modal-container {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.9);
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        padding: 10px;
+    }
+
+    .blog-modal-container {
+        padding: 0;
+    }
+
+    .blog-modal-container .blog-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: white;
+    }
+
+    .watch-video-modal-container .video-container {
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: calc(50% - 40px);
+        left: 50%;
+
+        height: 100%;
+        max-height: 500px;
+        width: 100%;
+        max-width: 900px;
+
+        padding-top: 40px;
+    }
+
+    .blog-modal-container .modal-close {
+        display: inline-block;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        right: 10px;
+        top: 0;
+        cursor: pointer;
+    }
+
+    .blog-modal-container .modal-close:hover {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .watch-video-modal-container .modal-close {
+        font-size: 30px;
+        right: 0px;
+        top: 0px;
+        color: white;
+    }
+
+    .watch-video-modal-container .modal-close:hover {
+        color: #b9b9b9;
+    }
+
+    .blog-container {
+        padding: 20px;
+        overflow-y: scroll;
+    }
+
+    .blog-container .blog-title {
+        text-align: center;
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        color: rgb(164, 14, 0);
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .blog-container .blog-image {
+        text-align: center;
+        height: 350px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .blog-container .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 320px) { 
+    page-inspirational { 
+        ion-card.header {
+            width: 95%;
+            margin-top: 55px;
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            height: 50px;
+        }
+
+        ion-card.header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4)
+        }
+
+        ion-card.header {
+            .quote {
+                text-align: center;
+                padding: 11px;
+                z-index: 2;
+                width: 100%;
+                line-height: 1;
+                position: absolute;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 45%;
+                font-size: 20px;
+                color: white;
+            
+            }
+        }
+
+        .filter-menu-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .filter-menu-container ul{
+            text-transform: uppercase;
+            list-style: none;
+            padding: 0;
+            font-weight: 700;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .filter-menu-container li{
+            float: left;
+            padding: 5px 5px;
+            cursor: pointer;
+        }
+
+        .filter-menu-container li.active {
+            border-bottom-color: #f31111;
+            border-bottom-style: solid;
+            border-bottom-width: 5px;
+        }
+
+        .grid-item {
+            float: left;
+            width: calc(50% - 20px);
+            height: 250px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .img-frame {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(156, 20, 17);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .grid-item-title {
+            z-index: 10;
+            position: absolute;
+            color: white;
+            bottom: 15px;
+            left: 5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            max-width: 250px;
+        }
+
+        .grid-item img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            transition: transform .3s;
+        } 
+
+        .img-cover {
+            z-index: 9;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(10, 10, 10, 0.98));
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .grid-item-title:hover ~ img,
+        .img-cover:hover ~ img {
+            transform: scale(1.1);
+        }
+
+        .grid-item-title:hover,
+        .img-cover:hover ~ .grid-item-title {
+            text-decoration: underline;
+        }
+
+        .no-items-to-display {
+            padding-top: 10px;
+            color: black;
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+
+        .edit-del-btn-container {
+            position: absolute;
+            color: white;
+            z-index: 9;
+            top: 5px;
+            right: 5px;
+        }
+
+        .edit-del-btn-container .edit-del-btn{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            background-color: #b10201;
+            text-align: center;
+            padding-top: 6px;
+            cursor: pointer;
+
+        }
+
+        .edit-del-btn-container .edit-del-btn:hover{
+            background-color: #941104;
+        }
+
+        .add-btn-container {
+            margin: 10px;
+            margin-bottom: 20px;
+        }
+        .add-btn-container  .add-btn {
+            padding: 8px;
+            margin-right: 10px;
+            background-color: #b10201;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+
+        .add-btn-container  .add-btn:hover {
+            background-color: #941104;
+        }
+
+        .modal-container {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.73);
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        .modal-container img{
+            width: 100%;
+            height: auto;
+        }
+
+        .my-modal {
+            height: auto;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        .my-modal table {
+            width: 100%;
+        }
+
+        .my-modal table select {
+            height: 36px;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .my-modal table input{
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .my-modal table input[type="radio"] {
+            width: auto;
+        }
+
+        .my-modal table input[type="radio"]:nth-child(2) {
+            margin-left: 10px;
+        }
+
+        .my-modal table textarea{
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .modal-container .modal-title{
+            text-transform: capitalize;
+            text-transform: uppercase;
+            color: rgb(164, 14, 0);
+            margin-bottom: 10px;
+        }
+
+        .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .submit-btn-container {
+            margin-top: 10px;
+        }
+
+        .errorsContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .successContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .loadingContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .loadingContainer i {
+            font-size: 25px;
+        }
+
+        .blog-modal-container,
+        .watch-video-modal-container {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            padding: 10px;
+        }
+
+        .blog-modal-container {
+            padding: 0;
+        }
+
+        .blog-modal-container .blog-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .watch-video-modal-container .video-container {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: calc(50% - 40px);
+            left: 50%;
+
+            height: 100%;
+            max-height: 500px;
+            width: 100%;
+            max-width: 900px;
+
+            padding-top: 40px;
+        }
+
+        .blog-modal-container .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .blog-modal-container .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .watch-video-modal-container .modal-close {
+            font-size: 30px;
+            right: 0px;
+            top: 0px;
+            color: white;
+        }
+
+        .watch-video-modal-container .modal-close:hover {
+            color: #b9b9b9;
+        }
+
+        .blog-container {
+            padding: 20px;
+            overflow-y: scroll;
+        }
+
+        .blog-container .blog-title {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: rgb(164, 14, 0);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .blog-container .blog-image {
+            text-align: center;
+            height: 350px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .blog-container .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+}
+
+@media screen and (max-width: 350px) { 
+     
+    page-inspirational { 
+        ion-card.header {
+            width: 95%;
+            margin-top: 55px;
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            height: 50px;
+        }
+
+        ion-card.header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4)
+        }
+
+        ion-card.header {
+            .quote {
+                text-align: center;
+                padding: 11px;
+                z-index: 2;
+                width: 100%;
+                line-height: 1;
+                position: absolute;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 45%;
+                font-size: 20px;
+                color: white;
+            
+            }
+        }
+
+        .filter-menu-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .filter-menu-container ul{
+            text-transform: uppercase;
+            list-style: none;
+            padding: 0;
+            font-weight: 700;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .filter-menu-container li{
+            float: left;
+            padding: 5px 5px;
+            cursor: pointer;
+        }
+
+        .filter-menu-container li.active {
+            border-bottom-color: #f31111;
+            border-bottom-style: solid;
+            border-bottom-width: 5px;
+        }
+
+        .grid-item {
+            float: left;
+            width: calc(50% - 20px);
+            height: 250px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .img-frame {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(156, 20, 17);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .grid-item-title {
+            z-index: 10;
+            position: absolute;
+            color: white;
+            bottom: 15px;
+            left: 5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            max-width: 250px;
+        }
+
+        .grid-item img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            transition: transform .3s;
+        } 
+
+        .img-cover {
+            z-index: 9;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(10, 10, 10, 0.98));
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .grid-item-title:hover ~ img,
+        .img-cover:hover ~ img {
+            transform: scale(1.1);
+        }
+
+        .grid-item-title:hover,
+        .img-cover:hover ~ .grid-item-title {
+            text-decoration: underline;
+        }
+
+        .no-items-to-display {
+            padding-top: 10px;
+            color: black;
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+
+        .edit-del-btn-container {
+            position: absolute;
+            color: white;
+            z-index: 9;
+            top: 5px;
+            right: 5px;
+        }
+
+        .edit-del-btn-container .edit-del-btn{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            background-color: #b10201;
+            text-align: center;
+            padding-top: 6px;
+            cursor: pointer;
+
+        }
+
+        .edit-del-btn-container .edit-del-btn:hover{
+            background-color: #941104;
+        }
+
+        .add-btn-container {
+            margin: 10px;
+            margin-bottom: 20px;
+        }
+        .add-btn-container  .add-btn {
+            padding: 8px;
+            margin-right: 10px;
+            background-color: #b10201;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+
+        .add-btn-container  .add-btn:hover {
+            background-color: #941104;
+        }
+
+        .modal-container {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.73);
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        .modal-container img{
+            width: 100%;
+            height: auto;
+        }
+
+        .my-modal {
+            height: auto;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        .my-modal table {
+            width: 100%;
+        }
+
+        .my-modal table select {
+            height: 36px;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .my-modal table input{
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .my-modal table input[type="radio"] {
+            width: auto;
+        }
+
+        .my-modal table input[type="radio"]:nth-child(2) {
+            margin-left: 10px;
+        }
+
+        .my-modal table textarea{
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .modal-container .modal-title{
+            text-transform: capitalize;
+            text-transform: uppercase;
+            color: rgb(164, 14, 0);
+            margin-bottom: 10px;
+        }
+
+        .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .submit-btn-container {
+            margin-top: 10px;
+        }
+
+        .errorsContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .successContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .loadingContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .loadingContainer i {
+            font-size: 25px;
+        }
+
+        .blog-modal-container,
+        .watch-video-modal-container {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            padding: 10px;
+        }
+
+        .blog-modal-container {
+            padding: 0;
+        }
+
+        .blog-modal-container .blog-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .watch-video-modal-container .video-container {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: calc(50% - 40px);
+            left: 50%;
+
+            height: 100%;
+            max-height: 500px;
+            width: 100%;
+            max-width: 900px;
+
+            padding-top: 40px;
+        }
+
+        .blog-modal-container .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .blog-modal-container .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .watch-video-modal-container .modal-close {
+            font-size: 30px;
+            right: 0px;
+            top: 0px;
+            color: white;
+        }
+
+        .watch-video-modal-container .modal-close:hover {
+            color: #b9b9b9;
+        }
+
+        .blog-container {
+            padding: 20px;
+            overflow-y: scroll;
+        }
+
+        .blog-container .blog-title {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: rgb(164, 14, 0);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .blog-container .blog-image {
+            text-align: center;
+            height: 350px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .blog-container .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) { 
+    page-inspirational { 
+        ion-card.header {
+            width: 95%;
+            margin-top: 55px;
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            height: 50px;
+        }
+
+        ion-card.header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4)
+        }
+
+        ion-card.header {
+            .quote {
+                text-align: center;
+                padding: 11px;
+                z-index: 2;
+                width: 100%;
+                line-height: 1;
+                position: absolute;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 45%;
+                font-size: 20px;
+                color: white;
+            
+            }
+        }
+
+        .filter-menu-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .filter-menu-container ul{
+            text-transform: uppercase;
+            list-style: none;
+            padding: 0;
+            font-weight: 700;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .filter-menu-container li{
+            float: left;
+            padding: 5px 5px;
+            cursor: pointer;
+        }
+
+        .filter-menu-container li.active {
+            border-bottom-color: #f31111;
+            border-bottom-style: solid;
+            border-bottom-width: 5px;
+        }
+
+        .grid-item {
+            float: left;
+            width: calc(50% - 20px);
+            height: 250px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .img-frame {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(156, 20, 17);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .grid-item-title {
+            z-index: 10;
+            position: absolute;
+            color: white;
+            bottom: 15px;
+            left: 5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            max-width: 250px;
+        }
+
+        .grid-item img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            transition: transform .3s;
+        } 
+
+        .img-cover {
+            z-index: 9;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(10, 10, 10, 0.98));
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .grid-item-title:hover ~ img,
+        .img-cover:hover ~ img {
+            transform: scale(1.1);
+        }
+
+        .grid-item-title:hover,
+        .img-cover:hover ~ .grid-item-title {
+            text-decoration: underline;
+        }
+
+        .no-items-to-display {
+            padding-top: 10px;
+            color: black;
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+
+        .edit-del-btn-container {
+            position: absolute;
+            color: white;
+            z-index: 9;
+            top: 5px;
+            right: 5px;
+        }
+
+        .edit-del-btn-container .edit-del-btn{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            background-color: #b10201;
+            text-align: center;
+            padding-top: 6px;
+            cursor: pointer;
+
+        }
+
+        .edit-del-btn-container .edit-del-btn:hover{
+            background-color: #941104;
+        }
+
+        .add-btn-container {
+            margin: 10px;
+            margin-bottom: 20px;
+        }
+        .add-btn-container  .add-btn {
+            padding: 8px;
+            margin-right: 10px;
+            background-color: #b10201;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+
+        .add-btn-container  .add-btn:hover {
+            background-color: #941104;
+        }
+
+        .modal-container {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.73);
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        .modal-container img{
+            width: 100%;
+            height: auto;
+        }
+
+        .my-modal {
+            height: auto;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        .my-modal table {
+            width: 100%;
+        }
+
+        .my-modal table select {
+            height: 36px;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .my-modal table input{
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .my-modal table input[type="radio"] {
+            width: auto;
+        }
+
+        .my-modal table input[type="radio"]:nth-child(2) {
+            margin-left: 10px;
+        }
+
+        .my-modal table textarea{
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .modal-container .modal-title{
+            text-transform: capitalize;
+            text-transform: uppercase;
+            color: rgb(164, 14, 0);
+            margin-bottom: 10px;
+        }
+
+        .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .submit-btn-container {
+            margin-top: 10px;
+        }
+
+        .errorsContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .successContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .loadingContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .loadingContainer i {
+            font-size: 25px;
+        }
+
+        .blog-modal-container,
+        .watch-video-modal-container {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            padding: 10px;
+        }
+
+        .blog-modal-container {
+            padding: 0;
+        }
+
+        .blog-modal-container .blog-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .watch-video-modal-container .video-container {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: calc(50% - 40px);
+            left: 50%;
+
+            height: 100%;
+            max-height: 500px;
+            width: 100%;
+            max-width: 900px;
+
+            padding-top: 40px;
+        }
+
+        .blog-modal-container .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .blog-modal-container .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .watch-video-modal-container .modal-close {
+            font-size: 30px;
+            right: 0px;
+            top: 0px;
+            color: white;
+        }
+
+        .watch-video-modal-container .modal-close:hover {
+            color: #b9b9b9;
+        }
+
+        .blog-container {
+            padding: 20px;
+            overflow-y: scroll;
+        }
+
+        .blog-container .blog-title {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: rgb(164, 14, 0);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .blog-container .blog-image {
+            text-align: center;
+            height: 350px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .blog-container .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    page-inspirational { 
+        ion-card.header {
+            width: 95%;
+            margin-top: 55px;
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            height: 50px;
+        }
+
+        ion-card.header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.4)
+        }
+
+        ion-card.header {
+            .quote {
+                text-align: center;
+                padding: 11px;
+                z-index: 2;
+                width: 100%;
+                line-height: 1;
+                position: absolute;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 45%;
+                font-size: 20px;
+                color: white;
+            
+            }
+        }
+
+        .filter-menu-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .filter-menu-container ul{
+            text-transform: uppercase;
+            list-style: none;
+            padding: 0;
+            font-weight: 700;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .filter-menu-container li{
+            float: left;
+            padding: 5px 5px;
+            cursor: pointer;
+        }
+
+        .filter-menu-container li.active {
+            border-bottom-color: #f31111;
+            border-bottom-style: solid;
+            border-bottom-width: 5px;
+        }
+
+        .grid-item {
+            float: left;
+            width: calc(50% - 20px);
+            height: 250px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .img-frame {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(156, 20, 17);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .grid-item-title {
+            z-index: 10;
+            position: absolute;
+            color: white;
+            bottom: 15px;
+            left: 5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            max-width: 250px;
+        }
+
+        .grid-item img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            transition: transform .3s;
+        } 
+
+        .img-cover {
+            z-index: 9;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(10, 10, 10, 0.98));
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .grid-item-title:hover ~ img,
+        .img-cover:hover ~ img {
+            transform: scale(1.1);
+        }
+
+        .grid-item-title:hover,
+        .img-cover:hover ~ .grid-item-title {
+            text-decoration: underline;
+        }
+
+        .no-items-to-display {
+            padding-top: 10px;
+            color: black;
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+
+        .edit-del-btn-container {
+            position: absolute;
+            color: white;
+            z-index: 9;
+            top: 5px;
+            right: 5px;
+        }
+
+        .edit-del-btn-container .edit-del-btn{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            background-color: #b10201;
+            text-align: center;
+            padding-top: 6px;
+            cursor: pointer;
+
+        }
+
+        .edit-del-btn-container .edit-del-btn:hover{
+            background-color: #941104;
+        }
+
+        .add-btn-container {
+            margin: 10px;
+            margin-bottom: 20px;
+        }
+        .add-btn-container  .add-btn {
+            padding: 8px;
+            margin-right: 10px;
+            background-color: #b10201;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+
+        .add-btn-container  .add-btn:hover {
+            background-color: #941104;
+        }
+
+        .modal-container {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.73);
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        .modal-container img{
+            width: 100%;
+            height: auto;
+        }
+
+        .my-modal {
+            height: auto;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        .my-modal table {
+            width: 100%;
+        }
+
+        .my-modal table select {
+            height: 36px;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .my-modal table input{
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .my-modal table input[type="radio"] {
+            width: auto;
+        }
+
+        .my-modal table input[type="radio"]:nth-child(2) {
+            margin-left: 10px;
+        }
+
+        .my-modal table textarea{
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .modal-container .modal-title{
+            text-transform: capitalize;
+            text-transform: uppercase;
+            color: rgb(164, 14, 0);
+            margin-bottom: 10px;
+        }
+
+        .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .submit-btn-container {
+            margin-top: 10px;
+        }
+
+        .errorsContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .successContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .loadingContainer {
+            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .loadingContainer i {
+            font-size: 25px;
+        }
+
+        .blog-modal-container,
+        .watch-video-modal-container {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            padding: 10px;
+        }
+
+        .blog-modal-container {
+            padding: 0;
+        }
+
+        .blog-modal-container .blog-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .watch-video-modal-container .video-container {
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: calc(50% - 40px);
+            left: 50%;
+
+            height: 100%;
+            max-height: 500px;
+            width: 100%;
+            max-width: 900px;
+
+            padding-top: 40px;
+        }
+
+        .blog-modal-container .modal-close {
+            display: inline-block;
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .blog-modal-container .modal-close:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .watch-video-modal-container .modal-close {
+            font-size: 30px;
+            right: 0px;
+            top: 0px;
+            color: white;
+        }
+
+        .watch-video-modal-container .modal-close:hover {
+            color: #b9b9b9;
+        }
+
+        .blog-container {
+            padding: 20px;
+            overflow-y: scroll;
+        }
+
+        .blog-container .blog-title {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            color: rgb(164, 14, 0);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .blog-container .blog-image {
+            text-align: center;
+            height: 350px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .blog-container .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

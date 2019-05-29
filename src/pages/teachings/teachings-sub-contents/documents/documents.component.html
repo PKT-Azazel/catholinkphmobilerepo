@@ -1,0 +1,18 @@
+<h1>Documents</h1>
+<div class="select-topic-container">
+    <select id="documents-select" (change)="UpdateSelect()" required>
+        <option value="" disabled selected hidden>Select a topic...</option>
+        <option value="0">Documents</option>
+    </select>
+</div>
+
+<div *ngIf="selectElementVal === '0'">
+    <h2>Documents</h2>
+    <p>Catholink serves people with right information about the Catholic Church, her ministries and services in the Philippines. Below are links and online resources which could be helpful to you.</p>
+    <ul>
+      <li><a href="http://www.vatican.va/offices/papal_docs_list.html" target="_blank">Papal Encyclicals and other Documents by Vatican.va</a></li>
+      <li><a href="http://www.vatican.va/archive/hist_councils/ii_vatican_council/index.htm" target="_blank">Documents of the Second Vatican Council by Vatican.va</a></li>
+      <li><a href="http://www.vatican.va/archive/ENG0015/_INDEX.HTM" target="_blank">Catechism of the Catholic Church by Vatican.va</a></li>
+      <li><a href="http://www.vatican.va/roman_curia/pontifical_councils/justpeace/documents/rc_pc_justpeace_doc_20060526_compendio-dott-soc_en.html" target="_blank">Compendium of the Social Doctrines of the Church by Vatican.va</a></li>
+    </ul>
+</div>

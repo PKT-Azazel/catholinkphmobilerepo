@@ -1,0 +1,33 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/pope/pope1290.png');">
+  <ion-card class="header" no-margin>
+    <div class="nav-container">
+      <div class="title">
+        <h1>Pope's Corner</h1>
+      </div>
+      <div class="links-container">
+        <ul class="links">
+          <li (click)="UpdateNav($event,'itinerary')" class="item item-pf active">itinerary</li>
+          <li (click)="UpdateNav($event,'quotes')" class="item item-pf">quotes</li>
+          <li (click)="UpdateNav($event,'videos')" class="item item-pf">videos</li>
+          <li (click)="UpdateNav($event,'bibliography')" class="item item-pf">bibliography</li>
+        </ul>
+      </div>
+    </div>
+  </ion-card>
+
+  <div class="main-contents">
+    <div *ngIf="((selectedNav === 'itinerary') && (selectedNav != undefined))" class="itinerary-container contents-container">
+      <app-pope-francis-itinerary></app-pope-francis-itinerary>
+    </div>
+    <div *ngIf="((selectedNav === 'quotes') && (selectedNav != undefined))" class="quotes-container contents-container">
+      <app-pope-francis-quotes></app-pope-francis-quotes>
+    </div>
+    <div *ngIf="((selectedNav === 'videos') && (selectedNav != undefined))" class="videos-container contents-container">
+      <app-pope-francis-video></app-pope-francis-video>
+    </div>
+    <div *ngIf="((selectedNav === 'bibliography') && (selectedNav != undefined))" class="bibliography-container contents-container">
+      <app-pope-francis-bibliography></app-pope-francis-bibliography>
+    </div>
+  </div> <!--main contents  -->
+</ion-content>

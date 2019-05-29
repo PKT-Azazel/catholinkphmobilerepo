@@ -1,14 +1,52 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<main-menu></main-menu>
+<!-- <ion-header class="background" no-padding> -->
+  <ion-header class="background" no-padding style="background-image: url('assets/imgs/home/home1290.png');">
+  <div class="button-container">
+    <div class="buttons">
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+      <div class="logout-btn" *ngIf="userIsLoggedIn" (click)="LogOut()">
+        <img src="assets/imgs/texts/text-layout/btn_logout.png" alt="logout" class="logout">
+      </div>
+
+      <div class="login-btn" *ngIf="!userIsLoggedIn" (click)="RouteTo(loginPage)">
+        <img src="assets/imgs/texts/text-layout/btn_login.png" alt="login" class="login">
+      </div>
+
+      <div class="joinus-btn" *ngIf="!userIsLoggedIn" (click)="RouteTo(signupPage)">
+        <img src="assets/imgs/texts/text-layout/btn_join-us.png" alt="joinus" class="joinus">
+      </div>
+
+      <div class="send-help-btn" (click)="RouteTo(donationDrivePage)">
+        <img src="assets/imgs/texts/text-layout/btn_send-help.png" alt="sendhelpbtn" class="sendhelpbtn">
+      </div>
+
+      <div class="read-btn" (click)="RouteTo(teachingsPage)">
+        <img src="assets/imgs/texts/text-layout/btn_learn-and-prayers.png" alt="readbtn" class="readbtn">
+      </div>
+
+      <div class="updates-btn" (click)="RouteTo(inspirationalPage)">
+        <img src="assets/imgs/texts/text-layout/btn_updates.png" alt="updatesbtn" class="updatesbtn">
+      </div>
+
+      <div class="listen-btn">
+        <!-- <div class="listen-btn" (click)="RouteTo(listen)"> -->
+        <img src="assets/imgs/texts/text-layout/btn_listen.png" alt="listenbtn" class="listenbtn">
+      </div>
+
+      <div class="visit-btn" (click)="RouteTo(informationFinderPage)">
+        <img src="assets/imgs/texts/text-layout/btn_catholic-contacts.png" alt="visitbtn" class="visitbtn">
+      </div>
+
+      <div class="hear-btn" (click)="RouteTo(popeFrancisPage)">
+        <img src="assets/imgs/texts/text-layout/btn_popes-corner.png" alt="hearbtn" class="hearbtn">
+      </div>
+
+      <div class="lets-chat-btn" (click)="RouteTo(bfastPage)">
+        <img src="assets/imgs/texts/text-layout/btn_lets-chat.png" alt="letschatbtn" class="letschatbtn">
+      </div>
+
+    </div>
+  </div>
+
+
+</ion-header>

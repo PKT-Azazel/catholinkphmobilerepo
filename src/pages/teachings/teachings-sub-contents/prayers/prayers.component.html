@@ -1,0 +1,1764 @@
+<h1>Prayer</h1>
+<div class="select-topic-container">
+    <select id="prayers-select" (change)="UpdateSelect()" required>
+        <option value="" disabled selected hidden>Select a topic...</option>
+        <option value="0">What is Prayer?</option>
+        <option value="1">Basic Catholic Prayers</option>
+        <option value="2">Daily Prayers</option>
+        <option value="3">Stations of the Cross</option>
+        <option value="4">Visita Iglesia</option>
+        <option value="5">Prayers against disasters</option>
+        <option value="6">Prayers for different Professions</option>
+        <option value="7">Miscellaneous Prayers</option>
+        <option value="8">The Holy Rosary</option>
+        <option value="9">MYSTERIES OF THE HOLY ROSARY</option>
+        <option value="10">Litany of the Blessed Virgin Mary </option>
+    </select>
+</div>
+
+<div *ngIf="selectElementVal === '0'">
+  <h2>Prayer in the Christian Life</h2>
+  <h3>What is Prayer</h3>
+  <p>For me, prayer is a surge of the heart; 
+    <br>it is a simple look turned toward heaven, 
+    <br>it is a cry of recognition and of love, 
+    <br>embracing both trial and joy
+  </p>
+
+  <h3>Prayer as God's Gift</h3>
+  <p>"Prayer is the raising of one's mind and heart to God or the requesting of good things from God."  
+    <br>But when we pray, do we speak from the height of our pride and will, or "out of the depths" of a humble and contrite heart?
+    <br>He who humbles himself will be exalted; humility is the foundation of prayer,
+    <br>Only when we humbly acknowledge that "we do not know how to pray as we ought," are we ready to receive freely the gift of prayer. 
+    <br>"Man is a beggar before God."</p>
+
+  <p>"If you knew the gift of God!"
+    <br>The wonder of prayer is revealed beside the well where we come seeking water: there, Christ comes to meet every human being. 
+    <br>It is he who first seeks us and asks us for a drink. Jesus thirsts; his asking arises from the depths of God's desire for us.
+    <br>Whether we realize it or not, prayer is the encounter of God's thirst with ours. God thirsts that we may thirst for him.</p>
+
+  <p>"You would have asked him, and he would have given you living water."
+    <br>Paradoxically our prayer of petition is a response to the plea of the living God: 
+    <br>"They have forsaken me, the fountain of living waters, and hewn out cisterns for themselves, broken cisterns that can hold no water!"
+    <br>Prayer is the response of faith to the free promise of salvation and also a response of love to the thirst of the only Son of God.</p>
+
+  <h3>Prayer as Covenant</h3>
+  <p>Where does prayer come from? 
+    <br>Whether prayer is expressed in words or gestures, it is the whole man who prays. 
+    <br>But in naming the source of prayer, Scripture speaks sometimes of the soul or the spirit, but most often of the heart (more than a thousand times). 
+    <br>According to Scripture, it is the heart that prays. 
+    <br>If our heart is far from God, the words of prayer are in vain.</p>
+
+  <p>The heart is the dwelling-place where I am, where I live; according to the Semitic or Biblical expression, the heart is the place "to which I withdraw." 
+    <br>The heart is our hidden center, beyond the grasp of our reason and of others; 
+    <br>only the Spirit of God can fathom the human heart and know it fully. 
+    <br>The heart is the place of decision, deeper than our psychic drives. 
+    <br>It is the place of truth, where we choose life or death. 
+    <br>It is the place of encounter, because as image of God we live in relation: 
+    <br>it is the place of covenant.</p>
+
+  <p>Christian prayer is a covenant relationship between God and man in Christ. 
+    <br>It is the action of God and of man, springing forth from both the Holy Spirit and ourselves, wholly directed to the Father, in union with the human will of the Son of God made man.</p>
+
+  <h3>Prayer as Communion</h3>
+  <p>In the New Covenant, prayer is the living relationship of the children of God with their Father who is good beyond measure, with his Son Jesus Christ and with the Holy Spirit.</p>
+  <p>The grace of the Kingdom is "the union of the entire holy and royal Trinity . . . with the whole human spirit.”
+    <br>Thus, the life of prayer is the habit of being in the presence of the thrice-holy God and in communion with him. 
+    <br>This communion of life is always possible because, through Baptism, we have already been united with Christ.
+    <br>Prayer is Christian insofar as it is communion with Christ and extends throughout the Church, which is his Body. Its dimensions are those of Christ's love.</p>
+
+  <b class="source">(CCC 2558-2565)</b>
+  </div>
+
+<div *ngIf="selectElementVal === '1'">
+  <h2>Basic Catholic Prayers</h2>
+  <h3>Sign of the Cross</h3>
+  <p>In the name of the Father and of the Son and of the Holy Spirit. Amen.
+  </p>
+
+  <h3>Our Father</h3>
+  <p>Our Father, Who art in Heaven, hallowed be Thy name; Thy Kingdom come, Thy will be done on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen.
+  </p>
+
+  <h3>Hail Mary</h3>
+  <p>Hail Mary full of Grace, the Lord is with thee. Blessed are thou among women and blessed is the fruit of thy womb Jesus. Holy Mary Mother of God, pray for us sinners now and at the hour of our death Amen.
+  </p>
+
+  <h3>Glory Be</h3>
+  <p>Glory to the Father and to the Son and to the Holy Spirit, as it was in the beginning is now and ever shall be, world without end. Amen
+  </p>
+
+  <h3>Apostles Creed</h3>
+  <p>I believe in God, the Father Almighty, Creator of heaven and earth; and in Jesus Christ, His only Son, our Lord; Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell; the third day He arose again from the dead. He ascended into heaven, and sits at the right hand of God, the Father Almighty; from thence He shall come to judge the living and the dead. I believe in the Holy Spirit, the Holy Catholic Church, the communion of Saints, the forgiveness of sins, the resurrection of the body and life everlasting. Amen.
+  </p>
+
+  <h3>Prayer to the Holy Spirit</h3>
+  <p>Come, O Holy Spirit, fill the hearts of your faithful and enkindle in them the fire of your love. Send forth your Spirit, and they shall be created. And you shall renew the face of the earth.
+  </p>
+
+  <p>Let us pray</p>
+
+  <p>O God, who has taught the hearts of the faithful by the light of the Holy Spirit, grant that by the gift of the same Spirit we may be always truly wise and ever rejoice in his consolation, through Christ our Lord. Amen.
+  </p>
+
+  <h3>Act of Faith</h3>
+  <p>O MY GOD, I firmly believe that Thou art one God in Three Divine Persons, Father, Son and Holy Ghost. I believe that Thy Divine Son became Man, and died for our sins, and that He will come to judge the living and the dead. I believe these and all the truths which the Holy Catholic Church teaches, because Thou hast revealed them, Who can neither deceive nor be deceived. 
+  </p>
+
+  <h3>Act of Hope</h3>
+  <p>O MY GOD, relying on Thy almighty power and infinite mercy and promises, I 
+    hope to obtain pardon of my sins, the help of Thy grace, and Life Everlasting, through the merits of Jesus Christ, my Lord and Redeemer.     
+  </p>
+
+  <h3>Act of Charity</h3>
+  <p>O MY GOD, I love Thee above all things, with my whole heart and soul, because Thou art all-good and worthy of all love. I love my neighbor as myself for the love of Thee. I forgive all who have injured me, and ask pardon of all whom I have injured.    
+  </p>
+
+  <h3>Act of Contrition</h3>
+  <p>O my God, I am heartily sorry for having offended thee and I detest all my sins, because I dread the loss of heaven and the pains of hell, but most of all because they offend thee, my God, who are all good and deserving of all my love. I firmly resolve, with the help of thy grace, to confess my sins, to do penance, and to amend my life.
+  </p>
+
+
+</div>
+
+<div *ngIf="selectElementVal === '2'">
+  <h2>Daily Prayers</h2>
+  <h3>Morning Offering</h3>
+  <p>O Jesus, through the Immaculate Heart of Mary, I offer You my prayers, works, joys and sufferings of this day for all the intentions of Your Sacred Heart, in union with the Holy Sacrifice of the Mass throughout the world, in reparation for my sins, for the intentions of all my relatives and friends, and in particular for the intentions of the Holy Father. Amen.
+  </p>
+
+  <h3>Evening Prayer</h3>
+  <p>O my God, at the end of this day I thank you most heartily for all the graces I have received from you. I am sorry that I have not made a better use of them. I am sorry for all the sins I have committed against you. Forgive me, O my God, and graciously protect me this night. Blessed Virgin Mary, my dear heavenly mother, take me under your protection. St. Joseph, my dear guardian angel, and all you saints of God, pray for me. Sweet Jesus, have pity on all poor sinners, and save them from hell. Have mercy on the suffering souls in purgatory.
+  </p>
+
+  <h3>Prayer Before Meals</h3>
+  <p>Bless us O Lord, and these thy gifts, which we are about to receive, from thy bounty, through Christ, our Lord. Amen.
+  </p>
+
+  <h3>Prayer to the Guardian Angels</h3>
+  <p>Angel of God, my guardian dear, to whom God’s love commits me here, ever this day be at my side to light and guard, to rule and guide. Amen.
+  </p>
+
+  <h3>3 O'clock Prayer</h3>
+  <p>You expired, O Jesus, but the source of life gushed forth for souls and an ocean of mercy opened up for the whole world. O Fount of Life, unfathomable Divine Mercy, envelop the whole world and empty Yourself out upon us. O Blood and Water, which gushed forth from the Heart of Jesus as a fount of mercy for us, I trust in You. Amen.
+  </p>
+
+  <h3>Angelus</h3>
+  <p>V. The Angel of the Lord declared unto Mary,
+    R. And she conceived of the Holy Spirit.
+  </p>
+
+  <p>Hail Mary, etc...</p>
+
+  <p>V. Behold the handmaid of the Lord.
+    R. Be it done unto me according to Your Word.
+  </p>
+
+  <p>Hail Mary, etc...</p>
+
+  <p>V. And the Word was made flesh,
+  R. And dwelt among us.
+  </p>
+
+  <p>Hail Mary, etc...</p>
+
+  <p>V. Pray for us, O holy Mother of God.
+  R. That we may be made worthy of the promises of Christ.
+  </p>
+
+  <p>Let us Pray</p>
+
+  <p>Pour forth, we beseech You, O Lord,
+    Your Grace into our hearts;
+    that as we have known the incarnation of Christ,
+    your Son by the message of an angel,
+    so by His passion and cross
+    we may be brought to the glory of His Resurrection.
+    Through the same Christ, our Lord.
+  </p>
+
+  <p>Amen</p>
+
+</div>
+
+<div *ngIf="selectElementVal === '3'">
+  <h3>Preparatory Prayers</h3>
+
+  <p>
+    O Jesus, our adorable Saviour, 
+    we now contemplate Your sacred passion. 
+    Help us to understand that the sufferings 
+    of our life are the continuation of Your passion. 
+    We ask for strength of our souls 
+    to go through our passion, in the spirit 
+    with which You went through Yours. 
+    Amen.
+  </p>
+
+  <h3>Station 1 – Jesus is condemned to death</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    Leaving the house of Caiaphas, where he 
+    had been blasphemed, and the house of Herod, 
+    where he had been been mocked, 
+    Jesus is dragged before Pilate, 
+    his back torn with scourges, 
+    his head crowned with thorns; 
+    and he, who on the last day 
+    will judge the living and the dead, 
+    is himself condemned to a disgraceful death.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    It was for us that You did suffer, 
+    O Blessed Jesus. It was for our sins 
+    that You were condemned to die. 
+    Oh, grant that we may detest our sins 
+    from the bottom of our hearts, 
+    and obtain your mercy 
+    and pardon by repentance.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+ 
+
+  <h3>Station 2 – Jesus is laden with the Cross</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+       
+  <p>
+    A heavy cross is laid upon the bruised shoulders of Jesus. 
+    He receives it with meekness and with a sense of commitment, 
+    for it is the instrument with which 
+    he is to redeem the world and 
+    to accomplish the mission 
+    for which his heavenly Father has sent him.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, grant us, by virtue of your cross, 
+    to embrace with meekness and cheerful submission 
+    the difficulties of our life, 
+    and to be ever ready to take up our cross and follow You.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3> 
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 3 – Jesus falls for the first time</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    Bowed down under the weight of the cross, 
+    Jesus slowly sets forth on the way to Calvary,
+    amidst the mockeries and insults of the crowd. 
+    His agony in the garden has exhausted his body. 
+    He is lacerated with blows and wounds; 
+    his strength fails Him. He falls to the ground under his cross.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, who for our sins did bear 
+    the heavy burden of the cross 
+    and did fall under its weight, 
+    may the thoughts of your suffering 
+    make us watchful over ourselves 
+    and save us from any grievous fall into sin.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 4 – Jesus meets his Blessed Mother</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    Still burdened with his cross, 
+    and wounded yet more by his fall, 
+    Jesus proceeds on His way.
+    He is met by his loving mother. 
+    What a meeting must have that been! 
+    What a sword of anguish 
+    must have pierced the mother’s heart! 
+    What must have been the 
+    compassion of that Son for his holy mother!
+    </p>
+
+    <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, by the compassion which 
+    You did feel for You Mother, 
+    have compassion on us, 
+    and give us a share in her intercession. 
+    O Mary, most afflicted mother, 
+    intercede for us that, 
+    through the sufferings of your Son, 
+    we may be delivered from eternal death.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3> 
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+
+  <h3>Station 5 – Simon of Cyrene helps Jesus to carry the cross</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    As the strength of Jesus fails, 
+    and he is unable to proceed, 
+    the executioners seize 
+    and compel Simon of Cyrene to carry His cross. 
+    The grace of that cross changes 
+    the Cyrenean’s heart and from the compulsory task, 
+    it becomes a privilege and joy.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Lord Jesus, may it be our privilege to bear our cross. 
+    May we glory in nothing else; by the cross,
+    may the world be crucified unto us, and we unto the world. 
+    May we never shrink from suffering 
+    but rather rejoice if we should be counted 
+    worthy to suffer for your name’s sake.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 6 – Veronica wipes the face of Jesus</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    As Jesus proceeds along the way covered 
+    with the sweat of blood, a woman, 
+    moved with compassion, 
+    makes her way through the crowd, 
+    and wipes his face with a handkerchief. 
+    As a reward for her piety, 
+    the impression of His sacred countenance 
+    is miraculously imprinted upon the handkerchief.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, may the contemplation of 
+    your sufferings move us with deep compassion. 
+    Make us hate our sins and kindle in our hearts, 
+    more fervent love for You. 
+    May your image be graven on our minds 
+    until we are transformed into Your likeness.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 7 – Jesus falls beneath His cross, the second time</h3>
+
+  <p>Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    The pain of his wounds; 
+    and the loss of blood increasing at every step of his way, 
+    weakens him; 
+    and Jesus falls to the ground for the second time.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, who did fall a second time 
+    beneath the load of our sins 
+    and of your suffering for our sins, 
+    how often have we grieved you 
+    by our repeated falls into sin! 
+    Oh, may we rather die than ever offend You!
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 8 – Jesus consoles the women of Jerusalem</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    At the sight of the sufferings of Jesus,
+    some holy women in the crowd were so touched 
+    with sympathy that they openly bewailed 
+    and lamented for Him. Jesus, 
+    knowing the things that would befall Jerusalem 
+    because of its rejection of him, 
+    turned to them and said, 
+    “Daughters of Jerusalem, 
+    weep for yourselves and for your children”.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, we mourn and will always mourn 
+    for you and for ourselves, 
+    for your sufferings and for our sins which caused them. 
+    Oh, teach us to mourn, so that we may repent 
+    and be saved from the dreadful end 
+    to those who reject or neglect you, 
+    their God and their all.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 9 – Jesus falls beneath His cross the third time</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    Jesus has almost arrived at the summit of Calvary, 
+    but before he reaches the spot where he is to be crucified, 
+    his strength again fails Him, 
+    and he falls the third time.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+  
+  <p>
+    O Jesus, we entreat you by the merit 
+    of this your third and most painful fall,
+    to pardon our frequent relapses 
+    and our long continuance in sin. 
+    May the thought of Your sufferings 
+    make us hate our sins more and more.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 10 – Jesus is stripped of His garments</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    Jesus at last arrives at Golgotha 
+    and they prepare to crucify Him. 
+    They strip Him of His garments and mock Him.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, strip us of all false esteem, 
+    conceit and pride and make us humble 
+    like you in this life, 
+    so that we share your glory 
+    with you in the life to come.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3> 
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 11 – Jesus is nailed to the cross</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.   
+  </p>
+
+  <p>
+    The cross is laid upon the ground 
+    and Jesus is stretched upon His bed of death. 
+    With divine dignity and forgiveness, 
+    he lets himself be nailed to the cross. 
+    The blows are struck! The blood gushes forth!
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, nailed to the cross, 
+    fasten our hearts to the cross, 
+    so that we may be united with you 
+    until we yield up our souls to you.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3> 
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 12 – Jesus dies on the cross</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    For three hours, Jesus has hung upon His pierced hands. 
+    His blood has run in streams down his body, 
+    and onto the ground. 
+    In the midst of excruciating suffering, 
+    he has pardoned his murderers, 
+    given heaven to the good thief, 
+    and committed his blessed mother 
+    to his beloved disciple’s care. 
+    His mission of love has been accomplished. 
+    He bows his head and gives up his Spirit to God.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Jesus, we devoutly embrace your saving cross, 
+    on which you died so that we may have eternal life. 
+    We hail your cross, and lovingly accept our own.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3>
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 13 – Jesus is taken down from the cross</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    The multitudes have left the hill of Calvary. 
+    There is no one except the beloved disciple of Jesus 
+    and the holy women with Mary, the mother of Jesus. 
+    Joseph of Arimathea and Nicodemus take down 
+    the body of Jesus from the cross 
+    and place him in the arms of his afflicted mother.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    O Mary, mother of Jesus, your grief was so great, 
+    being a helpless witness to the savage way your Son was put to death. 
+    By his death and resurrection, we have become your children in Jesus. 
+    Help us by your intercession to be like your son Jesus.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3> 
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3>Station 14 – Jesus is laid in the Holy Sepulchre</h3>
+
+  <p>
+    Leader: We adore You, O Christ, and we bless You.<br>
+    All: Because by Your Holy Cross, You have redeemed the world.
+  </p>
+
+  <p>
+    The disciples take the body of her dear beloved Son Jesus from his mother, 
+    and place it in the tomb.
+    The tomb is closed and in it the lifeless body remains 
+    until the hour of its glorious resurrection.
+  </p>
+
+  <h3><i>Prayer</i></h3>
+
+  <p>
+    Lord, your suffering is over. 
+    You have triumphed, 
+    though in the eyes of men, 
+    you may seem to have failed. 
+    Sin, death and hell have been conquered. 
+    The world is Yours, I am Yours. 
+    Be the King of my heart. 
+    I surrender myself to your Holy Will. 
+    May Your kingdom come.
+  </p>
+
+  <h3>
+      Our Father in Heaven<br>
+      Hail Mary<br>
+      Glory Be<br>
+    </h3> 
+
+  <p>
+    Leader: Have mercy on us, O Lord.<br>
+    All: Have mercy on us.
+  </p>
+
+  <h3><i>Concluding Prayer</i></h3>
+
+  <p>
+    Heavenly Father, we have contemplated your Son, 
+    Jesus, on his Way of the Cross, 
+    in his Spirit which you have gifted to us. 
+    We accept our way of the cross. 
+    We know it will lead us to, 
+    where it led him to, 
+    our resurrection with him. 
+    We thank You for the joy of this vision of faith.
+  </p>
+
+  <p>For the intention of the Holy Father,</p>
+
+  <h3>
+    Our Father in Heaven<br>
+    Hail Mary<br>
+    Glory Be<br>
+  </h3>
+
+</div> 
+
+<div *ngIf="selectElementVal === '4'">
+  <h3>FIRST CHURCH</h3>
+
+  <p>
+    (Kneel)
+    In the Name…<br>
+    L: Let us praise the Lord,<br>
+    A: and give him thanks!<br>
+  </p>
+
+  <p>
+    LET US PRAY:<br>
+      L: Holy Spirit, you who reveal Jesus to us, help us to discover him in his Eucharistic presence;<br>
+      Beneath the veil of the Host, show us the powerful and generous Christ of the Gospels;<br>
+      Let us see the Good Shepherd who knows each one of us, watches over us and calls us by name;<br>
+      Allow us to listen to the incomparable Master who presents His doctrine and wishes to enlighten us in all things.<br>
+  </p>
+
+  <p>
+    A: Let us touch the Savior whose contact heals, and transforms bodies and souls;<br>
+      Let us recognize this friend, happy to live with us and share our human existence;<br>
+      Allow us to recognize the victim of Calvary who spares nothing of the gift of Himself to obtain for us pardon and holiness.<br>
+      Give us a profound attachment to Jesus in the Eucharist; that his ardent desire to remain among us be met by our readiness to welcome Him.<br>
+  </p>
+
+  <p>
+      L: Holy Virgin, you who knew how to look at Jesus and penetrate the most profound depth of his person:<br>
+      Teach us to look at Him, to look at him at length and quietly, in the tabernacle where he is present.<br>
+      Teach us to listen in silence to the words which he speaks to us and establish an intimate dialogue with him. <br>    
+  </p>
+
+  <p>
+      A: Let us see the marvels which he desires to work in the depths of our souls.<br>
+      Teach us to appreciate his closeness to us and the immeasurable friendship he shows us.<br>
+      Help us to respond to his love with all the fire of our being, and like you, to immerse ourselves in a loving gaze on him.<br>
+  </p>
+
+  <p>
+      L: Lord Jesus, as we contemplate on the miracle of your precious Body and Blood, <br>
+      help us to revere this sacred mystery more in our daily life. <br>
+      May we reflect and ponder on your great love for us that made you offer yourself<br>
+      as a Holy and Living Sacrifice for all. Teach us to love you in every Altar at every Mass. <br>
+      May we recognize your sacred presence in Holy Communion. <br>
+      Most of all, help us to live in the spirit of the wondrous sacrament of love and sacrifice for all.<br>
+  </p>
+
+  <p>
+      You live and reign with the Father and the Holy Spirit, one God forever and ever.<br>
+  </p>
+
+  <p>A: AMEN.</p>
+
+  <p>
+    (sit)
+      Reader: From the Gospel of John. (14, 1-7) <br>
+      “Do not let your hearts be troubled. Trust in God; trust also in me. In my Father’s house are many rooms; <br>
+      if it were not so, I would have told you. I am going there to prepare a place for you.  <br>
+      And if I go and prepare a place for you, <br>
+      I will come back and take you to be with me that you also may be where I am. <br>
+      You know the way to the place where I am going.”<br>
+      Thomas said to him, “Lord, we don’t know where you are going, so how can we know the way?”<br>
+      Jesus answered, “I am the way and the truth and the life. No one comes to the Father except through me. <br>
+       If you really knew me, you would know my Father as well. <br>
+       From now on, you do know him and have seen him.”<br>
+      The Gospel of the Lord.<br><br>
+      All: Praise to you, Lord Jesus Christ!<br><br>
+      Reflection…<br>
+  </p>
+
+  <p>
+      (sit)<br>
+      Reader: From the Gospel of John. (14, 1-7)<br>
+       “Do not let your hearts be troubled. Trust in God; <br>
+       trust also in me. In my Father’s house are many rooms; <br>
+       if it were not so, I would have told you. <br>
+       I am going there to prepare a place for you.  <br>
+       And if I go and prepare a place for you, <br>
+       I will come back and take you to be with me that you also may be where I am. <br>
+       You know the way to the place where I am going.”<br>
+      Thomas said to him, “Lord, we don’t know where you are going, so how can we know the way?”<br>
+      Jesus answered, “I am the way and the truth and the life. <br>
+      No one comes to the Father except through me.  <br>
+      If you really knew me, you would know my Father as well. <br>
+      From now on, you do know him and have seen him.”<br>
+      The Gospel of the Lord.<br><br>
+      All: Praise to you, Lord Jesus Christ!<br><br>
+      Reflection… <br>     
+  </p>
+
+  <p>
+      You never leave us alone. <br>
+      You shared with us this sacred meal for us to partake, <br>
+      and share with others, for our salvation. <br>
+      Transform us to your image,<br>
+       and help us to live continually according to your law. <br>
+      May we continuously show our love for the holy Eucharist, which is our way, <br>
+      truth and life in our daily struggles until we come to see you in eternal glory. <br>
+      Amen.<br>
+  </p>
+
+  <p>We shall spend this time for our personal prayer.</p>
+
+  <p>
+      All: Soul of Christ, sanctify me<br>
+      Body of Christ, save me<br>
+      Blood of Christ, inebriate me<br>
+      Water from the side of Christ, wash me<br>
+      Passion of Christ, strengthen me<br>
+      O good Jesus, hear me<br>
+      Within Thy wounds hide me<br>
+      Permit me not to be separated from Thee<br>
+      From the malignant enemy defend me<br>
+      In the hour of my death call me<br>
+      And bid me come unto Thee<br>
+      That with thy Saints I may praise Thee<br>
+      Forever and ever<br><br>
+      Amen.      
+  </p>
+
+  <p>Our Father,,,<br>Hail Mary,,, <br>Glory Be,,,<br></p>
+
+  <h3>SECOND CHURCH </h3>
+
+  <p>
+    (Kneel)<br>
+    In the Name…<br>
+    L: Let us praise the Lord,<br>
+    A: and give him thanks!<br>
+  </p>
+
+  <p>LET US PRAY: (as above)</p>
+
+  <p>
+      (sit)<br>
+      Reader: From the Gospel of John. (15, 1-8)<br>
+      “I am the true vine, and my Father is the gardener.<br> 
+      He cuts off every branch in me that bears no fruit, <br>
+      while every branch that does bear fruit he prunes <br>
+      so that it will be even more fruitful.  <br>
+      You are already clean because of the word I have spoken to you. <br>
+      Remain in me, and I will remain in you. <br>
+  </p>
+
+  <p>
+      No branch can bear fruit by itself; it must remain in the vine. <br>
+      Neither can you bear fruit unless you remain in me.<br>
+      “I am the vine; you are the branches. <br>
+      If a man remains in me and I in him,<br> 
+      he will bear much fruit; apart from me you can do nothing. <br>
+      If anyone does not remain in me, <br>
+      he is like a branch that is thrown away and withers; <br>
+      such branches are picked up, thrown into the fire and burned.  <br>
+      If you remain in me and my words remain in you, <br>
+      ask whatever you wish, and it will be given you.  <br>
+      This is to my Father’s glory, that you bear much fruit, <br>
+      showing yourselves to be my disciples.<br><br>
+
+      The Gospel of the Lord.<br><br>
+      All: Praise to you, Lord Jesus Christ! <br><br>
+      Reflection…<br>     
+  </p>
+
+  <p>
+      (kneel)<br>
+      Prayer:<br>
+      We are truly connected to you, Lord Jesus. <br>
+      Like the vine and its branches,<br>
+      we continually receive the grace and life from you alone.<br> 
+      We especially remember this in the Holy Eucharist. <br>
+      Your body is the food which nourishes our spirit <br>
+      and makes us live more according to your will.<br>      
+  </p>
+
+  <p>
+      We pray, Jesus! <br>
+      Continue to nourish us in body <br>
+      and spirit through the Bread of Life which you provide us in every Mass we attend.<br>
+      Enliven in us the sacredness of this Sacrament that we may continuously live as what you will. <br>
+      Amen.    
+  </p>
+
+  <p>We shall spend this time for our personal prayer.</p>
+
+  <p>All: Soul of Christ,… (as above)</p>
+
+  <h3>THIRD CHURCH </h3>
+
+  <p>
+    (Kneel)<br>
+    In the Name…<br>
+    L: Let us praise the Lord,<br>
+    A: and give him thanks!<br>
+  </p>
+
+  <p>
+      LET US PRAY: (as above)
+  </p>
+
+  <p>
+      (sit)<br>
+      Reader: From the Gospel of John. (15, 9-17)<br>
+      “As the Father has loved me, so have I loved you. <br>
+      Now remain in my love. If you obey my commands, <br>
+      you will remain in my love, just as I have obeyed my Father’s commands <br>
+      and remain in his love. I have told you this so that my joy may be in you <br>
+      and that your joy may be complete. <br><br> 
+      My command is this: <br>
+      Love each other as I have loved you. <br>
+      Greater love has no one than this,<br>
+      that he lay down his life for his friends. <br>
+      You are my friends if you do what I command. <br>
+      I no longer call you servants, because a servant does not know his master’s business. <br>
+      Instead, I have called you friends, <br>
+      for everything that I learned from my Father I have made known to you. <br>
+      You did not choose me, <br>
+      but I chose you and appointed you to go and bear fruit—fruit that will last.<br>
+      Then the Father will give you whatever you ask in my name. <br>
+      This is my command: Love each other. “<br><br>
+
+      The Gospel of the Lord.<br><br>
+      All: Praise to you, Lord Jesus Christ!<br><br>
+       
+      Reflection…<br>
+  </p>
+
+  <p>
+      (kneel)<br>
+      Prayer:<br>
+      You loved us, Lord Jesus. <br>
+      You loved us until your death. <br>
+      You loved us as friends. <br>
+      You loved us with an ultimate love.<br>
+      This is far greater than anything we can feel or imagine!<br>
+      You commanded us to extend the same love to others, <br>
+      without anything in reserve. <br>
+      Your love remains with us in the Eucharist,<br>
+      this love we receive in every Communion <br>
+      when we eat your precious Body and drink your sacred Blood. <br>
+      This is the great manifesto of your love for us.<br>
+  </p>
+
+  <p>
+    (kneel)<br>
+    Prayer:<br>
+    You loved us, Lord Jesus. <br>
+    You loved us until your death. <br>
+    You loved us as friends. <br>
+    You loved us with an ultimate love. <br>
+    This is far greater than anything we can feel or imagine! <br>
+    You commanded us to extend the same love to others, <br>
+    without anything in reserve.<br>
+    Your love remains with us in the Eucharist, <br>
+    this love we receive in every Communion when we eat your precious Body <br>
+    and drink your sacred Blood. <br>
+    This is the great manifesto of your love for us.<br><br>
+      
+    We shall spend this time for our personal prayer.<br>
+  </p>
+
+  <p>All: Soul of Christ,… (as above)</p>
+
+  <h3>FOURTH CHURCH </h3>
+
+  <p>
+      (Kneel)<br>
+      In the Name…<br>
+      L: Let us praise the Lord,<br>
+      A: and give him thanks!<br>
+  </p>
+
+  <p>LET US PRAY: (Page 01)</p>
+
+  <p>
+    (sit)<br>
+    Reader: From the Gospel of John. (15, 18-27)<br>
+    “If the world hates you, keep in mind that it hated me first. <br>
+    If you belonged to the world, it would love you as its own. <br>
+    As it is, you do not belong to the world,<br> 
+    but I have chosen you out of the world. <br>
+    That is why the world hates you. <br>
+    Remember the words I spoke to you: <br>
+    ‘No servant is greater than his master.’ <br>
+    If they persecuted me, they will persecute you also. <br>
+    If they obeyed my teaching, they will obey yours also.<br>
+    They will treat you this way because of my name, <br>
+    for they do not know the One who sent me If I had not come and spoken to them,<br>
+    they would not be guilty of sin.<br>
+    Now, however, they have no excuse for their sin.<br>
+    He who hates me hates my Father as well.<br>
+    If I had not done among them what no one else did, <br>
+    they would not be guilty of sin.<br>
+    But now they have seen these miracles, <br>
+    and yet they have hated both me and my Father.<br>
+    But this is to fulfill what is written in their Law: ‘They hated me without reason.’<br><br>
+
+    <br><br>
+
+    “When the Counselor comes, <br>
+    whom I will send to you from the Father, <br>
+    the Spirit of truth who goes out from the Father, <br>
+    he will testify about me. <br>
+    And you also must testify, <br>
+    for you have been with me from the beginning.<br><br>
+    
+    <br>
+
+    The Gospel of the Lord.<br>
+    All: Praise to you, Lord Jesus Christ!<br>
+
+    Reflection…<br>
+  </p>
+
+  <p>
+      (kneel)<br>
+      Prayer:<br>
+      Throughout the years, Lord Jesus, <br>
+      a lot of people showed their hatred towards your Eucharistic presence. <br>
+      Sacrileges done inside and outside the Church offended you so much. <br>
+      Many were led astray due to their false interpretations <br>
+      of the Sacrament which you alone provide.<br>
+       This gave much offense to your Eucharistic Presence, dear Lord.<br>
+  </p>
+
+  <p>
+      Accept our sincere act of repentance for these<br>
+      and others wrongdoings of the world, Lord Jesus.<br>
+      We promise to express our deep concern <br>
+      and love for this memorial of your saving work for us. <br>
+      This might lead us to become the enemies of the world, <br>
+      but we know you’ll never leave us and that you’ll provide <br>
+      the Consoling Spirit that will make us energized <br>
+      and prepared to defend your precious Body in words and actions. <br>
+      Guide us, O Lord. We depend on your providence. <br>
+      Amen.
+  </p>
+
+  <p>We shall spend this time for our personal prayer.</p>
+
+  <p>All: Soul of Christ,… (as above)</p>
+
+  <h3>FIFTH CHURCH </h3>
+
+  <p>
+      (Kneel)<br>
+      In the Name…<br>
+      L: Let us praise the Lord,<br>
+      A: and give him thanks!<br>       
+  </p>
+
+  <p>LET US PRAY: (as above)</p>
+
+  <p>
+    (sit)<br>
+      Reader: From the Gospel of John. (17, 1-5)<br>
+      Jesus lifted his eyes toward heaven and prayed: <br>
+      “Father, the time has come. <br>
+      Glorify your Son, that your Son may glorify you.<br> 
+      For you granted him authority over all people <br>
+      that he might give eternal life to all those you have given him. <br>
+      Now this is eternal life: that they may know you, <br>
+      the only true God, and Jesus Christ, whom you have sent. <br>
+      I have brought you glory on earth by completing <br>
+      the work you gave me to do. <br>
+      And now, Father, glorify me in your presence with the glory <br>
+      I had with you before the world began.”<br><br>
+
+      The Gospel of the Lord.<br>
+      All: Praise to you, Lord Jesus Christ!<br>
+       
+      Reflection…      <br>
+  </p>
+
+  <p>
+      (kneel)<br>
+      Prayer:<br>
+      Jesus, we feel your great glory in the Sacrament of the Holy Eucharist, <br>
+      the sacrament of “Thanksgiving”. <br>
+      In your death and resurrection, <br>
+      you gave new life to the world, <br>
+      and likewise you manifested your glory over all things. <br>
+      You never left us empty-handed for in the Holy Mass <br>
+      you continue to manifest this glorious wonder to all believers.<br>
+  </p>
+
+  <p>
+      May we be continuously strengthened by this glory – <br>
+      the Glory of God in our midst through the Sacrament of Divine Love. <br>
+      May you continue to shine in glory in ever Mass we attend, <br>
+      in every sacred host we receive. <br>
+      May we be glorified as well when we take you into ourselves. <br>
+      Transform our weak bodies into glorified bodies like yours.<br>
+       And when death comes, call us to be in total happiness with you <br>
+       in the Kingdom in Heaven where you live and reign forever. <br>
+       Amen.
+  </p>
+
+  <p>We shall spend this time for our personal prayer.</p>
+
+  <p>All: Soul of Christ,… (as above)</p>
+
+  <h3>SIXTH CHURCH</h3>
+
+  <p>
+    (Kneel)<br>
+      In the Name…<br>
+      L: Let us praise the Lord,<br>
+      A: and give him thanks!<br>
+      </p>
+
+  <p>LET US PRAY: (Page 01)</p>
+
+  <p>
+      (sit)<br>
+      Reader: From the Gospel of John. (17, 6-19)<br>
+      Jesus lifted his eyes toward heaven and prayed: <br>
+      “I have revealed you to those whom you gave me out of the world. <br>
+      They were yours; you gave them to me and they have obeyed your word.  <br>
+      Now they know that everything you have given me comes from you. <br>
+      For I gave them the words you gave me and they accepted them. <br>
+      They knew with certainty that I came from you, and they believed that you sent me. <br>
+      I pray for them. I am not praying for the world, but for those you have given me, <br>
+      for they are yours. All I have is yours, and all you have is mine. <br>
+      And glory has come to me through them. <br>
+      I will remain in the world no longer, <br>
+      but they are still in the world,<br>
+       and I am coming to you. <br>
+       Holy Father, protect them by the power of your name—<br>
+       the name you gave me— so that they may be one as we are one. <br>
+       While I was with them, I protected them and kept them safe by that name you gave me. <br>
+       None has been lost except the one doomed to destruction so that Scripture would be fulfilled.<br>
+
+       <br>
+
+      “I am coming to you now, but I say these things while I am still in the world, <br>
+      so that they may have the full measure of my joy within them. <br>
+      I have given them your word and the world has hated them, <br>
+      for they are not of the world any more than I am of the world. <br>
+      My prayer is not that you take them out of the world but that you protect them from the evil one.  <br>
+      They are not of the world, even as I am not of it. <br>
+      Sanctify them by the truth; your word is truth. <br>
+      As you sent me into the world, <br>
+      I have sent them into the world.<br>
+      For them I sanctify myself, that they too may be truly sanctified.” <br><br>
+
+    The Gospel of the Lord.<br>
+    All: Praise to you, Lord Jesus Christ!
+       
+    Reflection…
+      </p>
+
+  <p>
+    (kneel)<br>
+      Prayer:<br>
+      Lord Jesus, you are the eternal High Priest. <br>
+      In your sacrifice in Calvary, <br>
+      you gave a perfect sacrifice which is sufficient for every time and place. <br>
+      Through the hands of the priest, <br>
+      you continuously give yourself to us, <br>
+      and at the same time offer yourself to the Father.<br>
+      </p>
+
+  <p>
+    We now pray and offer to you all your priests who tirelessly <br>
+    give us your Body and Blood in every Mass we attend.<br>
+    Unworthy as they may be, keep them pure and worthy in mind, <br>
+    word and deed for them to really celebrate <br>
+    the Sacrament of Love in persona Christi Capitis. <br>
+    Deliver them from every possible temptation, <br>
+    and may they and their ministry inspire others <br>
+    to live a holy and pure life as you did here on Earth. <br>
+    Amen.
+  </p>
+
+  <p>We shall spend this time for our personal prayer.</p>
+
+  <p>All: Soul of Christ,… (as above)</p>
+
+  <h3>SEVENTH CHURCH</h3>
+
+  <p>
+      (Kneel)<br>
+      In the Name…<br>
+      L: Let us praise the Lord,<br>
+      A: and give him thanks!<br>
+      </p>
+
+  <p>LET US PRAY: (Page 01)</p>
+
+  <p>
+      (sit)
+      Reader: From the Gospel of John. (17, 6-19)<br>
+      Jesus lifted his eyes to Heaven and prayed: <br>
+      “My prayer is not for them alone. <br>
+      I pray also for those who will believe in me through their message, <br>
+      that all of them may be one, Father, <br>
+      just as you are in me and I am in you. <br>
+      May they also be in us so that the world may believe that you have sent me.<br>
+      I have given them the glory that you gave me, <br>
+      that they may be one as we are one: I in them and you in me.<br>
+      May they be brought to complete unity to let the world know <br>
+      that you sent me and have loved them even as you have loved me.<br>
+
+      <br>
+
+      “Father, I want those you have given me to be with me where I am, <br>
+      and to see my glory, the glory you have given me because you loved me <br>
+      before the creation of the world. “Righteous Father, <br>
+      though the world does not know you, <br>
+      I know you, and they know that you have sent me. <br>
+      I have made you known to them,<br>
+      and will continue to make you known in order <br>
+      that the love you have for me may be in them and that I myself may be in them.”<br><br>
+
+      The Gospel of the Lord.<br>
+      All: Praise to you, Lord Jesus Christ!<br>
+
+      Reflection…
+  </p>
+
+  <p>
+      (kneel)
+      Prayer:
+      Lord Jesus, you are in the Father, just as he is in you.<br>
+      In the Holy Eucharist, you continuously manifest your total unity with us.<br>
+      This is one big grace that no mere mortal can understand, <br>
+      except for those enlightened by your Word and Grace.<br>
+  </p>
+
+  <p>
+      We pray you, Lord! May we be one with you and the Father in every Mass we participate. <br>
+      May we feel that we are never alone when we receive you in Communion; <br>
+      that you dwell deep within us. <br>
+      Make us feel loved, strengthened, sanctified. <br>
+      Never leave us after which, and guide us that you may be manifested in us <br>
+      every time we communicate and work with others. <br>
+      May we be Eucharistic People, <br>
+      a people of glory chosen for your service and divine mission here in Earth. <br>
+      Amen.
+  </p>
+
+  <p>We shall spend this time for our personal prayer.</p>
+
+  <p> All: Soul of Christ,… (as above)</p>
+
+  <h3>Closing Prayers</h3>
+
+  <h3>
+      Praises of God (By Saint Francis)
+  </h3>
+
+  <p>
+      You are holy, Lord, the only God,<br>
+      and Your deeds are wonderful.<br>
+      You are strong.<br>
+      You are great.<br>
+      You are the Most High.<br>
+      You are Almighty.<br>
+      You, Holy Father are King of heaven and earth.<br>
+      You are Three and One, Lord God, all Good.<br>
+      You are Good, all Good, supreme Good, Lord God, living and true.<br>
+      You are love. You are wisdom.<br>
+      You are humility. You are endurance.<br>
+      You are rest. You are peace.<br>
+      You are joy and gladness.<br>
+      You are justice and moderation.<br>
+      You are all our riches, and You suffice for us.<br>
+      You are beauty.<br>
+      You are gentleness.<br>
+      You are our protector.<br>
+      You are our guardian and defender.<br>
+      You are our courage. You are our haven and our hope.<br>
+      You are our faith, our great consolation.<br>
+      You are our eternal life, Great and Wonderful Lord,<br>
+      God Almighty, Merciful Saviour. <br>     
+  </p>
+
+  <h3>ADORATION</h3>
+
+  <p>
+      (For each invocation the response is: <b>*To you be praise and glory forever)</b><br>
+      Body of Christ conceived of the Blessed Virgin Mary*<br>
+      Body of Christ, sacrificed on the cross*<br>
+      Body of Christ, risen from the tomb*<br>
+      Blood of Christ, price of our ransom*<br>
+      Blood of Christ, the seal of new alliance*<br>
+      Blood of Christ, drink of eternal life*<br>
+      Heart of Christ, pierced through with the lance*<br>
+      Heart of Christ, rich in mercy*<br>
+      Heart of Christ, source of love*<br>
+       
+      (For each invocation the response is: <b>*Give us your salvation)</b><br>
+      Living Bread come down from heaven*<br>
+      Living Word of the Father*<br>
+      Giver of the Holy Spirit*<br>
+      Bridegroom of Holy Church*<br>
+      Redeemer of the world*<br>
+      Friend of the young and the poor*<br>
+      When You come on the last day*<br>
+  </p>
+
+  <h3>Let us pray:</h3>
+
+  <p>
+      Lord Jesus Christ,<br>
+      You gave us the Eucharist as the memorial of your suffering and death.<br>
+      May our worship of this sacrament of your body and blood <br>
+      help us to experience the salvation you won for us <br>
+      and the peace of the kingdom where you live <br>
+      with the Father and the Holy Spirit, One God, forever and ever. <br>
+      Amen.<br>
+  </p>
+
+  <p>
+      L: Divínum auxílium máneat semper nobíscum.<br>
+      A: Amen.<br>
+       
+      In the name…   <br>   
+  </p>
+
+
+</div>
+
+
+<div *ngIf="selectElementVal === '5'">
+<h3>Prayer of Protection Against Fires</h3>
+<p>
+  Almighty and eternal God, we ask Your protection against destroying fire. Fire is so very necessary for our existence, and yet, when it gets out of control, it can be more damaging than anything else. Keep our homes and buildings and woods and fields safe from this scourge. Help us always to be most careful in our use of it. Help us especially in the winter time when need and use it most. For then, if our homes are destroyed by fire, we suffer more than ever.
+</p>
+
+<p>
+  Give us, too, we humbly pray You, a saving fear of the fires of passion, and the help of Your grace to control them. Help us also to fear the fires of hell, that we may always keep away from serious sin, and live lives of goodness and virtue, through Christ our Lord. Amen.
+</p>
+
+<h3>Prayer for Peace and Protection from Violence and from Terrorism By: HH Pope Francis</h3>
+<p>
+    O Almighty and merciful God, Lord of the universe and of history. All that You have created is good and your compassion for the mistakes of mankind knows no limits. We come to You today to ask You to keep in peace the world and its people, to keep far away from it the devastating wave of terrorism, to restore friendship and instill in the hearts of your creatures the gift of trust and of readiness to forgive.
+</p>
+<p>
+    O Giver of life, we pray to You also for all those who have died as victims of brutal terrorist attacks. Grant them their eternal reward. May they intercede for the world that is torn apart by conflicts and disagreements.
+</p>
+
+<p>
+    O Jesus, Prince of Peace, we pray to You for the ones who have been wounded in these acts of inhuman violence: children and young people, old people and innocent people accidentally involved in evil. Heal their bodies and hearts; console them with Your strength and, at the same time, take away any hatred and a desire for revenge.
+</p>
+
+<p>
+    Holy Spirit Consoler, visit the families of the victims of terrorism, families that suffer through no fault of their own. Wrap them in the mantle of Your divine mercy. Make them find again in You and in themselves the strength and courage to continue to be brothers and sisters for others, above all for immigrants, giving witness to Your love by their lives.
+</p>
+
+<p>
+    Touch the hearts of terrorists so that they may recognize the evil of their actions and may turn to the way of peace and goodness, of respect for the life and for the dignity of every human being, regardless of religion, origin, wealth or poverty.
+</p>
+
+<p>
+    O God, Eternal Father, in Your mercy hear our prayer which we raise up to You amidst the deafening noise and desperation of the world. We turn to You with great hope, full of trust in Your Infinite Mercy. Made strong by the examples of the blessed martyrs of Perú, Zbigniew and Michael, who have rendered courageous testimony to the Gospel, to the point of offering their blood, we entrust ourselves to the intercession of Your Most Holy Mother. We ask for the gift of peace and of the elimination from our midst of the sore of terrorism.
+</p>
+
+<p>
+    Through Christ our Lord. Amen.
+</p>
+
+<p>[Source: Prayer of Pope Francis in the Basilica of St. Francis, Cracow, July 30, 2016]</p>
+
+<h3>Short Prayer Against Storms and Floods</h3>
+<p>
+    Graciously hear us, O Lord, when we call upon You, and grant unto our supplications a calm atmosphere, that we, who are justly afflicted for our sins, may, by Your protecting mercy, experience pardon. Through Christ our Lord. Amen.
+</p>
+
+<p>[Source: Catholic Cultute - Novena in Honor of St. Isidore: Patron of Farmers by National Catholic Rural Life Conference, National Catholic Rural Life Conference]</p>
+
+</div>
+
+<div *ngIf="selectElementVal === '6'">
+
+  <h3>Prayer to St. Thomas for Lawyers and Judges </h3>
+
+  <p>Dear Scholar and Martyr, it was not the King of England but you who were the true Defender of the Faith. Like Christ unjustly condemned, neither promises nor threats could make you accept a civil ruler as head of the Christian Church. Perfect in your honesty and love of truth, grant that lawyers and judges may imitate you and achieve true justice for all people. </p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer to Saint Matthew the Apostle Patron of Accountants, Book Keepers, Tax Collectors, Custom Officers, Security Guards.</h3>
+
+  <p>O Glorious Saint Matthew, in your Gospel you portray Jesus as the longed-for Messiah who fulfilled the Prophets of the Old Covenant and as the new Lawgiver who founded a Church of the New Covenant. Obtain for us the grace to see Jesus living in His Church and to follow His teachings in our lives on earth so that we may live forever with Him in heaven.</p>
+
+  <p>Amen.</p>
+
+  <h3>St. Sebastian Patron of Athletes</h3>
+
+  <p>Athlete's Prayer Father, thank you for the abilities you give me to play my sport. Jesus, be with me as I play that I might do my best. Holy Spirit, inspire me as I compete. May I always play fairly and with respect of my opponents. Whatever the outcome of this game, bless me, Father, Son, and Holy Spirit. </p>
+
+  <p>Amen.</p>
+
+  <h3>Motorist's Prayer</h3>
+
+  <p>Grant me, O Lord, a steady hand and watchful eye, that no one shall be hurt as I pass by. Thou gavest life, I pray no act of mine may take away or mar that gift of Thine. Shelter those, dear Lord, who bear my company from the evils of fire and all calamity. Teach me to use my car for others need; Nor miss through love of undue speed. The beauty of the world; that thus I may with joy and courtesy go on my way. St. Christopher, holy patron of travelers, protect me, and lead me safely to my destiny.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer of Engineers</h3>
+
+  <p>Almighty Father, you are the source of all wisdom, talents, and skills. Thank You for these beautiful gifts, opportunities to serve you, and the work that You have entrusted to me. Please open my heart and enlighten my mind, so that I may be fully in tune with Your divine purpose in calling me to the engineering profession. Lord God, You are the greatest engineer. Please infuse me even with just the tiniest spark of Your Divine Wisdom so that as I do my work, it is really your work that is done. Loving God, make my heart Your Heart, make my mind Your Mind, and make my hands Your Hands. Make me your instrument, so that I may be always conscious and mindful of the fact that on my work depend the lives and properties of my fellow human. Bless me also with the gift of love and sensitivity to respect the people who build and use the products of my work.</p>
+
+  <p>This I ask in Jesus’ name.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer for Firefighters</h3>
+
+  <p>Dear God, through the intercession of our patron, Saint Florian, have mercy on the souls of our comrades who have made the supreme sacrifice in the performance of their duty, and on all who have gone before us after years of faithful discharge of their responsibilities which now rest on ourselves. Give us Grace to prepare each day for our own summons to Thy tribunal of justice. Into Thy hands, O Lord, I commend my spirit. Withersoever Thou callest me, I am ready to go. Merciful Father of all men, save my from all bodily harm, if it be Thy will, but above all, help me to be loyal and true, respectful and honorable, obedient and valiant. Thus fortified by virtue, I shall have no fear, for I shall then belong to Thee and shall never be separated from Thee.</p>
+
+  <p>Amen.</p>
+
+  <h3>Mariner’s Prayer</h3>
+
+  <p>Our Lady, Star of the Sea, Mother of God and our Mother, you know all the dangers of soul and body that threaten mariners. Protect your sons and daughters who work and travel on the waters of the world, and protect also their families that await their return. Star of the Sea, Mother of the Church, give light and strength to those chaplains and lay ministers who bring the love of your Divine Son among mariners. Fill their hearts with a supernatural and life-giving zeal for the apostolate. Star of the Sea, light shining in the darkness, be a guide to those who sail amid the storms and dangers of life. Enlighten the hearts of ardent disciples and bring us all to the safety of heaven’s port.</p>
+
+  <p>Amen.</p>
+
+  <h3>A Prayer for Journalists St. Francis de Sales, patron saint of writers and journalists</h3>
+
+  <p>Almighty God, Strengthen and direct, we pray, the will of all whose work it is to write what many read, and to speak where many listen. May we be bold to confront evil and injustice: understanding and compassionate of human weakness; rejecting alike the half-truth which deceives, and the slanted word which corrupts. </p>
+
+  <p>May the power which is ours, for good or ill, always be used with honesty and courage, with respect and integrity, so that when all here has been written, said and done, we may, unashamed, meet Thee face to face.</p>
+
+  <p>Amen.</p>
+
+  <h3>A Soldiers Prayer to St. Joan of Arc</h3>
+
+  <p>St. Joan of Arc, humble maiden of France, your heavenly Father miraculously endowed you with every military skill and knowledge, and raised you up as the Commander of the armies of France for the blessing of His Church, the protection of His people, and the glory of His Holy Name. By your merits and prayers may God also endow all military men and women with every military skill and knowledge necessary for his station of duty. May his mission always be righteous, and his actions always be courageous, compassionate, and just. And just as you showed your ardent love for Jesus in offering up your life for Him, so may they fulfill all that their duty requires. St. Joan of Arc pray for us that we may be made worthy of the promises of Christ.</p>
+
+  <p>Amen.</p>
+
+  <h3>The Veterinarian’s Prayer</h3>
+
+  <p>Dear Lord, I ask that you guide my hand and fill my heart with compassion and love, as I tend to the animals that are brought before me. When I am tired…. grant me the energy to persevere. When I am unsure, grant me the wisdom to make the right choice when I am saddened grant me the ability to share my sorrow, when I am running behind schedule grant me the patience to focus on what is in front of me. When I am overwhelmed, grant me a quiet space to collect my thoughts, fill me with a thirst for knowledge so that I may remain current in my thinking. Help me to comfort and console all of those who experience some form of tragedy or loss. And finally, Lord allow me to extract the best from every day so that I may continue to greet each new dawn with enthusiasm and dedication for this profession to which I commit my life.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer of Physicians</h3>
+
+  <p>Lord Jesus, Divine Physician, who in your earthly life showed special concern for those who suffer and entrusted to your disciples the ministry of healing, make us ever ready to alleviate the trials of our brethren.  Make each one of us, aware of the great mission that is entrusted to him, strive always to be, in the performance of daily service, an instrument of your merciful love.  Enlighten our minds, guide our hands, make our hearts diligent and compassionate.  Ensure that in every patient we know how to discern the features of your divine Face.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer of Carpenters</h3>
+
+  <p>Dear Lord,Before you were the Good Shepherd you were the carpenter's son, a carpenter himself. Help us be your hands, using the tools, our skills, the blueprint, for this work and our lives and for the people we are helping. Guide us Lord to follow the plans of the carpenter and our heavenly father, the creator, the master architect.</p>
+
+  <p>Amen</p>
+
+  <h3>Prayer for Teachers</h3>
+
+  <p>Heavenly Father, who promised that all those who instruct others in the ways of holiness will shine as stars for all eternity, fill our hearts and minds with true knowledge and the art of teaching. Give us patience and understanding, justice and prudence, humility and fear of the Lord. Grant us wisdom and charity so that with a pure and holy love of God we ourselves may enjoy all these gifts and impart them to our pupils. Teach our children to be obedient to your laws and docile to your inspirations. Let them be instruments of your peace in their homes, in our land, and in the family of nations as becomes children of the sons of God in the Mystical Body of Christ. May the blessings of your sevenfold Gifts be in all who teach and in all who learn through the Holy Spirit who is the Love of the Father and the Son, our Lord Jesus Christ. </p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer for Policemen</h3>
+
+  <p>O Almighty God, Whose great power and eternal Wisdom embraces the universe, Watch over all policemen and Law enforcement officers everywhere. Protect them from harm In the performance of their duty To stop crime, robbery, Riots and violence. We pray, help them keep our streets And homes safe, day and night.</p>
+
+  <p>We commend them to your loving care Because their duty is dangerous. Grant them strength and courage In their daily assignments. Dear God, protect these brave men and women. Grant them your almighty protection, Unite them safely with their families after Duty has ended.</p>
+
+  <p>Please God, grant us this wish.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer to St Cecilia for Musicians</h3>
+  
+  <p>Dear St Cecilia, heroic martyr who stayed faithful to Jesus your divine bridegroom, intercede for us for faith to raise above our persecutors and to see in them the image of our Lord.</p>
+
+  <p>We know that you were a musician and we are told that you heard angels sing. Inspire musicians to gladden the hearts of people by filling the air with God’s gift of music and reminding them of the Divine Musician who created all beauty. </p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer of The Christian Farmer</h3>
+
+  <p>O God, Source and Giver of all things, Who manifests Your infinite majesty, power and goodness in the earth about us, we give You honor and glory.  For the sun and rain, for the manifold fruits of our fields, for the increase of our herds and flocks we thank You. For the enrichment of our souls with divine grace, we are grateful.  </p>
+
+  <p>Supreme Lord of the harvest, graciously accept us and the fruits of our toil, in union with Christ Your Son, as atonement for our sins, for the growth of Your Church, for peace and charity in our homes, for salvation to all.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer of Bankers</h3>
+
+  <p>Lord, thank You for the mission You have blessed us with, to be stewards of the financial and material wealth of our valued clients. Give us the prudence and allow us to safeguard the assets entrusted to us. Help us maximize the benefits possible with impeccable integrity for the welfare of our depositors, investors, and their families. Bless us with the graces to provide service and excellence at all times in whatever we do. Make us channels to multiply the bountiful abundance You provide. Enable us to sustain and enrich this beautiful world that You have given us our home. Manifest in us the faith, hope, and love to be radiated to all your people, Lord, whom we are privileged to serve. Let every endeavor be a testimonial and witness to your greatness and omnipotence.</p>
+  
+  <p>In Jesus’ Name, we pray.</p>
+
+  <p>Amen.</p>
+
+  <h3>A Miner’s Prayer</h3>
+
+  <p>When my hard task on earth is done, God give me time to loaf in the sun; Loaf in the sun on a cool, green hill where the breath of freedom lingers still; Lingers still to caress my face as I climb to the highest place; Highest place where content I’ll stay. Praising Thee, Lord for each grand new day for the carefree rest I’ve never known. Grant me a few years to call my own; Call my own and, my sins forgiving, strength enough to enjoy their living. There living enjoy with greater zest because I have worked and earned my rest; Early me rest and a place in the sun. Providing You find my work well done.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer of Actors/Actresses</h3>
+
+  <p>Lord Jesus Christ, to be an actor/actress is to be your instrument in showing the beauty, drama and meaning of life you have given us here on earth.Today, as I take on the demanding responsibilities of being your servant, grant mea healthy body to welcome the Holy Spirit and be my strength against stress, pressures and any physical threats;a clean soul to battle the temptations of fame, fortune, selfishness, and vanity;and a sincere heart to effectively communicate your message in every scene that I do to all who are watching.I humbly ask these qualities from you, Lord Jesus Christ, for it is only with a healthy body, a clean soul, and a sincere heart that I can truly serve you as actor/actress.</p>
+
+  <p>Thank you for giving me the chance to be who you want me to be. I offer everything back to you. May your glory remain in my heart forever and ever.</p>
+
+  <p>Amen.</p>
+
+  <h3>Prayer to Saint Thomas the Apostle for Construction Workers</h3>
+
+  <p>Dear Saint Thomas, you were once slow in believing that Christ had gloriously risen; but later, because you had seen him, you exclaimed: "My Lord and my God!" According to an ancient story, you rendered most powerful assistance for constructing a church in a place where pagan priests opposed it. Please bless architects, builds and carpenters that through them the Lord may be honored. </p>
+
+  <p>Amen.</p>
+</div>
+
+<div *ngIf="selectElementVal === '7'">
+
+  <h3>Prayers for the Souls of Purgatory by St. Gertrude</h3>
+
+  <p>Eternal Father, I offer Thee the Most Precious Blood of Thy Divine Son, Jesus, in union with the masses said throughout the world today, for all the holy souls in purgatory, for sinners everywhere, for sinners in the universal church, those in my own home and within my family. Amen.</p>
+
+  <h3>Prayer for Three Things</h3>
+
+  <p>Our Father, Who art in Heaven, I ask of Thee three things this day: That Thou wilt help me to repair before my death, all the graces I have lost through my own fault; that Thou wilt assist me in attaining that degree of merit and perfection destined for me, and which I may have frustrated by my infidelities; and finally, that Thou wilt deign to pardon me all the sins which I have caused others to commit, and restore to them all the graces I have caused them to lose.</p>
+
+  <p>I ask these graces of Thee, O Holy Trinity, through the Heart of Jesus, the Immaculate Heart of Mary and the intercession of the glorious Saint Joseph, Patron of the Universal Church. Amen.</p>
+
+  <h3>Prayer for a Happy Death</h3>
+
+  <p>O JESUS, while adoring thy last breath, I pray Thee to receive mine. In the uncertainty whether I shall have the command of my senses, when I shall depart out of this world, I offer Thee from this moment my agony and all the pains of my passing away. Thou art my FATHER and my SAVIOUR, and I give back my soul into thy hands. I desire that my last moment may be united to the moment of thy death, and that the last beat of my heart may be an act of pure love of Thee. Amen.</p>
+
+  <h3>Prayer Before a Crucifix</h3>
+
+  <p>BEHOLD, O good and sweetest Jesus, I cast myself upon my knees in Thy sight, and with the most fervent desire of my soul I pray and beseech Thee to impress upon my heart lively sentiments of faith, hope and charity, with true repentance for my sins and a most firm desire of amendment: whilst with deep affection and grief of soul I consider within myself and mentally contemplate Thy five most precious Wounds, having before mine eyes that which David, the prophet, long ago spoke in Thine Own person concerning Thee, my Jesus: They have pierced My hands and My feet, they have numbered all My bones</p>
+
+  <p>(A plenary indulgence, under the usual conditions, may be gained by those who shall say this prayer with devotion before an image of our crucified Redeemer. A partial indulgence may also be gained for each devout recitation.)</p>
+
+</div>
+
+<div *ngIf="selectElementVal === '8'">
+
+  <h3>Apostles Creed..</h3>
+  <h3>Our Father..</h3>
+  <h3>Hail Mary..</h3>
+  <h3>Glory Be..</h3>
+
+  <h3>The Fatima Prayer: </h3>
+
+  <p>O my Jesus, forgive us our sins, save us from the fires of hell, and lead all souls to Heaven, especially those in most need of Your Mercy". </p>
+
+  <p>(Our Lady at Fatima, 13th July 1917)</p>
+
+  <h3>The Hail, Holy Queen: </h3>
+
+  <p>Hail, holy Queen, Mother of Mercy! our life, our sweetness, and our hope! To thee do we cry, poor banished children of Eve; to thee do we send up our sighs, mourning and weeping in this valley, of tears. Turn, then, most gracious Advocate, thine eyes of mercy toward us; and after this our exile show unto us the blessed fruit of thy womb, Jesus; O clement, O loving, O sweet Virgin Mary.</p>
+
+  <h3>How to pray the Holy Rosary? </h3>
+  <p>Go to this link https://www.catholicity.com/prayer/rosary.html</p>
+
+</div>
+
+<div *ngIf="selectElementVal === '9'">
+<h3>MYSTERIES OF THE HOLY ROSARY</h3>
+
+<br><H3>The Joyful Mysteries</H3>
+<p>(Monday, Saturday)</p>
+
+<p>1.	The Annunciation (Luke 1:26–38);<br>
+2.	The Visitation (Luke 1:39–56);<br>
+3.	The Nativity (Luke 2:1–21); <br>
+4.	The Presentation (Luke 2:22–38); <br>
+5.	The Finding of the Child Jesus in the Temple (Luke 2:41–52)</p>
+
+
+<br><h3>The Sorrowful Mysteries</h3>
+<p>(Tuesday, Friday)</p>
+
+<p>1.	The Agony of Jesus in the Garden (Matthew 26:36–56); <br>
+2.	The Scourging at the Pillar (Matthew 27:26); <br>
+3.	The Crowning with Thorns (Matthew 27:27–31);<br>
+4.	The Carrying of the Cross (Matthew 27:32); <br>
+5.	The Crucifixion (Matthew 27:33–56).</p>
+
+<br><h3>The Glorious Mysteries</h3>
+<p>(Wednesday, Sunday)</p>
+
+<p>1.	The Resurrection (John 20:1–29); <br>
+2.	The Ascension (Luke 24:36–53); <br>
+3.	The Descent of the Holy Spirit (Acts 2:1–41);<br>
+4.	The Assumption of Mary (Revelations 12:1);<br>
+5.	The Coronation of Mary in heaven (Revelations 12:1)</p>
+
+<br><h3>The Luminous Mysteries</h3>
+<p>(Thursday)</p>
+
+<p>1.	The Baptism in the River Jordan (Matthew 3:13–16);<br>
+2.	The Wedding Feast at Cana (John 2:1–11); <br>
+3.	The Preaching of the coming of the Kingdom of God (Mark 1:14–15); <br>
+4.	The Transfiguration (Matthew 17:1–8); <br>
+5.	The Institution of the Holy Eucharist (Matthew 26).</p>
+
+</div>
+
+<div *ngIf="selectElementVal === '10'">
+
+<p>
+  Lord have mercy.<br>
+  Christ have mercy.<br>
+  Lord have mercy.<br>
+  Christ hear us.<br>
+  Christ graciously hear us.<br>
+
+  God, the Father of heaven, <br>
+  have mercy on us.<br><br>
+</p>
+
+<p>
+God the Son, Redeemer of the world, <br>
+God the Holy Spirit, <br>
+Holy Trinity, one God, <br>
+</p>
+
+<p>
+Holy Mary, <br>
+pray for us.<br>
+Holy Mother of God,<br>
+Holy Virgin of virgins, <br>
+Mother of Christ, <br>
+Mother of the Church, <br>
+Mother of divine grace, <br>
+Mother most pure, <br>
+Mother most chaste, <br>
+Mother inviolate, <br>
+Mother undefiled, <br>
+Mother most amiable, <br>
+Mother admirable, <br>
+Mother of good counsel,<br>
+Mother of our Creator, <br>
+Mother of our Saviour, <br>
+Mother of mercy, <br>
+Virgin most prudent, <br>
+Virgin most venerable, <br>
+Virgin most renowned, <br>
+Virgin most powerful, <br>
+Virgin most merciful, <br>
+Virgin most faithful, <br>
+Mirror of justice, <br>
+Seat of wisdom, <br>
+Cause of our joy, <br>
+Spiritual vessel, <br>
+Vessel of honour, <br>
+Singular vessel of devotion, <br>
+Mystical rose, <br>
+Tower of David, <br>
+Tower of ivory, <br>
+House of gold, <br>
+Ark of the covenant, <br>
+Gate of heaven, <br>
+Morning star, <br>
+Health of the sick, <br>
+Refuge of sinners, <br>
+Comfort of the afflicted, <br>
+Help of Christians, <br>
+Queen of Angels, <br>
+Queen of Patriarchs, <br>
+Queen of Prophets, <br>
+Queen of Apostles, <br>
+Queen of Martyrs, <br>
+Queen of Confessors, <br>
+Queen of Virgins, <br>
+Queen of all Saints, <br>
+Queen conceived without original sin, <br>
+Queen assumed into heaven, <br>
+Queen of the most holy Rosary, <br>
+Queen of families, <br>
+Queen of peace.<br>
+</p>
+
+<p>
+Lamb of God, who takest away the sins of the world,
+spare us, O Lord.<br>
+</p>
+
+<p>
+Lamb of God, who takest away the sins of the world,
+graciously hear us, O Lord.<br>
+</p>
+
+<p>
+Lamb of God, who takest away the sins of the world,
+have mercy on us.  <br>
+</p>
+
+<p>
+Pray for us, O holy Mother of God.
+That we may be made worthy of the promises of Christ.  <br>
+</p>
+
+<p>
+Let us pray. <br>
+Grant, we beseech thee, <br>
+O Lord God, <br>
+that we, your servants,<br>
+may enjoy perpetual health of mind and body; <br>
+and by the intercession of the Blessed Mary, ever Virgin, <br>
+may be delivered from present sorrow, <br>
+and obtain eternal joy. <br>
+Through Christ our Lord. <br><br>
+Amen.
+</p>
+
+
+</div>

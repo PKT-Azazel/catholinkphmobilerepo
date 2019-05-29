@@ -1,0 +1,229 @@
+<div class="contents">
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddItineraryModal()" class="add-btn">Add Itinerary</span>
+    </div>
+    <ng-container *ngIf="itineraries">
+        <div *ngIf="(itineraries.length > 0)" class="grid-container">
+            <ng-container *ngFor="let itinerary of itineraries" >
+            
+                <div class="grid-item" [ngClass]="{'featured-item' : itinerary.featured}">
+                    <img *ngIf="itinerary.image" class="grid-item-background-image" src="{{itinerary.image}}">
+                    <img *ngIf="!itinerary.image" class="grid-item-background-image" src="//:0">
+                    <div class="item-info-container">
+                            <span *ngIf="itinerary.featured" class="featured-tag">Featured</span>
+                            <!-- <span *ngIf="itinerary.featured" class="info-title">{{itinerary.title}}</span> <!*ngIf -->
+                            <span [ngClass]="{'featured-title' : itinerary.featured}" class="info-title">{{itinerary.title}}</span>
+                            <!-- <span [ngClass]="{'featured-date' : itinerary.featured}" class="info-date">{{itinerary.date}}</span> <![ngClass] -->
+                            <span *ngIf="itinerary.featured" class="info-date">{{itinerary.date}}</span>
+                            <span *ngIf="!itinerary.featured" class="info-date">{{itinerary.date}}</span>
+                            <span *ngIf="!itinerary.featured" class="info-description">{{itinerary.description}}</span>
+                    </div>
+                    <div *ngIf="isUserAdmin" class="edit-del-btn-container">
+                        <span (click)="ShowEditItineraryModal(itinerary)" class="edit-del-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                        <span (click)="DeleteItinerary(itinerary)" class="edit-del-btn"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </ng-container>
+            <div style="clear:both;"></div>
+        </div>
+        <div *ngIf="!(itineraries.length > 0)" class="no-items-to-display">
+            No Items to display.
+        </div>
+    </ng-container>
+
+</div>
+
+<div *ngIf="showAddItineraryModal" class="modal-container">
+    <div class="pp-modal">
+        <h1 class='modal-title'>Add Itinerary</h1>
+        <div class="modal-close" (click)="showAddItineraryModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewItinerary(f)">
+                <table>
+                    <tr><td><label for="title">Title</label></td></tr>
+                    <tr><td><input type="text" name="title" ngModel></td></tr>
+
+                    <tr><td><label for="description">Description</label></td></tr>
+                    <tr><td><textarea rows="5" name="description" ngModel></textarea></td></tr>
+
+                    <tr><td><label for="date">Date</label></td></tr>
+                    <tr><td><input type="text" name="date" ngModel></td></tr>
+
+                    <tr><td><label for="featured">Featured?</label></td></tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="featured" [value]="true" [ngModel]="true"> Yes
+                            <input type="radio" name="featured" [value]="false" [ngModel]="true"> No
+                        </td>
+                    </tr>
+
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+                <img id="add-form-image-preview" src="//:0" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="add-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div *ngIf="showEditItineraryModal" class="modal-container">
+    <div class="pp-modal">
+        <h1 class='modal-title'>Edit Itinerary</h1>
+        <div class="modal-close" (click)="showEditItineraryModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditItinerary(f)">
+                <table>
+                    <tr><td><label for="title">Title</label></td></tr>
+                    <tr><td><input type="text" name="title" [ngModel]="itineraryToUpdateOrDelete.title"></td></tr>
+
+                    <tr><td><label for="description">Description</label></td></tr>
+                    <tr><td><textarea rows="5" name="description" [ngModel]="itineraryToUpdateOrDelete.description"></textarea></td></tr>
+
+                    <tr><td><label for="date">Date</label></td></tr>
+                    <tr><td><input type="text" name="date" [ngModel]="itineraryToUpdateOrDelete.date"></td></tr>
+
+                    <tr><td><label for="featured">Featured?</label></td></tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="featured" [value]="true" [ngModel]=itineraryToUpdateOrDelete.featured> Yes
+                            <input type="radio" name="featured" [value]="false" [ngModel]="itineraryToUpdateOrDelete.featured"> No
+                        </td>
+                    </tr>
+
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+
+                <img id="edit-form-image-preview" *ngIf="itineraryToUpdateOrDelete.image" src="{{itineraryToUpdateOrDelete.image}}"/>
+                <img id="edit-form-image-preview" *ngIf="!(itineraryToUpdateOrDelete.image)" src="//:0" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="edit-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- 
+
+<div *ngIf="showEditItineraryModal" class="modal-container">
+    <div class="pp-modal">
+        <h1 class='modal-title'>Edit Itinery</h1>
+        <div class="modal-close" (click)="showEditItineraryModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditItinerary(f)">
+                <table>
+                    <tr><td><label for="title">Title</label></td></tr>
+                    <tr><td><input type="text" name="title" ngModel></td></tr>
+
+                    <tr><td><label for="description">Description</label></td></tr>
+                    <tr><td><textarea rows="5" name="description" ngModel></textarea></td></tr>
+
+                    <tr><td><label for="date">Date</label></td></tr>
+                    <tr><td><input type="text" name="date" ngModel></td></tr>
+
+                    <tr><td><label for="featured">Featured?</label></td></tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="featured" [value]="true" [ngModel]="true"> Yes
+                            <input type="radio" name="featured" [value]="false" [ngModel]="true"> No
+                        </td>
+                    </tr>
+
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+                <img id="add-form-image-preview" src="//:0" style="display:block; width:100px; height: 100px; object-fit: cover;" />
+                <input id="add-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div> -->

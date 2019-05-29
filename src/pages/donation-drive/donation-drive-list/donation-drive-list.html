@@ -1,0 +1,114 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/send-help/help1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Send Help. Donate.</h1>
+        <p>Let our brothers and sisters know your needs for your ministry or program by adding your donation drive here. 
+        <br>“Bear ye one another’s burdens, and so fulfil the law of Christ” (Galatians 6:2)</p>
+    </ion-card>
+
+    <ion-card class="search" no-padding text-center>
+        <div class="search-bar-container">
+            <div class="search-label">
+                <span>{{ campaignType }}</span>
+            </div>
+            <div class="search-input-container">
+                <div class="search-input-contents">
+                    <input type="text" placeholder="" #searchInput/>
+                </div>
+                <div class="search-btn-container" (click)='OnSearchClick(searchInput.value)'>
+                    <span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="isUserAdmin" class="add-edit-del-btn-container" >
+                <span class="addBtn" (click)="ShowAddModal()">
+                    Add Your Campaign
+                </span>
+            </div>
+        </div>
+    </ion-card>
+
+    <div class="search-results-container" *ngIf="(isSearchTriggered)">
+        <p *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results-header" style="text-align: left;text-decoration : underline;">{{campaignType}} List</p>
+        <p *ngIf="((searchResults.length <1) && (!isSearchLoading))" class="search-results-header" style="text-align: left;">No results found.</p>
+        <ul *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results">
+            <li *ngFor="let item of searchResults">
+                <div class="search-results-card">
+                    <div class="sr-card-image-container">
+                        <img *ngIf="item.image" src="{{item.image}}">
+                    </div>
+                    <div class="sr-card-info-container">
+                        <span class="sr-card-info-title">{{ item.campaignTitle }}</span>
+                        <span class="sr-card-info-val"><strong>Description</strong> : {{ item.description }}</span>
+                        <span (click)="RouteFromSearch(donationDriveDetailPage,item._id)" class="read-more-btn">Read More</span>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+
+<div *ngIf="showAddModal" class="add-modal-container">
+        <div class="add-modal">
+            <h1 class='modal-title'>Add Campaign</h1>
+            <div class="modal-close" (click)="showAddModal=false">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+    
+            <div>
+                <form #f="ngForm" (ngSubmit)="AddNewDonationDrive(f)">
+                    <table>
+                        <tr><td><label for="campaignTitle">Campaign Title</label></td></tr>
+                        <tr><td><input type="text" name="campaignTitle" id="campaignTitle" ngModel></td></tr>
+    
+                        <tr><td><label for="description">Description</label></td></tr>
+                        <tr><td><textarea rows="5" name="description" id="description" ngModel></textarea></td></tr>
+    
+                        <tr><td><label for="targetDate">Target Date</label></td></tr>
+                        <tr><td><input type="text" name="targetDate" id="targetDate" ngModel></td></tr>
+    
+                        <tr><td><label for="targetGoal">Target Goal</label></td></tr>
+                        <tr><td><input type="number" name="targetGoal" id="targetGoal" ngModel></td></tr>
+    
+                        <tr><td><label for="paypal">Paypal ID</label></td></tr>
+                        <tr><td><input type="text" name="paypal" id="paypal" ngModel></td></tr>
+                    </table>
+    
+                    <label>Image</label>
+                    <div class="form-dynamic-contents-container"></div>
+                    <img id="add-form-image-preview" style="display:block; width:100px; height: 100px; object-fit: cover;">
+                    <input id="add-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+    
+                    <div  *ngIf="showLoading" class="loadingContainer">
+                        <div class="loading">
+                            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                            <span>Saving data, please wait...</span>
+                        </div>
+                    </div>
+                    <div *ngIf="showSuccess" class="successContainer">
+                        <div class="success">
+                            <span>{{successMessage}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="showError" class="errorsContainer">
+                        <div *ngIf="!IsString(errorMessage)" class="error">
+                            <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                        </div>
+                        <div *ngIf="IsString(errorMessage)" class="error">
+                            <div>{{errorMessage}}</div>
+                        </div>
+                    </div>
+    
+                    <div class="submit-btn-container">
+                        <input class="submit-btn" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    

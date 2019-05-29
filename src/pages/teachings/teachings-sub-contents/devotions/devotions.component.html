@@ -1,0 +1,52 @@
+<h1>Devotions in the philippines</h1>
+<div class="select-topic-container">
+    <select id="devotions-select" (change)="UpdateSelect()" required>
+        <option value="" disabled selected hidden>Select a topic...</option>
+        <option value="0">Devotions in the Philippines</option>
+        <option value="1">PIOUS PRACTICES IN THE PHILIPPINES</option>
+    </select>
+</div>
+
+<div *ngIf="selectElementVal === '0'">
+  <h2>DEVOTIONS IN THE PHILIPPINES:</h2>
+  <p><b>1. THE BLACK NAZARENE</b><br>The Black Nazarene is a life sized, wooden image of Christ carrying his cross to the Calvary. It is believed that the image was burned on its way from Mexico, thus it was called “Black Nazarene”. The Black Nazarene is housed at St. John de Baptist Parish Church in Quiapo, Manila which later became Minor Basilica of the Black Nazarene, most popularly known as ‘Quiapo Church’.</p>
+  <p>The statue is only brought out on three occasions as follows:</p>
+  <ul>
+    <li>Thanksgiving procession (New Year)</li>
+    <li>Traslacion or the commemoration of its transfer from the church in Intramuros, Manila to its present shrine. It is considered as its ‘Feast Day’ among the  local residents, and on</li>
+    <li>Good Friday.</li>
+  </ul>
+  <p>Several miracles have been reported by its devotees.</p>
+
+  <p><b>2. SANTO NINO</b><br>The Santo Niño, is an image of the Child Jesus which is venerated by Filipinos. It is housed in the Basilica Minore del Santo Niño in Cebu City. According to History, the origin of Santo Niño goes to the time Magellan discovered the islands. Upon his arrival in 1521, several native Filipinos were baptized including their King, Humabon and his wife, Queen Juana. The Queen was given the image of the Santo Niño as a gift.</p> 
+  <p>The Feast of the Santo Niño is celebrated every January. The exact date varies from one church to another.</p>
+  
+  <p><b>3. OUR LADY OF PEÑAFRANCIA</b><br>The Our Lady of Peñafrancia, a Marian image copied from the Madonna in Peñafrancia, Spain is well-loved by the residents of Bicol region in the Philippines. Its feast day is celebrated every third Saturday of September in Naga City. Bicolanos call her “Ina” (Mother) as a title of endearment. On the first day of the novena, the Image is transferred from its shrine to the Naga City Cathedral. On the last day of the novena, it is being returned to her shrine through the Naga River route.</p>
+  <p>In the 18th century, a Spanish family in Cavite has a son named Miguel,  who is a seminarian had a severe illness, therefore,  He and his family made a vow to Our Lady of Penafrancia that if he would be cured, he would found a chapel in her honour. Miguel has recovered and was ordained as a priest, and in keeping with his promise, he asked the natives to construct a chapel built with local materials in Naga. Several miracles were attributed through the devotion to Our Lady of Peñafrancia.</p>
+
+  <p><b>4. OUR LADY OF MANAOAG</b><br>Folk tradition has it that the Blessed Mother showed herself to a middle age farmer and gave him a message on where she wanted her church to be located. She showed herself in a low tree amidst the glow heavenly light. Manaoag is know more as a pilgrimage town than anything else. It is sometimes called the pilgrim center of the North.</p>
+  <p>Every Saturday and Sunday, thousands of people converge on this town to attend Mass, pray the Rosary, offer flowers and light candles. The center of devotion is the Lady of the Holy Rosary, otherwise known as Nuestra Senora de Manaoag or plainly called Apo Baket.</p>
+  <p>The ivory image of our Lady of the Rosary of Manaoag which is enshrined in the high altar of the church is several centuries old and is said to possess miraculous powers.</p>
+  <p>Pilgrimages reach their peak during Lenten and Easter seasons, during the month of May and October during the feast of Holy Rosary. Before the Dominician arrived, the Augustinian missionaries put a the Visita of Santa Monica, (the former name of manaoag), which they visited from Lingayen. As early as 1600 the Augustinians had put a modest chapel where the cemetery is now located. It was turned over to the Dominician in 1605 and was served from Mangaldan.
+  <p>(Source: Manaoagbasilica.org)</p>
+
+  <p><b>5. OUR LADY OF THE HOLY ROSARY OF LA NAVAL DE MANILA</b><br>The Image of Our Lady of the Holy Rosary of La Naval de Manila was created by a Chinese sculptor upon the orders of the then Spanish Governor General to the Philippines, Don Luis Perez Dasmariñas in 1593. Later, the sculptor was converted to Christianity.</p>
+  <p>In 1646, Dutch forces attempted to invade the Philippines, because of this, soldiers sought the intercession of Our Lady and made a vow that if they would won the battle, they would make a procession barefooted.</p>
+  <p>The image was originally housed in the first Santo Domingo Church located originally within Intramuros, Manila. In the duration of World War II, the church was bombed but the image miraculously survived and was temporarily sheltered at the chapel of the University of Santo Tomas from 1942-1954, and was finally housed at the new Santo Domingo Church in Quezon City.
+  </p>
+
+</div>
+
+<div *ngIf="selectElementVal === '1'">
+  <h2>PIOUS PRACTICES IN THE PHILIPPINES</h2>
+  <p><b>6. VISITA IGLESIA</b><br>In the evening of Maundy Thursday, the Mass of the Last Supper is celebrated in churches all across the Philippines.  After the Mass, the Blessed Sacrament is put in an Altar of Repose or “monumento.” After that churches remain open for visitors or as Filipinos would call it, the “Visita Iglesia” means Visiting Churches, which is held in the evening of Maundy Thursday</p>
+  <p><b>7. PABASA</b><br>One of the traditions during is the reading of religious texts or “pabasa.”  The “pabasa” usually starts after the mass on Palm Sunday. But it is also organized on other days of the Holy Week. The book of the passion of Christ is chanted in many different ways. The organizer of the “pabasa” prepares two books for the readers. One group of readers reads or chants one verse and the other group of readers reads or chants the next verse.
+  <p>The “pabasa” can last all day and all night and are usually done next to a chapel, in a tent or “kubol.” In some places the best reader at a “pabasa” gets a small prize.</p>
+  <p>Most “pabasas” are public, organized for the whole community, but there are also private ones organized by families in their homes.  They invite relatives or friends to join them.</p>
+  <p><b>8. SANTO ENTIERRO PROCESSION</b><br>Afterwards, the procession of the Santo Entierro – a wooden sculpture depicting the dead body of Christ – and other holy images is held.</p>
+  <p>In Comembo, it is followed by the procession of the Santo Entierro Soledad, where an image of the Virgin Mary is accompanied by "grieving" women dressed in black.</p>
+  <p>In many areas, parishioners perform the senakulo or "passion play", dramatizing Jesus' Passion.</p>
+  <p><b>9. MISA DE GALLO (SIMBANG GABI)</b>Misa de Gallo (Rooster’s Mass) is a nine-day novena mass preceding the Christmas day. It was called the Rooster’s mass because it happens at the dawn where roosters usually crow. The nine-day novena also symbolizes the 9 months of Mary’s divine pregnancy.</p>
+  <p><b>10. SIETE PALABRAS (SEVEN LAST WORDS)</b>The main activity on Good Friday is the “Siete Palabras” or Seven Last Words, starting in churches from 12 noon and ending at 3 p.m. when Jesus died.  Then there would be a three-act liturgy, and a procession of religious images at the end.  The religious images are often veiled in black and carried through towns in carrozas (carriages).  Its highlight would be the image of the dead Jesus.</p>
+  <p>In the evening, the Soledad Procession commences.  The highlight of this procession would be the search of Jesus by the tres marias (Three Marias, referring to Maria Magdalena, the sinner turned saint; Maria Cleofe, mother of the apostle James the Younger; and Maria Jacobe, mother of the apostles James the Greater and John).</p>
+</div>

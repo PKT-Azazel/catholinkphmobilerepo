@@ -1,0 +1,187 @@
+<h1>Commandments</h1>
+<div class="select-topic-container">
+    <select id="commandments-select" (change)="UpdateSelect()" required>
+        <option value="" disabled selected hidden>Select a topic...</option>
+        <option value="0">Sin</option>
+        <option value="1">Virtues</option>
+        <option value="2">Introduction to the Commandments</option>
+        <option value="3">Love for God(First Three Commandments)</option>
+        <option value="4">Love for Neighbor (4th - 10th Commandments)</option>
+    </select>
+</div>
+
+<div *ngIf="selectElementVal === '0'">
+    <h2>Sin</h2>
+    <p>Sin is an offense against reason, truth, and right conscience; it is failure in genuine love for God and neighbor caused by a perverse attachment to certain goods. It wounds the nature of man and injures human solidarity. It has been defined as "an utterance, a deed, or a desire contrary to the eternal law." </p>
+    <p>Sin is an offense against God: "Against you, you alone, have I sinned, and done that which is evil in your sight." Sin sets itself against God's love for us and turns our hearts away from it. Like the first sin, it is disobedience, a revolt against God through the will to become "like gods," knowing and determining good and evil. Sin is thus "love of oneself even to contempt of God."In this proud self-exaltation, sin is diametrically opposed to the obedience of Jesus, which achieves our salvation.</p>
+    <p>It is precisely in the Passion, when the mercy of Christ is about to vanquish it, that sin most clearly manifests its violence and its many forms: unbelief, murderous hatred, shunning and mockery by the leaders and the people, Pilate's cowardice and the cruelty of the soldiers, Judas' betrayal - so bitter to Jesus, Peter's denial and the disciples' flight. However, at the very hour of darkness, the hour of the prince of this world, the sacrifice of Christ secretly becomes the source from which the forgiveness of our sins will pour forth inexhaustibly. <b>(Source: CCC 1849-1851)</b></p>
+    <b>The Seven Capital Sins:</b>
+    <ul>
+      <li>Greed</li>
+      <li>Pride</li>
+      <li>Envy</li>
+      <li>Anger</li>
+      <li>Lust</li>
+      <li>Gluttony</li>
+      <li>Sloth</li>
+    </ul>
+</div>
+
+<div *ngIf="selectElementVal === '1'">
+  <h2>Virtues</h2>
+  <p>“A Virtue is an interior disposition, a positive habit, a passion that has been placed at the service of the good. [1803,1833]</p>
+  <p>“You, therefore, must be perfect, as your heavenly Father is perfect” (Mt 5:48). That means that we must change on our way to God. By our human abilities we can do that only in fits and starts. With his grace God supports the human virtues and gives us, above and beyond that, the so-called supernatural virtues which help us to come closer to God and live more securely in his light.” <b>(Youth Catechism 299)</b></p>
+  <b>Four Cardinal Virtues</b>
+  <ul>
+    <li>Justice</li>
+    <li>Prudence</li>
+    <li>Temperance</li>
+    <li>Fortitude</li>
+  </ul>
+  <b>Three Theological Virtues:</b>
+  <ul>
+    <li>Justice</li>
+    <li>Prudence</li>
+    <li>Temperance</li>
+    <li>Fortitude</li>
+  </ul>
+</div>
+
+<div *ngIf="selectElementVal === '2'">
+  <h2>Introduction to Commandments</h2>
+  <p>"What good deed must I do, to have eternal life?" - "If you would enter into life, keep the commandments" (Mt 19:16-17).</p>
+  <p>By his life and by his preaching Jesus attested to the permanent validity of the Decalogue. 2077 The gift of the Decalogue is bestowed from within the covenant concluded by God with his people. God's commandments take on their true meaning in and through this covenant.</p>
+  <p>In fidelity to Scripture and in conformity with Jesus' example, the tradition of the Church has always acknowledged the primordial importance and significance of the Decalogue.</p>
+  <p>The Decalogue forms an organic unity in which each "word" or "commandment" refers to all the others taken together. To transgress one commandment is to infringe the whole Law (cf ⇒ Jas 2:10-11).</p>
+  <p>The Decalogue contains a privileged expression of the natural law. It is made known to us by divine revelation and by human reason.</p>
+  <p>The Ten Commandments, in their fundamental content, state grave obligations. However, obedience to these precepts also implies obligations in matter which is, in itself, light. What God commands he makes possible by his grace. <b>(CCC 2075-2082)</b></p>
+</div>
+
+<div *ngIf="selectElementVal === '3'">
+  <h2>Love for God(First Three Commandments)</h2>
+  <h3>I. I am the Lord your God, you shall not have other gods besides me</h3>
+  <p>"You shall love the Lord your God with all your heart, and with all your soul and with all your strength" (⇒ Deut 6:5).</p>
+  <p>The first commandment summons man to believe in God, to hope in him, and to love him above all else.</p>
+  <p>"You shall worship the Lord your God" ( Mt 4:10). Adoring God, praying to him, offering him the worship that belongs to him, fulfilling the promises and vows made to him are acts of the virtue of religion which fall under obedience to the first commandment.</p>
+  <p>The duty to offer God authentic worship concerns man both as an individual and as a social being.</p>
+  <p>"Men of the present day want to profess their religion freely in private and in public" (DH 15).</p>
+  <p>Superstition is a departure from the worship that we give to the true God. It is manifested in idolatry, as well as in various forms of divination and magic.</p>
+  <p>Tempting God in words or deeds, sacrilege, and simony are sins of irreligion forbidden by the first commandment.</p>
+  <p>Since it rejects or denies the existence of God, atheism is a sin against the first commandment.</p>
+  <p>The veneration of sacred images is based on the mystery of the Incarnation of the Word of God. It is not contrary to the first commandment. <b>(Source: CCC 2133-2141)</b></p>
+
+  <h3>II. You shall not take the name of the Lord your God in Vain</h3>
+  <p>"O Lord, our Lord, how majestic is your name in all the earth" </p>
+  <p>The second commandment enjoins respect for the Lord's name. the name of the Lord is holy.</p>
+  <p>The second commandment forbids every improper use of God's name. Blasphemy is the use of the name of God, of Jesus Christ, of the Virgin Mary, and of the saints in an offensive way.</p>
+  <p>False oaths call on God to be witness to a lie. Perjury is a grave offence against the Lord who is always faithful to his promises.</p>
+  <p>"Do not swear whether by the Creator, or any creature, except truthfully, of necessity, and with reverence" (St. Ignatius of Loyola, Spiritual Exercises, 38).</p>
+  <p>In Baptism, the Christian receives his name in the Church. Parents, godparents, and the pastor are to see that he be given a Christian name. The patron saint provides a model of charity and the assurance of his prayer.</p>
+  <p>The Christian begins his prayers and activities with the Sign of the Cross: "in the name of the Father and of the Son and of the Holy Spirit. Amen."</p>
+  <p>God calls each one by name <b>( CCC 2160-2167)</b></p>
+
+  <h3>III. Keep holy the Sabbath day </h3>
+  <p>"Observe the Sabbath day, to keep it holy"(Deut 5:12). "The seventh day is a Sabbath of solemn rest, holy to the Lord" (Ex 31:15).</p>
+  <p>The Sabbath, which represented the completion of the first creation, has been replaced by Sunday which recalls the new creation inaugurated by the Resurrection of Christ.</p>
+  <p>The Church celebrates the day of Christ's Resurrection on the "eighth day," Sunday, which is rightly called the Lord's Day (cf SC 106).</p>
+  <p>"Sunday . . . is to be observed as the foremost holy day of obligation in the universal Church" (CIC, can. 1246 # 1). "On Sundays and other holy days of obligation the faithful are bound to participate in the Mass" (CIC, can. 1247).</p>
+  <p>"On Sundays and other holy days of obligation the faithful are bound . . . to abstain from those labors and business concerns which impede the worship to be rendered to God, the joy which is proper to the Lord's Day, or the proper relaxation of mind and body" (CIC, can. 1247).</p>
+  <p>The institution of Sunday helps all "to be allowed sufficient rest and leisure to cultivate their amilial, cultural, social, and religious lives" (GS 67 # 3).</p>
+  <p>Every Christian should avoid making unnecessary demands on others that would hinder them from observing the Lord's Day.</p>
+  
+  <b class="source">(Source: CCC 2189-2195)</b>
+</div>
+
+<div *ngIf="selectElementVal === '4'">
+  <h2>Love for Neighbor (4th - 10th Commandments)</h2>
+  <h3>IV. Honor your father and your mother, that your days may be long in the land which the Lord your God gives you.</h3>
+  <p>"Honor your father and your mother" (Deut 5:16; Mk 7:10).</p>
+  <p>According to the fourth commandment, God has willed that, after him, we should honor our parents and those whom he has vested with authority for our good.</p>
+  <p>The conjugal community is established upon the covenant and consent of the spouses. Marriage and family are ordered to the good of the spouses, to the procreation and the education of children.</p>
+  <p>"The well-being of the individual person and of both human and Christian society is closely bound up with the healthy state of conjugal and family life" (GS 47 # 1).</p>
+  <p>Children owe their parents respect, gratitude, just obedience, and assistance. Filial respect fosters harmony in all of family life.</p>
+  <p>Parents have the first responsibility for the education of their children in the faith, prayer, and all the virtues. They have the duty to provide as far as possible for the physical and spiritual needs of their children.</p>
+  <p>Parents should respect and encourage their children's vocations. They should remember and teach that the first calling of the Christian is to follow Jesus.</p>
+  <p>Public authority is obliged to respect the fundamental rights of the human person and the conditions for the exercise of his freedom.</p>
+  <p>It is the duty of citizens to work with civil authority for building up society in a spirit of truth, justice, solidarity, and freedom.</p>
+  <p>Citizens are obliged in conscience not to follow the directives of civil authorities when they are contrary to the demands of the moral order. "We must obey God rather than men" (Acts 5:29).</p>
+  <p>Every society's judgments and conduct reflect a vision of man and his destiny. Without the light the Gospel sheds on God and man, societies easily become totalitarian.</p>
+  <b class="source">(Source: CCC 2247-2257)</b>
+
+  <h3>V. You shall not kill</h3>
+  <p>"In [God's] hand is the life of every living thing and the breath of all mankind" (Job 12:10).</p>
+  <p>Every human life, from the moment of conception until death, is sacred because the human person has been willed for its own sake in the image and likeness of the living and holy God.</p>
+  <p>The murder of a human being is gravely contrary to the dignity of the person and the holiness of the Creator.</p>
+  <p>The prohibition of murder does not abrogate the right to render an unjust aggressor unable to inflict harm. Legitimate defense is a grave duty for whoever is responsible for the lives of others or the common good.</p>
+  <p>From its conception, the child has the right to life. Direct abortion, that is, abortion willed as an end or as a means, is a "criminal" practice (GS 27 # 3), gravely contrary to the moral law. The Church imposes the canonical penalty of excommunication for this crime against human life.</p>
+  <p>Because it should be treated as a person from conception, the embryo must be defended in its integrity, cared for, and healed like every other human being.</p>
+  <p>Intentional euthanasia, whatever its forms or motives, is murder. It is gravely contrary to the dignity of the human person and to the respect due to the living God, his Creator.</p>
+  <p>Suicide is seriously contrary to justice, hope, and charity. It is forbidden by the fifth commandment.</p>
+  <p>Scandal is a grave offense when by deed or omission it deliberately leads others to sin.</p>
+  <p>Because of the evils and injustices that all war brings with it, we must do everything reasonably possible to avoid it. The Church prays: "From famine, pestilence, and war, O Lord, deliver us."</p>
+  <p>The Church and human reason assert the permanent validity of the moral law during armed conflicts. Practices deliberately contrary to the law of nations and to its universal principles are crimes.</p>
+  <p>"The arms race is one of the greatest curses on the human race and the harm it inflicts on the poor is more than can be endured" (GS 81 # 3).</p>
+  <p>"Blessed are the peacemakers, for they shall be called sons of God" (Mt 5:9).</p>
+  <b class="source">(Source: CCC 2318-2328)</b>
+
+  <h3>VI. You shall not commit adultery</h3>  
+  <p>"Love is the fundamental and innate vocation of every human being" (FC 11).</p>
+  <p>By creating the human being man and woman, God gives personal dignity equally to the one and the other. Each of them, man and woman, should acknowledge and accept his sexual identity.</p>
+  <p>Christ is the model of chastity. Every baptized person is called to lead a chaste life, each according to his particular state of life.</p>
+  <p>Chastity means the integration of sexuality within the person. It includes an apprenticeship in self-mastery.</p>
+  <p>Among the sins gravely contrary to chastity are masturbation, fornication, pornography, and homosexual practices.</p>
+  <p>The covenant which spouses have freely entered into entails faithful love. It imposes on them the obligation to keep their marriage indissoluble.</p>
+  <p>Fecundity is a good, a gift and an end of marriage. By giving life, spouses participate in God's fatherhood.</p>
+  <p>The regulation of births represents one of the aspects of responsible fatherhood and motherhood. Legitimate intentions on the part of the spouses do not justify recourse to morally unacceptable means (for example, direct sterilization or contraception).</p>
+  <p>Adultery, divorce, polygamy, and free union are grave offenses against the dignity of marriage.</p>
+  <b class="source">(Source: CCC 2392-2400)</b>
+
+  <h3>VII. You shall not steal</h3>
+  <p>"You shall not steal" (Ex 20:15; Deut 5:19). "Neither thieves, nor the greedy, nor robbers will inherit the kingdom of God" (1 Cor 6:10).</p>
+  <p>The seventh commandment enjoins the practice of justice and charity in the administration of earthly goods and the fruits of men's labor.</p>
+  <p>The goods of creation are destined for the entire human race. the right to private property does not abolish the universal destination of goods.</p>
+  <p>The seventh commandment forbids theft. Theft is the usurpation of another's goods against the reasonable will of the owner.</p>
+  <p>Every manner of taking and using another's property unjustly is contrary to the seventh commandment. the injustice committed requires reparation. Commutative justice requires the restitution of stolen goods.</p>
+  <p>The moral law forbids acts which, for commercial or totalitarian purposes, lead to the enslavement of human beings, or to their being bought, sold or exchanged like merchandise.</p>
+  <p>The dominion granted by the Creator over the mineral, vegetable, and animal resources of the universe cannot be separated from respect for moral obligations, including those toward generations to come.</p>
+  <p>Animals are entrusted to man's stewardship; he must show them kindness. They may be used to serve the just satisfaction of man's needs.</p>
+  <p>The Church makes a judgment about economic and social matters when the fundamental rights of the person or the salvation of souls requires *. She is concerned with the temporal common good of men because they are ordered to the sovereign Good, their ultimate end.</p>
+  <p>Man is himself the author, center, and goal of all economic and social life. the decisive point of the social question is that goods created by God for everyone should in fact reach everyone in accordance with justice and with the help of charity.</p>
+  <p>The primordial value of labor stems from man himself, its author and beneficiary. By means of his labor man participates in the work of creation. Work united to Christ can be redemptive.</p>
+  <p>True development concerns the whole man. It is concerned with increasing each person's ability to respond to his vocation and hence to God's call (cf CA 29).</p>
+  <p>Giving alms to the poor is a witness to fraternal charity: it is also a work of justice pleasing to God.</p>
+  <p>How can we not recognize Lazarus, the hungry beggar in the parable (cf Lk 17:19-31), in the multitude of human beings without bread, a roof or a place to stay? How can we fail to hear Jesus: "As you did it not to one of the least of these, you did it not to me" (Mt 25:45)?</p>
+  <b class="source">(Source: CCC 2450-2463)</b>
+
+  <h3>VIII. You shall not bear false witness against your neighbor.</h3>
+  <p>"You shall not bear false witness against your neighbor" (Ex 20:16). Christ's disciples have "put on the new man, created after the likeness of God in true righteousness and holiness" (Eph 4:24).</p>
+  <p>Truth or truthfulness is the virtue which consists in showing oneself true in deeds and truthful in words, and guarding against duplicity, dissimulation, and hypocrisy.</p>
+  <p>The Christian is not to "be ashamed of testifying to our Lord" (2 Tim 1:8) in deed and word. Martyrdom is the supreme witness given to the truth of the faith.</p>
+  <p>Respect for the reputation and honor of persons forbids all detraction and calumny in word or attitude.</p>
+  <p>Lying consists in saying what is false with the intention of deceiving the neighbor who has the right to the truth.</p>
+  <p>An offense committed against the truth requires reparation.</p>
+  <p>The golden rule helps one discern, in concrete situations, whether or not it would be appropriate to reveal the truth to someone who asks for it.</p>
+  <p>"The sacramental seal is inviolable" (CIC, can. 983 # 1). Professional secrets must be kept. Confidences prejudicial to another are not to be divulged.</p>
+  <p>Society has a right to information based on truth, freedom, and justice. One should practice moderation and discipline in the use of the social communications media.</p>
+  <p>The fine arts, but above all sacred art, "of their nature are directed toward expressing in some way the infinite beauty of God in works made by human hands. Their dedication to the increase of God's praise and of his glory is more complete, the more exclusively they are devoted to turning men's minds devoutly toward God" (SC 122).</p>
+  <b class="source">(Source: CCC 2504-2513)</b>
+
+  <h3>IX. You shall not covet your neighbor's house</h3>
+  <p>"Everyone who looks at a woman lustfully has already committed adultery with her in his heart" (Mt 5:28).</p>
+  <p>The ninth commandment warns against lust or carnal concupiscence.</p>
+  <p>The struggle against carnal lust involves purifying the heart and practicing temperance.</p>
+  <p>Purity of heart will enable us to see God: it enables us even now to see things according to God.</p>
+  <p>Purification of the heart demands prayer, the practice of chastity, purity of intention and of vision.</p>
+  <p>Purity of heart requires the modesty which is patience, decency, and discretion. Modesty protects the intimate center of the person.</p>
+  <b class="source">(Source: CCC 2528-2533)</b>
+
+  <h3>X. You shall not covet your Neighbours’ goods</h3>
+  <p>"Where your treasure is, there will your heart be also" (Mt 6:21).</p>
+  <p>The tenth commandment forbids avarice arising from a passion for riches and their attendant power.</p>
+  <p>Envy is sadness at the sight of another's goods and the immoderate desire to have them for oneself. It is a capital sin.</p>
+  <p>The baptized person combats envy through good-will, humility, and abandonment to the providence of God.</p>
+  <p>Christ's faithful "have crucified the flesh with its passions and desires" (Gal 5:24); they are led by the Spirit and follow his desires.</p>
+  <p>Detachment from riches is necessary for entering the Kingdom of heaven. "Blessed are the poor in spirit."</p>
+  <p>"I want to see God" expresses the true desire of man. Thirst for God is quenched by the water of eternal life (cf In 4:14).</p>
+  <b class="source">(Source: CCC 2551-2557)</b>
+</div>

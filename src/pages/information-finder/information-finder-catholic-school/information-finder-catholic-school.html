@@ -1,0 +1,199 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Information Directories</h1>
+        <p>Search information about churches, groups, institutions, ministries and services of the Philippine Catholic Church.</p>
+    </ion-card>
+
+    <ion-card class="search" no-padding text-center>
+        <div class="search-bar-container">
+            <div class="search-label">
+                <span>Please find here:</span>
+            </div>
+            <div class="search-input-container">
+                <div class="search-input-contents">
+                    <input type="text" placeholder="" #searchInput/>
+                </div>
+                <div class="search-btn-container" (click)='OnSearchClick(searchInput.value)'>
+                    <span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div>
+        <p class="desc">Search for an Educational Institution</p>
+    </div>
+
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddModal()" class="addBtn">
+            Add Catholic School
+        </span>
+    </div>
+
+    <div class="search-results-container" *ngIf="(isSearchTriggered)">
+        <p *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results-header" style="text-align: left;text-decoration : underline;">Catholic Schools List</p>
+        <p *ngIf="((searchResults.length <1) && (!isSearchLoading))" class="search-results-header" style="text-align: left;">No results found.</p>
+        <ul *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results">
+            <li *ngFor="let item of searchResults">
+                <div class="search-results-card">
+                    <div class="sr-card-image-container">
+                        <img *ngIf="item.image[0]" src="{{item.image[0].path}}">
+                    </div>
+                    <div class="sr-card-info-container">
+                        <span class="sr-card-info-title">{{item.name}}</span>
+                        <span class="sr-card-info-val"><strong>Management</strong> : {{item.management}}</span>
+                        <span class="sr-card-info-val"><strong>Director / Directress / Principal</strong> : {{item.directorDirectressPrincipal}}</span>
+                        <span class="sr-card-info-val"><strong>Address</strong> : {{item.address}}</span>
+                        <span class="sr-card-info-val"><strong>Contact No.</strong> {{item.contactNo}}</span>
+                        <span class="sr-card-info-val"><strong>Website</strong> : <a href="{{item.website}}" target="_blank">{{item.website}}</a></span>
+                        <span class="sr-card-info-val"><strong>Email</strong> : {{item.email}}</span>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div *ngIf="isUserAdmin" class="edit-del-btn-container" >
+                    <span class="editBtn" (click)="ShowEditModal(item)">
+                        Edit
+                    </span>
+                    <span class="delBtn" (click)="OnDeleteItem(item._id)">
+                        Delete
+                    </span>
+                </div>
+            </li>
+        </ul> 
+    </div>
+</ion-content>
+
+<div *ngIf="showAddModal" class="add-modal-container">
+    <div class="add-modal">
+        <h1 class='modal-title'>Add new Catholic School</h1>
+        <div class="modal-close" (click)="CloseAddModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewCatholicSchool(f)">
+                <table>
+                    <tr><td><label for="name">Name</label></td></tr>
+                    <tr><td><input type="text" name="name" id="name" ngModel></td></tr>
+
+                    <tr><td><label for="management">Management</label></td></tr>
+                    <tr><td><input type="text" name="management" id="management" ngModel></td></tr>
+        
+                    <tr><td><label for="address">Address</label></td></tr>
+                    <tr><td><input type="text" name="address" id="address" ngModel></td></tr>
+                
+                    <tr><td><label for="directorDirectressPrincipal">Director / Directress / Principal</label></td></tr>
+                    <tr><td><input type="text" name="directorDirectressPrincipal" id="directorDirectressPrincipal" ngModel></td></tr>
+                
+                    <tr><td><label for="contactNo">Contact No.</label></td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" ngModel></td></tr>
+                
+                    <tr><td><label for="website">Website</label></td></tr>
+                    <tr><td><input type="text" name="website" id="website" ngModel></td></tr>
+
+                    <tr><td><label for="email">Email</label></td></tr>
+                    <tr><td><input type="text" name="email" id="email" ngModel></td></tr>
+
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+                <img id="add-form-image-preview" style="display:block; width:100px; height: 100px; object-fit: cover;">
+                <input id="add-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showEditModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Catholic School</h1>
+        <div class="modal-close" (click)="CloseEditModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditCatholicSchool(f,recordToEdit._id,recordToEdit.image[0])">
+                <table>
+                    <tr><td><label for="name">Name</label></td></tr>
+                    <tr><td><input type="text" name="name" id="name" [ngModel]="recordToEdit.name"></td></tr>
+
+                    <tr><td><label for="management">Management</label></td></tr>
+                    <tr><td><input type="text" name="management" id="management" [ngModel]="recordToEdit.management"></td></tr>
+        
+                    <tr><td><label for="address">Address</label></td></tr>
+                    <tr><td><input type="text" name="address" id="address" [ngModel]="recordToEdit.address"></td></tr>
+                
+                    <tr><td><label for="directorDirectressPrincipal">Director / Directress / Principal</label></td></tr>
+                    <tr><td><input type="text" name="directorDirectressPrincipal" id="directorDirectressPrincipal" [ngModel]="recordToEdit.directorDirectressPrincipal"></td></tr>
+                
+                    <tr><td><label for="contactNo">Contact No.</label></td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" [ngModel]="recordToEdit.contactNo"></td></tr>
+                
+                    <tr><td><label for="website">Website</label></td></tr>
+                    <tr><td><input type="text" name="website" id="website" [ngModel]="recordToEdit.website"></td></tr>
+
+                    <tr><td><label for="email">Email</label></td></tr>
+                    <tr><td><input type="text" name="email" id="email" [ngModel]="recordToEdit.email"></td></tr>
+
+                </table>
+
+                <label>Image</label>
+                <div class="form-dynamic-contents-container"></div>
+
+                <img *ngIf="recordToEdit.image[0]" src="{{recordToEdit.image[0].path}}" id="edit-form-image-preview" style="display:block; width:100px; height: 100px; object-fit: cover;">
+                <img *ngIf="!(recordToEdit.image[0])" id="edit-form-image-preview" style="display:block; width:100px; height: 100px; object-fit: cover;">
+                <input id="edit-form-image-input" style="margin-bottom:3px; margin-top:5px; width:100%;" type="file" accept="image/*">
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

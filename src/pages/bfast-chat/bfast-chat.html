@@ -1,0 +1,359 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/bfast/bfast1290.png');">
+  <ion-card class="header" no-margin>
+    <h1>Bfast Community</h1>
+    <h2 class="chatroom-name">{{ selectedChatRoom?.chatRoomName }} Chatroom</h2>
+    <div class="online-users-count-container">
+      <div class="online-users-count">
+          <span><i class="fa fa-user-o" aria-hidden="true"></i></span>
+          <span>{{ connectedUsersInRoom }} Online</span>
+      </div>
+    </div>
+    <div class="links-container">
+      <ul class="links">
+        <ng-container *ngFor="let connectedUser of connectedUsers" >
+          <!-- <ng-container *ngIf="selectedChatroom"> -->
+            <li (click)="CreatePrivateMessage(connectedUser)"  *ngIf="connectedUser.roomJoined._id === selectedChatRoom._id" class="item">
+              <div class="image-container">
+                  <img *ngIf="connectedUser.info.image" src="{{ connectedUser.info.image }}"/>
+                  <img *ngIf="!(connectedUser.info.image)" src="assets/imgs/bfast/avatar-default.png"/>
+              </div>
+              <div class="info-container">
+                  <span class="name">{{ connectedUser.info.fname }} {{ connectedUser.info.lname }}</span>
+                  <span class="other-info">{{ connectedUser.info.email }}</span>
+              </div>
+              <div style="clear:both"></div>
+            </li>
+          <!-- </ng-container> -->
+        </ng-container>
+      </ul>
+    </div>
+  </ion-card>
+  <div class="main-contents">
+      <div class="header-tabs">
+          <ul class="tabs">
+              <li (click)="selectedTab='chat'">
+                  <span><i class="fa fa-comments-o" aria-hidden="true"></i></span>
+                  <span>Chat</span>
+              </li>
+              <li (click)="selectedTab='chatRooms'">
+                  <span><i class="fa fa-comments-o" aria-hidden="true"></i></span>
+                  <span>Chatrooms</span>
+              </li>
+              <li (click)="selectedTab='privateMessages'">
+                  <span><i class="fa fa-comments-o" aria-hidden="true"></i></span>
+                  <span>Private Messages</span>
+              </li>
+              <li (click)="selectedTab='profile'">
+                  <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                  <span>Profile</span>
+              </li>
+              <div style="clear:both"></div>
+          </ul>
+
+      </div>
+      <div *ngIf="selectedTab==='chat'">
+          <div #chatContents class="chat-contents-container">
+              <!-- <div class="chats-loading">Loading chat records. Please wait...</div> -->
+              <div  *ngIf="showChatLoading" class="loadingContainer">
+                  <div class="loading">
+                      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                      <span>Loading chat records, please wait...</span>
+                  </div>
+              </div>
+              <div *ngIf="showChatError" class="errorsContainer">
+                  <div class="error">
+                      <i class="fa fa-exclamation-triangle"></i>
+                      <span>Error! You are not logged in.</span>
+                  </div>
+              </div>
+              <ul class="chats">
+                  <li *ngFor="let chat of chats" class="chat">
+                      <div [ngClass]="[(chat.userId === user?._id) ? 'owner-is-user' : '']">
+                          <div class="image-container">
+                              <img *ngIf="chat.image" src="{{ chat.image  }}"/>
+                              <img *ngIf="!(chat.image)" src="assets/imgs/bfast/avatar-default.png"/>
+                          </div>
+                          <div class="message-container">
+                              <div class="message-data">
+                                  <span class="name">{{chat.fname}} {{chat.lname}}</span>
+                                  <span class="message">{{chat.message}}</span>
+                              </div>
+                          </div>
+                          <div style="clear:both"></div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="message-form-container">
+              <div class="message-form">
+                  <form (ngSubmit)="SendMessage($event,msgForm)" #msgForm="ngForm">
+                      <input type="text" name="message" id="msg-input" class="msg-input" placeholder="Type your message here..." required="" ngModel autocomplete="off"/>
+                      <button class="msg-send-btn" [disabled]="!msgForm.form.valid">
+                          <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+                      </button>
+                      <div style="clear:both"></div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="selectedTab==='chatRooms'">
+          <div class="chat-rooms-contents-container">
+              <div *ngIf="!user" class="errorsContainer">
+                  <div class="error">
+                      <i class="fa fa-exclamation-triangle"></i>
+                      <span>Error! You are not logged in.</span>
+                  </div>
+              </div>
+              <ng-container *ngIf="user">
+                  <h1 class="tab-header">Select Chat Room:</h1>
+                  <ul class="chat-rooms">
+                      <ng-container *ngFor="let chatRoom of chatRooms; let i = index" >
+                          <li *ngIf="!(chatRoom.isPrivateRoom)" class="chat-room" class="chat-room">
+                              <span class="chat-room-name">{{chatRoom.chatRoomName}}</span>
+                              <div class="chat-room-btn-container">
+                                  <span *ngIf="isUserAdmin" (click)="OnEditModalShow(chatRoom)" class="chat-room-btn">Edit</span>
+                                  <span *ngIf="((i != 0) && isUserAdmin)" (click)="DeleteChatRoom(chatRoom._id)" class="chat-room-btn">Delete</span>
+                                  <span (click)="InitializeChats(chatRoom)" class="chat-room-btn">Join Room</span>
+                              </div>
+                              <div style="clear:both"></div>
+                          </li>
+                      </ng-container>
+                  </ul>
+                  <div *ngIf="isUserAdmin" class="chat-room-add-btn">
+                      <span (click)="showAddModal = true" class="chat-room-btn">Add Chat Room</span>
+                  </div>
+              </ng-container>
+              
+          </div>
+      </div>
+      <div *ngIf="selectedTab==='privateMessages'">
+          <div class="chat-rooms-contents-container">
+              <div *ngIf="!user" class="errorsContainer">
+                  <div class="error">
+                      <i class="fa fa-exclamation-triangle"></i>
+                      <span>Error! You are not logged in.</span>
+                  </div>
+              </div>
+              <ng-container *ngIf="user">
+                  <h1 class="tab-header">Select Private Message:</h1>
+                  <ul class="chat-rooms">
+                      <ng-container *ngFor="let chatRoom of chatRooms; let i = index" >
+                          <!-- {{chatRoom.privateMembers.members}} -->
+                          
+                          <ng-container *ngIf="(chatRoom.isPrivateRoom)">
+                              <li *ngIf="(chatRoom.privateMembers.members.indexOf(user._id) >= 0)"  class="chat-room" class="chat-room">
+                                  <span class="chat-room-name">{{chatRoom.chatRoomName}}</span>
+                                  <div class="chat-room-btn-container">
+                                      <span (click)="OnEditModalShow(chatRoom)" class="chat-room-btn">Edit</span>
+                                      <span *ngIf="(i != 0)" (click)="DeleteChatRoom(chatRoom._id)" class="chat-room-btn">Delete</span>
+                                      <span (click)="InitializeChats(chatRoom)" class="chat-room-btn">Chat</span>
+                                  </div>
+                                  <div style="clear:both"></div>
+                              </li>
+                          </ng-container>
+                      </ng-container>
+                  </ul>
+              </ng-container>
+          </div>
+      </div>
+
+      <div *ngIf="selectedTab==='profile'">
+          <div class="profile-contents-container">
+              <div *ngIf="!user" class="errorsContainer">
+                  <div class="error">
+                      <i class="fa fa-exclamation-triangle"></i>
+                      <span>Error! You are not logged in.</span>
+                  </div>
+              </div>
+              <ng-container *ngIf="user">
+                  <h1 class="tab-header">Profile:</h1>
+                  <div class="profile-image-container">
+                      <img *ngIf="user.image" src="{{user.image}}"/>
+                      <img *ngIf="!(user.image)" src="assets/imgs/bfast/avatar-default.png"/>
+                  </div>
+                  <div class="profile-info-container">
+                      <span class="profile-info-label">First Name</span>
+                      <span class="profile-info-value">{{user.fname}}</span>
+                  </div>
+                  <div class="profile-info-container">
+                      <span class="profile-info-label">Last Name</span>
+                      <span class="profile-info-value">{{user.lname}}</span>
+                  </div>
+                  <div class="profile-info-container">
+                      <span class="profile-info-label">Email</span>
+                      <span class="profile-info-value">{{user.email}}</span>
+                  </div>
+                  <div class="profile-edit-btn-container">
+                      <span (click)="OnEditProfileModalShow()" class="profile-edit-btn">Edit Profile</span>
+                  </div>
+
+              </ng-container>
+          </div>
+      </div>
+
+  </div> <!--main contents  -->
+
+  <div style="clear:both"></div>
+  
+</ion-content>
+<!-- 
+<ion-footer>
+    <ion-toolbar class="my-footer" text-center>
+      <ion-buttons>
+        <button ion-button icon-only class="footer-btn">
+          <i class="fa fa-facebook"></i>
+        </button>
+        <button ion-button icon-only class="footer-btn">
+          <i class="fa fa-instagram"></i>
+        </button>
+        <button ion-button icon-only class="footer-btn">
+          <i class="fa fa-twitter"></i>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer> -->
+
+  
+<div *ngIf="showAddModal" class="add-modal-container">
+    <div class="add-modal">
+        <h1 class='modal-title'>Add new Chat Room</h1>
+        <div class="modal-close" (click)="showAddModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewChatRoom(f,false,'')">
+                <table>
+                    <tr><td><label for="chatRoomName">Name</label></td></tr>
+                    <tr><td><input type="text" name="chatRoomName" id="chatRoomName" ngModel></td></tr>
+                </table>
+               
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="showEditModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Chat Room</h1>
+        <div class="modal-close" (click)="showEditModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditChatRoom(f)">
+                <table>
+                    <tr><td><label for="chatRoomName">Name</label></td></tr>
+                    <tr><td><input type="text" name="chatRoomName" id="chatRoomName" [ngModel]="chatRoomToEdit.chatRoomName"></td></tr>
+                </table>
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="showProfileEditModal" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Profile</h1>
+        <div class="modal-close" (click)="showProfileEditModal=false">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditProfile(f)">
+                <div class="profile-image-container">
+                    <img id="edit-profile-image-preview" *ngIf="user.image" src="{{user.image}}"/>
+                    <img id="edit-profile-image-preview" *ngIf="!(user.image)" src="/assets/images/bfast/avatar-default.png"/>
+                </div>
+                <input id="edit-profile-image-input" type="file" accept="image/*">
+                <table class="edit-profile-table">
+                    <tr><td><label for="fname">First Name</label></td></tr>
+                    <tr><td><input type="text" name="fname" id="fname" [ngModel]="user.fname"></td></tr>
+                    <tr><td><label for="lname">Last Name</label></td></tr>
+                    <tr><td><input type="text" name="lname" id="lname" [ngModel]="user.lname"></td></tr>
+                    <tr><td><label for="fname">Email</label></td></tr>
+                    <tr><td><input type="text" name="email" id="email" [disabled]="true" [ngModel]="user.email"></td></tr>
+                </table>
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+  
+  

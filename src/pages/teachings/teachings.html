@@ -1,0 +1,51 @@
+<main-menu></main-menu>
+<ion-content >
+  <div class="slider-controllers">
+    <span (click)="UpdateNavSliderLeft()" class="left"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+    <span (click)="UpdateNavSliderRight()" class="right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+  </div>
+  
+  <div class="links-container">
+    <ul class="links">
+      <li (click)="UpdateNav($event,'doctrines')" class="item item-teachings active">doctrines</li>
+      <li (click)="UpdateNav($event,'sacraments')" class="item item-teachings">sacraments</li>
+      <li (click)="UpdateNav($event,'commandments')" class="item item-teachings">commandments</li>
+      <li (click)="UpdateNav($event,'prayers')" class="item item-teachings">prayers</li>
+      <li (click)="UpdateNav($event,'saints')" class="item item-teachings">saints</li>
+      <li (click)="UpdateNav($event,'devotions')" class="item item-teachings">devotions in the philippines</li>
+      <li (click)="UpdateNav($event,'documents')" class="item item-teachings">documents</li>
+      <li (click)="UpdateNav($event,'faqs')" class="item item-teachings">faqs</li>
+    </ul>
+  </div>
+  
+  <ion-content class="background" no-padding style="background-image: url('assets/imgs/learn/learn1290.png');">
+    <div class="main-contents-container">
+      <div class="main-contents">
+        <div *ngIf="((selectedNav === 'doctrines') && (selectedNav != undefined))" class="doctrines-container contents-container">
+          <app-doctrines></app-doctrines>
+        </div>
+        <div *ngIf="((selectedNav === 'sacraments') && (selectedNav != undefined))" class="sacraments-container contents-container">
+          <app-sacraments></app-sacraments>
+        </div>
+        <div *ngIf="((selectedNav === 'commandments') && (selectedNav != undefined))" class="commandments-container contents-container">
+          <app-commandments></app-commandments>
+        </div>
+        <div *ngIf="((selectedNav === 'prayers') && (selectedNav != undefined))" class="prayers-container contents-container">
+          <app-prayers></app-prayers>
+        </div>
+        <div *ngIf="((selectedNav === 'saints') && (selectedNav != undefined))" class="saints-container contents-container">
+          <app-saints></app-saints>
+        </div>
+        <div *ngIf="((selectedNav === 'devotions') && (selectedNav != undefined))" class="devotions-container contents-container">
+          <app-devotions></app-devotions>
+        </div>
+        <div *ngIf="((selectedNav === 'documents') && (selectedNav != undefined))" class="documents-container contents-container">
+          <app-documents></app-documents>
+        </div>
+        <div *ngIf="((selectedNav === 'faqs') && (selectedNav != undefined))" class="faqs-container contents-container">
+          <app-teachings-faq></app-teachings-faq>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-content>

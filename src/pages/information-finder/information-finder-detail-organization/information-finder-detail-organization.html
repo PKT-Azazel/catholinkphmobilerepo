@@ -1,0 +1,280 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header-other" no-margin>
+        <div class="centered-contents details-side-centered-contents">
+            <div class="details-side">
+                <h1 class="details-side-name">
+                    <span *ngIf = "organization">
+                        {{organization.organizationName}}
+                    </span>
+                    <span *ngIf = "!organization">
+                        Loading Organization
+                    </span>
+                </h1>
+                <ul class="details-side-link">
+                    <li (click)="UpdateTab('about')">About the Organization</li>
+                    <li (click)="UpdateTab('contact-us')">Contact Us</li>
+                    <li (click)="UpdateTab('events')">Events</li>
+                    <li (click)="UpdateTab('gallery')">Gallery</li>
+                </ul>
+                <div *ngIf="isUserAdminOrUploader" class="edit-del-btn-container" >
+                    <span class="editBtn" (click)="ShowEditModal()">
+                        Edit Organization
+                    </span>
+                    <span class="delBtn" (click)="OnDeleteItem()">
+                        Delete Organization
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div class="main-contents">
+        <div *ngIf="organization" class="details-main-content">
+            <div *ngIf="selectedTab ==='about'">
+                <h1>About the Organization </h1>
+                <div class="about-left">
+                    <img class="about-image" src="{{apiDomain + img.path}}" *ngFor="let img of organization.aboutImages">
+                </div>
+                <div class="about-right">
+                    <h2>Our Organization</h2>
+                    <div class="info">
+                        <span class="title">Organization Name: </span>
+                        <span class="value">{{organization.organizationName}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Nature of Organization: </span>
+                        <span class="value">{{organization.natureOfOrganization}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Date Established: </span>
+                        <span class="value">{{organization.dateEstablished}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Founder: </span>
+                        <span class="value">{{organization.founder}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Services: </span>
+                        <span class="value">{{organization.services}}</span>
+                    </div>
+                    <div class="info">
+                        <span class="title">Other Informations: </span>
+                        <p>{{organization.about}}</p>
+                    </div>
+                    
+                </div>
+                <div style="clear:both;"></div>
+                <div>
+                    <h2>Our Organization's Heads</h2>
+                    
+                    <div class="organization-head-container">
+                        <div class="head" *ngFor="let head of organization.organizationHead">
+                            <img class="head-image" src="{{apiDomain + head.path}}">
+                            <span class="head-name">{{head.name}}</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div *ngIf="selectedTab ==='gallery'">
+                <h1>Gallery</h1>
+                <div class="organization-gallery-container">
+                    <div *ngFor="let gallery of organization.gallery">
+                        <div class="organization-gallery">
+                            <div class="gallery-image-container">
+                                <img class="organization-gallery-image" src="{{apiDomain + gallery.path}}" >
+                            </div>
+                            <div class="organization-gallery-title-container">
+                                <span class="organization-gallery-title" > {{gallery.title}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            
+            <div *ngIf="selectedTab ==='contact-us'" class="contact-us">
+                <h1>Contact Us</h1>
+                <div class="contact-us-header">
+                    <span>Feel free to</span>
+                    <span>Call us</span>
+                </div>
+
+                <div class="contact-details-main-container">
+                    <div class="contact-details-container">
+                        <div class="contact-details-logo"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                        <div class="contact-details address">
+                            <span class="contact-details-header">Address</span>
+                            <span class="contact-details-value">{{organization.address}}</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-details-container">
+                        <div class="contact-details-logo"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                        <div class="contact-details phone">
+                            <span class="contact-details-header">Phone</span>
+                            <span class="contact-details-value">{{organization.contactNo}}</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-details-container">
+                        <div class="contact-details-logo"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
+                        <div class="contact-details mail">
+                            <span class="contact-details-header">Mail</span>
+                            <span class="contact-details-value">{{organization.emailAndWebsite}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="clear:both;"></div>
+                <agm-map [latitude]="gmapLatitude" [longitude]="gmapLongitude" [zoom]="15">
+                    <agm-marker [latitude]="gmapLatitude" [longitude]="gmapLongitude"></agm-marker>
+                </agm-map>
+            </div>
+
+            <div *ngIf="selectedTab ==='events'">
+                <h1>Events</h1>
+                <div class="events-calendar-selector">
+                    <span (click)="OnEventsNavLeft()" class="events-calendar-nav-icon left"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                    <div class="events-calendar-nav-items-container">
+                        <span (click)="UpdateSelectedNav(monthsList[eventsCalendarFirstNavMonth],eventsCalendarFirstNavYear)" class="events-calendar-nav-item">
+                            {{monthsList[eventsCalendarFirstNavMonth]}} {{eventsCalendarFirstNavYear}}
+                        </span>
+                        <span (click)="UpdateSelectedNav(monthsList[eventsCalendarSecondNavMonth],eventsCalendarSecondNavYear)" class="events-calendar-nav-item">
+                            {{monthsList[eventsCalendarSecondNavMonth]}} {{eventsCalendarSecondNavYear}}
+                        </span>
+                        <span (click)="UpdateSelectedNav(monthsList[eventsCalendarThirdNavMonth],eventsCalendarThirdNavYear)" class="events-calendar-nav-item">
+                            {{monthsList[eventsCalendarThirdNavMonth]}} {{eventsCalendarThirdNavYear}}
+                        </span>
+                    </div>
+                    <span (click)="OnEventsNavRight()" class="events-calendar-nav-icon right"><i class="fa fa-angle-right" aria-hidden="true"></i></span>   
+                </div>
+                <div class="events-calendar-main-container">                    
+                    <div *ngFor="let event of eventsSelectedItem" class="events-calendar-item-container">
+                        <div  class="events-calendar-item">
+                            <div class="events-calendar-header">
+                                <span>{{event.title}}</span>
+                            </div>
+                            <div class="events-calendar-content">
+                                <span class="timeline-circle">{{event.day}}</span>
+                                <div class="events-calendar-content-image-frame">
+                                    <img class="events-calendar-content-image" src="{{apiDomain + event.path}}">
+                                </div>
+                                <div class="events-calendar-content-description">
+                                    <span>{{event.description}}</span>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+   </div> <!--main contents  -->
+</ion-content>
+
+<div *ngIf="showEditModal && organization" class="edit-modal-container">
+    <div class="edit-modal">
+        <h1 class='modal-title'>Edit Organization</h1>
+        <div class="modal-close" (click)="CloseEditModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="EditItem(f)">
+                <table>
+                    <tr><td><label for="organizationName">Organization Name</label></td></tr>
+                    <tr><td><input type="text" name="organizationName" id="organizationName" [ngModel]="organization.organizationName"></td></tr>
+
+                    <tr><td><label for="about">Other Informations</label></td></tr>
+                    <tr><td><textarea name="about" id="about" [ngModel]="organization.about"></textarea></td></tr>
+        
+                    <tr><td>Address</td></tr>
+                    <tr><td><input type="text" name="address" id="address" [ngModel]="organization.address"></td></tr>
+
+                    <tr><td>Diocese</td></tr>
+                    <tr><td><input type="text" name="diocese" id="diocese" [ngModel]="organization.diocese"></td></tr>
+
+                    <tr><td>Email / Website</td></tr>
+                    <tr><td><input type="text" name="emailAndWebsite" id="emailAndWebsite" [ngModel]="organization.emailAndWebsite"></td></tr>
+
+                    <tr><td>Contact No.</td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" [ngModel]="organization.contactNo"></td></tr>
+
+                    <tr><td>Google Map Longitude</td></tr>
+                    <tr><td><input type="text" name="googleMapLongitude" id="googleMapLongitude" [ngModel]="organization.googleMapLongitude"></td></tr>
+
+                    <tr><td>Google Map Latitude</td></tr>
+                    <tr><td><input type="text" name="googleMapLatitude" id="googleMapLatitude" [ngModel]="organization.googleMapLatitude"></td></tr>
+                   
+                    <tr><td>Nature of Organization</td></tr>
+                    <tr><td><input type="text" name="natureOfOrganization" id="natureOfOrganization" [ngModel]="organization.natureOfOrganization"></td></tr>
+
+                    <tr><td>Date Established</td></tr>
+                    <tr><td><input type="text" name="dateEstablished" id="dateEstablished" [ngModel]="organization.dateEstablished"></td></tr>
+
+                    <tr><td>Founder</td></tr>
+                    <tr><td><input type="text" name="founder" id="founder" [ngModel]="organization.founder"></td></tr>
+<!-- 
+                    <tr><td>Organization's Head</td></tr>
+                    <tr><td><input type="text" name="organizationHead" id="organizationHead" ngModel></td></tr> -->
+
+                    <tr><td>Services</td></tr>
+                    <tr><td><input type="text" name="services" id="services" [ngModel]="organization.services"></td></tr>
+
+                </table>
+
+                <label>Events</label>
+                <div id="organization-events-container" class="form-dynamic-contents-container"></div>
+                <div class="add-event-btn-container">
+                    <span (click)="AddEvent(true)" class="add-event-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Event</span>
+                </div>
+
+                <label>About Images</label>
+                <div id="organization-about-images-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddAboutImage(true)" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Image</span>
+                </div>
+
+                <label>Organization's Head</label>
+                <div id="organization-heads-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddOrganizationHead(true)" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Organization's Head</span>
+                </div>
+
+                <label>Galleries</label>
+                <div id="organization-gallery-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddGallery(true)" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Gallery</span>
+                </div>
+                
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

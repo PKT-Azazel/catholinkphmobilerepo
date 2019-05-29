@@ -1,3 +1,623 @@
-page-home {
+.background {
+    background-color: black !important;
+    background-image: url("assets/imgs/home/home1290.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100%;
+}
 
+page-home {
+    .button-container {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .buttons {
+        cursor: pointer;
+    }
+
+    .logout {
+        position: fixed;
+        width: 230px;
+        cursor: pointer;
+    }
+    
+    .login-btn {
+        position: fixed;
+        top: 33%;
+        left: 10px;    
+    }
+    
+    .login {
+        width: 130px;
+    }
+    
+    .joinus-btn {
+        position: fixed;
+        top: 44%;
+        left: 90px;        
+    }
+    
+    .joinus {
+        width: 100px;
+    }
+
+    .logout {
+        width: 130px;
+        position: fixed;
+        top: 41%;
+        left: 0%;      
+    }
+
+    .send-help-btn {
+        position: fixed;
+        top: 13%;
+        left: 13%;
+    }
+    
+    .sendhelpbtn  {
+        width: 120px;
+    }
+    
+    .read-btn {
+        position: fixed;
+        top: 53%;
+        left: 35%;
+    }
+    
+    .readbtn {
+        width: 90px;
+    }
+    
+    .updates-btn {
+        position: fixed;
+        top: 38%;
+        left: 45%;              
+    }
+    
+    .updatesbtn {
+        width: 110px;
+    }
+    
+    .listen-btn {
+        position: fixed;
+        bottom: 10%;
+        left: 5%;
+    }
+    
+    .listenbtn {
+        width: 130px;
+    }
+
+    .visit-btn {
+        position: fixed;
+        top: 28%;
+        left: 55%;
+    }
+    
+    .visitbtn {
+        width: 100px;
+    }
+    
+    .hear-btn {
+        position: fixed;
+        top: 45%;
+        left: 63%;        
+    }
+    
+    .hearbtn {
+        width: 120px;
+    }
+    
+    .lets-chat-btn {
+        position: fixed;
+        bottom: 3%;
+        right: 8%;
+    }
+    
+    .letschatbtn {
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 320px) { 
+    .background {
+        background-color: black !important;
+        background-image: url("assets/imgs/home/home480.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 100vh;
+        width: 100%;
+    }
+
+    page-home {
+        .button-container {
+            height: 100vh;
+            width: 100%;
+        }
+    
+        .buttons {
+            cursor: pointer;
+        }
+    
+        .logout {
+            position: fixed;
+            width: 230px;
+            cursor: pointer;
+        }
+        
+        .login-btn {
+            position: fixed;
+            top: 33%;
+            left: 5px;    
+        }
+        
+        .login {
+            width: 100px;
+        }
+        
+        .joinus-btn {
+            position: fixed;
+            top: 44%;
+            left: 75px;        
+        }
+        
+        .joinus {
+            width: 80px;
+        }
+    
+        .logout {
+            width: 130px;
+            position: fixed;
+            top: 41%;
+            left: 0px;
+        }
+    
+        .send-help-btn {
+            position: fixed;
+            top: 14%;
+            left: 14%;
+        }
+        
+        .sendhelpbtn  {
+            width: 90px;
+        }
+        
+        .read-btn {
+            position: fixed;
+            top: 53%;
+            left: 35%;        
+        }
+        
+        .readbtn {
+            width: 80px;
+        }
+        
+        .updates-btn {
+            position: fixed;
+            top: 37%;
+            left: 43%;        
+        }
+        
+        .updatesbtn {
+            width: 100px;
+        }
+        
+        .listen-btn {
+            position: fixed;
+            bottom: 11%;
+            left: 5%;
+        }
+        
+        .listenbtn {
+            width: 100px;
+        }
+    
+        .visit-btn {
+            position: fixed;
+            top: 28%;
+            left: 58%;        
+        }
+        
+        .visitbtn {
+            width: 70px;
+        }
+        
+        .hear-btn {
+            position: fixed;
+            top: 44%;
+            left: 63%;        
+        }
+        
+        .hearbtn {
+            width: 100px;
+        }
+        
+        .lets-chat-btn {
+            position: fixed;
+            bottom: 3%;
+            right: 7%;
+        }
+        
+        .letschatbtn {
+            width: 90px;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) { 
+    .background {
+        background-color: black !important;
+        background-image: url("assets/imgs/home/home480.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 100vh;
+        width: 100%;
+    }
+
+    page-home {
+        .button-container {
+            height: 100vh;
+            width: 100%;
+        }
+    
+        .buttons {
+            cursor: pointer;
+        }
+    
+        .logout {
+            position: fixed;
+            width: 230px;
+            cursor: pointer;
+        }
+        
+        .login-btn {
+            position: fixed;
+            top: 33%;
+            left: 5px;    
+        }
+        
+        .login {
+            width: 100px;
+        }
+        
+        .joinus-btn {
+            position: fixed;
+            top: 44%;
+            left: 75px;        
+        }
+        
+        .joinus {
+            width: 80px;
+        }
+    
+        .logout {
+            width: 130px;
+            position: fixed;
+            top: 41%;
+            left: 0px;
+        }
+    
+        .send-help-btn {
+            position: fixed;
+            top: 14%;
+            left: 14%;
+        }
+        
+        .sendhelpbtn  {
+            width: 90px;
+        }
+        
+        .read-btn {
+            position: fixed;
+            top: 53%;
+            left: 35%;        
+        }
+        
+        .readbtn {
+            width: 80px;
+        }
+        
+        .updates-btn {
+            position: fixed;
+            top: 37%;
+            left: 43%;        
+        }
+        
+        .updatesbtn {
+            width: 100px;
+        }
+        
+        .listen-btn {
+            position: fixed;
+            bottom: 11%;
+            left: 5%;
+        }
+        
+        .listenbtn {
+            width: 100px;
+        }
+    
+        .visit-btn {
+            position: fixed;
+            top: 28%;
+            left: 58%;        
+        }
+        
+        .visitbtn {
+            width: 70px;
+        }
+        
+        .hear-btn {
+            position: fixed;
+            top: 44%;
+            left: 63%;        
+        }
+        
+        .hearbtn {
+            width: 100px;
+        }
+        
+        .lets-chat-btn {
+            position: fixed;
+            bottom: 3%;
+            right: 7%;
+        }
+        
+        .letschatbtn {
+            width: 90px;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) { 
+    .background {
+        background-color: black !important;
+        background-image: url("assets/imgs/home/home480.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 100vh;
+        width: 100%;
+    }
+
+    page-home {
+        .button-container {
+            height: 100vh;
+            width: 100%;
+        }
+    
+        .buttons {
+            cursor: pointer;
+        }
+    
+        .logout {
+            position: fixed;
+            width: 230px;
+            cursor: pointer;
+        }
+        
+        .login-btn {
+            position: fixed;
+            top: 33%;
+            left: 12px;    
+        }
+        
+        .login {
+            width: 100px;
+        }
+        
+        .joinus-btn {
+            position: fixed;
+            top: 44%;
+            left: 95px;        
+        }
+        
+        .joinus {
+            width: 80px;
+        }
+    
+        .logout {
+            width: 130px;
+            position: fixed;
+            top: 41%;
+            left: 0px;
+        }
+    
+        .send-help-btn {
+            position: fixed;
+            top: 14%;
+            left: 17%;
+        }
+        
+        .sendhelpbtn  {
+            width: 90px;
+        }
+        
+        .read-btn {
+            position: fixed;
+            top: 53%;
+            left: 35%;        
+        }
+        
+        .readbtn {
+            width: 80px;
+        }
+        
+        .updates-btn {
+            position: fixed;
+            top: 37%;
+            left: 43%;        
+        }
+        
+        .updatesbtn {
+            width: 100px;
+        }
+        
+        .listen-btn {
+            position: fixed;
+            bottom: 11%;
+            left: 5%;
+        }
+        
+        .listenbtn {
+            width: 100px;
+        }
+    
+        .visit-btn {
+            position: fixed;
+            top: 28%;
+            left: 58%;        
+        }
+        
+        .visitbtn {
+            width: 80px;
+        }
+        
+        .hear-btn {
+            position: fixed;
+            top: 44%;
+            left: 63%;               
+        }
+        
+        .hearbtn {
+            width: 110px;
+        }
+        
+        .lets-chat-btn {
+            position: fixed;
+            bottom: 3%;
+            right: 7%;
+        }
+        
+        .letschatbtn {
+            width: 90px;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .background {
+        background-color: black !important;
+        background-image: url("assets/imgs/home/home480.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 100vh;
+        width: 100%;
+    }
+
+    page-home {
+        .button-container {
+            height: 100vh;
+            width: 100%;
+        }
+    
+        .buttons {
+            cursor: pointer;
+        }
+    
+        .logout {
+            position: fixed;
+            width: 230px;
+            cursor: pointer;
+        }
+        
+        .login-btn {
+            position: fixed;
+            top: 32%;
+            left: 0px;
+        }
+        
+        .login {
+            width: 120px;
+        }
+        
+        .joinus-btn {
+            position: fixed;
+            top: 44%;
+            left: 80px;
+        }
+        
+        .joinus {
+            width: 90px;
+        }
+    
+        .logout {
+            width: 130px;
+            position: fixed;
+            top: 41%;
+            left: 0px;
+        }
+    
+        .send-help-btn {
+            position: fixed;
+            top: 14%;
+            left: 17%;     
+        }
+        
+        .sendhelpbtn  {
+            width: 100px;
+        }
+        
+        .read-btn {
+            position: fixed;
+            top: 52%;
+            left: 35%;               
+        }
+        
+        .readbtn {
+            width: 90px;
+        }
+        
+        .updates-btn {
+            position: fixed;
+            top: 38%;
+            left: 44%;        
+        }
+        
+        .updatesbtn {
+            width: 100px;
+        }
+        
+        .listen-btn {
+            position: fixed;
+            bottom: 11%;
+            left: 6%;       
+        }
+        
+        .listenbtn {
+            width: 115px;
+        }
+    
+        .visit-btn {
+            position: fixed;
+            top: 27%;
+            left: 58%;
+        }
+        
+        .visitbtn {
+            width: 90px;
+        }
+        
+        .hear-btn {
+            position: fixed;
+            top: 44%;
+            left: 60%;
+        }
+        
+        .hearbtn {
+            width: 120px;
+        }
+        
+        .lets-chat-btn {
+            position: fixed;
+            bottom: 3%;
+            right: 8%;
+        
+        }
+        
+        .letschatbtn {
+            width: 100px;
+        }
+    }
 }

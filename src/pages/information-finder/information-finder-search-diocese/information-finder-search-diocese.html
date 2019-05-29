@@ -1,0 +1,233 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/contacts/contacts1290.png');">
+    <ion-card class="header" no-margin>
+        <h1>Information Directories</h1>
+        <p>Search information about churches, groups, institutions, ministries and services of the Philippine Catholic Church.</p>
+    </ion-card>
+
+    <ion-card class="search" no-padding text-center>
+        <div class="search-bar-container">
+            <div class="search-label">
+                <span>Please find here:</span>
+            </div>
+            <div class="search-input-container">
+                <div class="search-input-contents">
+                    <input type="text" placeholder="" #searchInput/>
+                </div>
+                <div class="search-btn-container" (click)='OnSearchClick(searchInput.value)'>
+                    <span>
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+
+    <div>
+        <p class="desc">Search a Catholic Diocese in the Philippines.</p>
+    </div>
+
+    <div *ngIf="isUserAdmin" class="add-btn-container">
+        <span (click)="ShowAddModal()" class="addBtn">
+            Add Diocese
+        </span>
+    </div>
+
+    <div class="search-results-container" *ngIf="(isSearchTriggered)">
+        <p *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results-header" style="text-align: left;text-decoration : underline;">Dioceses List</p>
+        <p *ngIf="((searchResults.length <1) && (!isSearchLoading))" class="search-results-header" style="text-align: left;">No results found.</p>
+        <ul *ngIf="((searchResults.length >0) && (!isSearchLoading))" class="search-results">
+            <li *ngFor="let item of searchResults">
+                <div>
+                    <span (click)="RouteFromSearch(detailPage,item._id)" class="result-title">{{item.dioceseName}}</span>
+                </div>
+                <div>
+                    <span class="result-info">Address: {{item.address}}, Bishop: {{item.presentBishopName}}, Bishop Emeritus: {{item.auxiliaryBishopsName}}</span>
+                </div>
+            </li>
+        </ul> 
+    </div>
+
+</ion-content>
+
+<div *ngIf="showAddModal" class="add-modal-container">
+    <div class="add-modal">
+        <h1 class='modal-title'>Add new Diocese</h1>
+        <div class="modal-close" (click)="CloseAddModal()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div>
+            <form #f="ngForm" (ngSubmit)="AddNewDiocese(f)">
+                <table>
+                    <tr><td><label for="dioceseName">Diocese Name</label></td></tr>
+                    <tr><td><input type="text" name="dioceseName" id="dioceseName" ngModel></td></tr>
+
+                    <tr><td><label for="about">Other Informations</label></td></tr>
+                    <tr><td><textarea name="about" id="about" ngModel></textarea></td></tr>
+        
+                    <tr><td>Bishop</td></tr>
+                    <tr><td><input type="text" name="presentBishopName" id="presentBishopName" ngModel></td></tr>
+
+                    <tr><td>Bishop Emeritus</td></tr>
+                    <tr><td><input type="text" name="auxiliaryBishopsName" id="auxiliaryBishopsName" ngModel></td></tr>
+
+                    <tr><td>Vicar General</td></tr>
+                    <tr><td><input type="text" name="vicarGeneralName" id="vicarGeneralName" ngModel></td></tr>
+
+                    <!-- <tr><td>Office Address and Contact</td></tr>
+                    <tr><td><input type="text" name="officeAddressContact" id="officeAddressContact" ngModel></td></tr>
+
+                    <tr><td>Bishop's Residence Address and Contact</td></tr>
+                    <tr><td><input type="text" name="bishopOfficeAddressContract" id="bishopOfficeAddressContract" ngModel></td></tr> -->
+
+                    <tr><td>Provinces Covered</td></tr>
+                    <tr><td><input type="text" name="provincesCovered" id="provincesCovered" ngModel></td></tr>
+
+                    <tr><td>Cities / Municipalities Covered</td></tr>
+                    <tr><td><input type="text" name="citiesMunicipalitiesCovered" id="citiesMunicipalitiesCovered" ngModel></td></tr>
+
+                    <tr><td>Population</td></tr>
+                    <tr><td><input type="text" name="population" id="population" ngModel></td></tr>
+
+                    <tr><td>No. of Priests (Diocesan, Religious, Guests, On leave)</td></tr>
+                    <tr><td><input type="text" name="numberOfPriests" id="numberOfPriests" ngModel></td></tr>
+
+                    <tr><td>No. of Religious</td></tr>
+                    <tr><td><input type="text" name="numberOfReligious" id="numberOfReligious" ngModel></td></tr>
+
+                    <!-- <tr><td>Activities and Upcoming Events</td></tr>
+                    <tr><td><input type="text" name="activitiesAndUpcomingEvents" id="activitiesAndUpcomingEvents" ngModel></td></tr> -->
+
+                    <tr><td>Announcements / Circulars</td></tr>
+                    <tr><td><input type="text" name="announcementsCirculars" id="announcementsCirculars" ngModel></td></tr>
+                
+                    <tr><td><label for="address">Address</label></td></tr>
+                    <tr><td><input type="text" name="address" id="address" ngModel></td></tr>
+                
+                    <tr><td><label for="contactNo">Contact No.</label></td></tr>
+                    <tr><td><input type="text" name="contactNo" id="contactNo" ngModel></td></tr>
+                
+                    <tr><td><label for="emailAndWebsite">Email and Website</label></td></tr>
+                    <tr><td><input type="text" name="emailAndWebsite" id="emailAndWebsite" ngModel></td></tr>
+
+                    <tr><td><label for="googleMapLongitude">Google Map Longitude</label></td></tr>
+                    <tr><td><input type="text" name="googleMapLongitude" id="googleMapLongitude" ngModel></td></tr>
+
+                    <tr><td><label for="googleMapLatitude">Google Map Latitude</label></td></tr>
+                    <tr><td><input type="text" name="googleMapLatitude" id="googleMapLatitude" ngModel></td></tr>
+                </table>
+
+                <label>List of Vicariates</label>
+                <div id="diocese-vicariates-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-vicariates-container','diocese-vicariates-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Vicariate</span>
+                </div>
+
+                <label>List of Parishes</label>
+                <div id="diocese-parishes-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-parishes-container','diocese-parishes-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Parish</span>
+                </div>
+
+                <label>List of Schools</label>
+                <div id="diocese-schools-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-schools-container','diocese-schools-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add School</span>
+                </div>
+
+                <label>Church People</label>
+                <div id="diocese-counseling-centers-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-counseling-centers-container','diocese-counseling-centers-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Church Person</span>
+                </div>
+
+                <label>Retreat Houses / Pastoral Formation Houses</label>
+                <div id="diocese-retreat-houses-pastoral-formation-houses-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-retreat-houses-pastoral-formation-houses-container','diocese-retreat-houses-pastoral-formation-houses-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Retreat House / Pastoral Formation House</span>
+                </div>
+
+                <label>Chaplaincies / Hospitals with Chaplains</label>
+                <div id="diocese-chaplaincies-hospitals-with-chaplains-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-chaplaincies-hospitals-with-chaplains-container','diocese-chaplaincies-hospitals-with-chaplains-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Chaplaincies / Hospitals with Chaplains</span>
+                </div>
+
+                <label>Charitable Institutions</label>
+                <div id="diocese-charitable-institutions-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-charitable-institutions-container','diocese-charitable-institutions-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Charitable Institution</span>
+                </div>
+
+                <label>Associations and Religious Congregations</label>
+                <div id="diocese-associations-religious-congregations-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddDynamicTextInputNameAndLink('diocese-associations-religious-congregations-container','diocese-associations-religious-congregations-div')" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Association and Religious Congregation</span>
+                </div>
+
+
+                <label>List of Commissions and Commissioners</label>
+                <div id="diocese-commissions-and-commissioners-container" class="form-dynamic-contents-container"></div>
+                <div class="form-dynamic-contents-add-btn-container">
+                    <span (click)="AddCommissionsCommissioners()" class="form-dynamic-contents-add-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Commission and Commissioner</span>
+                </div>
+
+                <label>Schedules</label>
+                <div id="diocese-schedule-container" class="form-dynamic-contents-container"></div>
+                <div class="add-schedule-btn-container">
+                    <span (click)="AddSchedule()" class="add-schedule-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Schedule</span>
+                </div>
+
+                <label>Events</label>
+                <div id="diocese-events-container" class="form-dynamic-contents-container"></div>
+                <div class="add-event-btn-container">
+                    <span (click)="AddEvent()" class="add-event-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Event</span>
+                </div>
+
+                <label>About Images</label>
+                <div id="diocese-about-images-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddAboutImage()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Image</span>
+                </div>
+
+                <label>Priests</label>
+                <div id="diocese-priest-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddPriest()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Priest</span>
+                </div>
+
+
+                <label>Diocese in Action</label>
+                <div id="diocese-dia-container" class="form-dynamic-contents-container"></div>
+                <div class="add-file-btn-container">
+                    <span (click)="AddDia()" class="add-file-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Church in Action</span>
+                </div>
+
+                <div  *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>Saving data, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>{{successMessage}}</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngIf="!IsString(errorMessage)" class="error">
+                        <div *ngFor="let err of errorMessage">{{err.msg}}</div>
+                    </div>
+                    <div *ngIf="IsString(errorMessage)" class="error">
+                        <div>{{errorMessage}}</div>
+                    </div>
+                </div>
+
+                <div class="submit-btn-container">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

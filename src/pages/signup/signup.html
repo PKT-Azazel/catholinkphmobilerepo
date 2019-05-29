@@ -1,0 +1,60 @@
+<main-menu></main-menu>
+<ion-content class="background" no-padding style="background-image: url('assets/imgs/signup/signup1290.png');">
+    <ion-card class="header" no-margin>
+        <p>Please fill up this form to be one of our new Catholink Member.</p>
+    </ion-card>
+
+    <ion-card class="main-content" no-margin text-center>
+        <h1>Register</h1>
+
+        <div class="section-hr" style='background: url("assets/imgs/login/border-dot.png"); background-size: 15px;'></div>
+        <div class="form-container">
+            <form #f="ngForm" (ngSubmit)="SubmitRegistration(f)" text-left>
+                <span class="label">First Name</span>
+                <div>
+                    <input type="text" name="fname" id="fname" ngModel>
+                </div>
+                <span class="label">Last Name</span>
+                <div>
+                    <input type="text" name="lname" id="lname" ngModel>
+                </div>
+                <span class="label">Email</span>
+                <div>
+                    <input type="text" name="email" id="email" ngModel>
+                </div>
+                <span class="label">Password</span>
+                <div>
+                    <input type="password" name="password" id="password" ngModel>
+                </div>
+
+                <div *ngIf="showLoading" class="loadingContainer">
+                    <div class="loading">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        <span>signing up, please wait...</span>
+                    </div>
+                </div>
+                <div *ngIf="showSuccess" class="successContainer">
+                    <div class="success">
+                        <span>Registration Successful.</span>
+                    </div>
+                </div>
+                <div *ngIf="showError" class="errorsContainer">
+                    <div *ngFor="let error of errors" class="error">
+                        <span>{{error.msg}}</span>
+                    </div>
+                </div>
+                <div class="success"><br>
+                    <span>By registering, you agree to our:</span>
+                </div>
+                <div class="TOSCheckbox">
+                    <input type="checkbox" value="true" name="TOS" id="TOS" #c (change)="ToggleTOS(c)">
+                    <label for="TOS"></label>
+                    <span (click)="RouteTo(termsOfServicePage)"><u><i>Terms of Service Agreement</i></u></span>
+                </div>
+                <div class="signUpBtn">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </ion-card>
+</ion-content>

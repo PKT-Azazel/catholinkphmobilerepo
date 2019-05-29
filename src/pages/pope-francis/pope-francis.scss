@@ -1,0 +1,497 @@
+page-pope-francis { 
+    ion-content { 
+        background-position: center;
+        background-size: cover;
+    }
+
+    ion-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: black;
+        opacity: .4; 
+    }
+
+    ion-card.header {
+        width: 100%;
+        border-radius: 0px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 0px 0px;
+        padding-top: 150px;
+    }
+
+    .nav-container {
+        h1 {
+            font-family: 'Courgette';
+            color: white;
+            font-size: 40px;
+            position: relative;
+            top: -25px;
+            margin-left: 20px;
+        }
+
+        .links {
+            list-style: none;
+            padding: 0;
+            margin-top: -20px;
+        }
+        
+        .item {
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .item.active {
+            text-decoration: underline;
+        }
+    }
+}
+
+app-pope-francis-video,
+app-pope-francis-quotes,
+app-pope-francis-bibliography,
+app-pope-francis-itinerary {
+    .main-contents {
+        position: relative;
+        z-index: 9999999;
+    }
+
+    .contents-container {
+        height: 100%;
+        width : 100%;
+        /* padding-left: 15px;  */
+    }
+    
+    .contents {
+        position: relative;
+        z-index: 9999;
+    }
+    
+    .no-items-to-display {
+        padding-top: 100px;
+        color: white;
+        font-size: 23px;
+        font-weight: 600;
+        margin-left: 15px;
+    }    
+    
+    .grid-item {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 300px;
+        width: 50%;
+        float: left;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        padding: 10px;
+    }
+    
+    .grid-item.featured-item {
+        width: 66.66%;
+    }
+    
+    .grid-item-background-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform .3s;
+    }
+    
+    .grid-item:hover .grid-item-background-image {
+        transform: scale(1.1);    
+    }    
+    
+    .grid-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 100%;
+        width: calc(100% - 4px);
+        background-color: rgba(0, 0,0, .5);
+        border-color: white;
+        border-width: 2px;
+        border-style: solid;
+    }
+    
+    .item-info-container {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+    }    
+    
+    .featured-tag {
+        display: block;
+        text-align: center;
+        display: block;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+    
+    .quote-icon {
+        height: 80px;
+        width: 80px;
+        margin-top: 30px;
+    }
+    
+    span.info-title {
+        display: block;
+        text-align: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-top: 15%;
+    }
+    
+    .info-title.info-title-video {
+        font-weight: 400;
+        text-transform: none;
+        font-size: 20px;
+    }
+    
+    .info-title.info-title-video-non-featured {
+        margin-top: 50px;
+    }
+        
+    .info-date {
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: 900;
+        margin-top: 50px;
+        height: 60px;
+        overflow: hidden;
+    }
+    
+    .info-date.featured-date {
+        margin-top: 20px;
+        font-weight: 400;
+    }
+    
+    .info-date.info-date-video {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: none;
+    }
+    
+    span.info-description {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        height: 150px;
+        // overflow-y: scroll;
+        font-size: 15px;
+    }
+    
+    span.watch-now-btn {
+        display: inline-block;
+        border-style: solid;
+        border-width: 2px;
+        padding: 8px;
+        text-transform: uppercase;
+        font-weight: 900;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .quote-featured-tag.featured-tag{
+        font-size: 25px;
+    }
+        
+    .quote-featured-description.info-description {
+        font-size: 20px;
+        font-style: italic;
+    }
+    
+    .edit-del-btn-container {
+        position: absolute;
+        color: white;
+        z-index: 2;
+        top: 5px;
+        right: 5px;
+    }
+    
+    .edit-del-btn-container .edit-del-btn{
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        background-color: #b10201;
+        text-align: center;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+    
+    .edit-del-btn-container .edit-del-btn:hover{
+        background-color: #941104;
+    }
+    
+    .add-btn-container {
+        position: fixed;
+        left: 200px;
+    }
+
+    .add-btn-container  .add-btn {
+        padding: 8px;
+        margin-right: 10px;
+        background-color: #b10201;
+        cursor: pointer;
+        float: left;
+        margin-top: -50px;
+        margin-bottom: 10px;
+        color: white;
+        border: none;
+    }
+    
+    .add-btn-container  .add-btn:hover {
+        background-color: #941104;
+    }
+    
+    .modal-container {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.73);
+        padding: 10px;
+        // overflow-y: scroll;
+    }
+    
+    .pp-modal {
+        height: auto;
+        top: 10%;
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        margin: 0 auto;
+        padding: 15px;
+        position: relative;
+    }
+    
+    .pp-modal table {
+        width: 100%;
+    }
+    
+    .pp-modal table select {
+        height: 36px;
+        font-size: 18px;
+        width: 100%;
+    }
+    
+    .pp-modal table input{
+        width: 100%;
+    }
+    
+    .pp-modal table input[type="radio"] {
+        width: auto;
+    }
+    
+    .pp-modal table input[type="radio"]:nth-child(2) {
+        margin-left: 10px;
+    }
+    
+    .pp-modal table textarea{
+        box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .modal-container .modal-title{
+        text-transform: capitalize;
+        text-transform: uppercase;
+        color: rgb(164, 14, 0);
+        margin-bottom: 10px;
+    }
+    
+    .modal-close {
+        display: inline-block;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        right: 10px;
+        top: 0;
+        cursor: pointer;
+    }
+    
+    .modal-close:hover {
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .submit-btn-container {
+        margin-top: 10px;
+    }
+    
+    .errorsContainer {
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+    
+    .successContainer {
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+    
+    .loadingContainer {
+        margin-top: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+    }
+    
+    .loadingContainer i {
+        font-size: 25px;
+    }
+    
+    .watch-video-modal-container {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.9);
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        padding: 10px;
+    }
+
+    .watch-video-modal-container .video-container {
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: calc(50% - 40px);
+        left: 50%;
+    
+        height: 100%;
+        max-height: 500px;
+        width: 100%;
+        max-width: 900px;
+    
+        padding-top: 40px;
+        /* background-color: white; */
+    }
+    
+    .watch-video-modal-container .modal-close {
+        font-size: 30px;
+        right: 0px;
+        top: 0px;
+        color: white;
+    }
+    
+    .watch-video-modal-container .modal-close:hover {
+        color: #b9b9b9;
+    }
+    
+    .modal-container img{
+        width: 100%;
+        height: auto;
+    }
+    
+    #carousel{
+        overflow: hidden;
+        /* background-color: red; */
+        width: 100%;
+        max-width: 600px;
+        height: 450px;
+        margin: 0 auto;
+        padding-bottom: 50px;
+        /* padding: 0 40px; */
+    }
+
+    #slider{
+        list-style: none;
+        position: relative;
+        /* width: 100%; */
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        left: 0;
+        transition: 1s;
+    }
+
+    .slider-item{
+        position: relative;
+        float: left;
+        width: 100%;
+        height: 100%;
+    }
+
+    .slider-item img{
+        display:block;
+        width:100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .carousel-btn-container {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .carousel-btn {
+        color: white;
+        font-size: 30px;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        background-color: #b10201;
+        cursor: pointer;
+    }
+    
+    .carousel-btn:hover {
+        background-color: #941104;
+    }
+    
+    .contents.bibliography-contents{
+        text-align: center;
+        color: black;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: white;
+        padding-top: 50px;
+    }
+    
+    .bibliography-desc {
+        text-align: left;
+        padding: 15px;
+    }
+}
